@@ -1,3 +1,6 @@
+# Note:
++ Figure out how to convert to "proper" npm package so intallations work.
+
 # React & D3 for data visualization
 + Using react with d3 to create components for data visualization
 
