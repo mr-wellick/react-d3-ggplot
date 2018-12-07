@@ -1,11 +1,10 @@
 import React         from "react";
 import { Component } from "react";
 import { XAxis }     from "../../Components/";
-import "./home.scss";
 
 class Home extends Component{
     state = {
-        data: [{ xValue: 4, yValue: 17 }, { xValue: 20, yValue: 8 }],
+        data: [{ minutes: 4, money: 17 }, { minutes: 20, money: 8 }],
         dimensions:
         {
             width: window.innerWidth*0.9,
@@ -16,20 +15,18 @@ class Home extends Component{
     }
 
     render(){
-        const { width, height } = this.state.dimensions;
-        const { data, dimensions, className } = this.state;
+        const { dimensions, data, className } = this.state;
 
         return(
             <svg
-                width={ width }
-                height={ height }
+                width={ dimensions.width }
+                height={ dimensions.height }
                 className={ className }
             >
                 <XAxis
                     data={ data }
-                    dimensions={ dimensions }
                     scaleType="linear"
-                    className={ className + " x-axis" }
+                    aes="minutes"
                 />
             </svg>
         );

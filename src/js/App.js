@@ -1,4 +1,3 @@
-import "./app.scss";
 import React          from "react";
 import { Component }  from "react";
 import { Fragment }   from "react";
