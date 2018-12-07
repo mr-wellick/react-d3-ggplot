@@ -73,37 +73,4 @@ class XAxis extends Component{
     }
 }
 
-//class App extends Component{
-//    state = {
-//        data: [{xValue: 4, yValue: 7}],
-//        dimensions:
-//        {
-//            width: 500,
-//            heigth: 600,
-//            padding: 50
-//        },
-//        className: "svg-chart__aapl"
-//    }
-//
-//    render(){
-//        const { width, height } = this.state.dimensions;
-//        const { className, data, dimensions } = this.state;
-//
-//        return(
-//            <svg
-//                width={ width }
-//                height={ height }
-//                className={ className }
-//            >
-//                <XAxis
-//                    data={ data }
-//                    dimensions={ dimensions }
-//                    scaleType="linear"
-//                    className={ className + " x-axis" }
-//                />
-//            </svg>
-//        );
-//    }
-//}
-
 export default XAxis;

@@ -15,7 +15,7 @@
     "devDependencies": {
         "@babel/core": "^7.2.0",
         "@babel/plugin-proposal-class-properties": "^7.2.1",
-        "@babel/plugin-transform-runtime": "^7.2.0",
+        "@babel/plugin-syntax-async-generators": "^7.2.0",
         "@babel/preset-env": "^7.2.0",
         "@babel/preset-react": "^7.0.0",
         "autoprefixer": "^9.4.2",
@@ -43,7 +43,7 @@
         "webpack-merge": "^4.1.4"
     },
     "dependencies": {
-        "@babel/runtime": "^7.2.0",
+        "d3": "5.7.0",
         "react": "^16.6.3",
         "react-dom": "^16.6.3"
     }
