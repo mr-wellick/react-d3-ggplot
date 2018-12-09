@@ -4,6 +4,7 @@ import { hot }       from "react-hot-loader";
 import { XAxis }     from "./XAxis/";
 import { YAxis }     from "./YAxis/";
 import { Line }      from "./Line/";
+import { GGPLOT }    from "./GGPlot/";
 
 class App extends Component{
     state = {
@@ -11,7 +12,8 @@ class App extends Component{
         dimensions:
         {
             width: window.innerWidth*0.9,
-            height: window.innerHeight*0.9
+            height: window.innerHeight*0.9,
+            padding: 50
         }
     }
 
@@ -22,27 +24,38 @@ class App extends Component{
             return <h1>No data to render.</h1>;
 
         return(
-            <svg
-                width={ dimensions.width }
-                height={ dimensions.height }
-                className="svg-chart__aapl"
-            >
-                <XAxis
+            <>
+                <GGPLOT
                     data={ data }
-                    scaleType="time"
-                    aes="date"
-                />
-                <YAxis
-                    data={ data }
-                    scaleType="linear"
-                    aes="close"
-                />
-                <Line
-                    data={ data }
-                    scaleTypes={ ["time", "linear"] }
                     aes={ ["date", "close"] }
+                    scaleTypes={ ["time", "linear"] }
+                    dimensions={ dimensions }
                 />
-            </svg>
+                {/*
+                <svg
+                    width={ dimensions.width }
+                    height={ dimensions.height }
+                    className="svg-chart__aapl"
+                >
+                    <XAxis
+                        data={ data }
+                        scaleType="time"
+                        aes="date"
+                    />
+                    <YAxis
+                        data={ data }
+                        scaleType="linear"
+                        aes="close"
+                    />
+                    <Line
+                        data={ data }
+                        scaleTypes={ ["time", "linear"] }
+                        aes={ ["date", "close"] }
+                    />
+                </svg>
+                */}
+            </>
+
         );
     }
 
