@@ -2,10 +2,10 @@ import React           from "react";
 import { Component }   from "react";
 import PropTypes       from "prop-types";
 import { select }      from "d3-selection";
-import { axisBottom }  from "d3-axis";
+import { axisLeft }    from "d3-axis";
 import { scaleFinder } from "../../Utilities/";
 
-class XAxis extends Component{
+class YAxis extends Component {
     static defaultProps = {
         dimensions:
         {
@@ -25,50 +25,49 @@ class XAxis extends Component{
         }),
         scaleType: PropTypes.oneOf(["linear", "time", "ordinal"]).isRequired,
         className: PropTypes.string,
-        aes: PropTypes.string
+        aes: PropTypes.string.isRequired
     }
 
-
-    getXScale(){
-        // get props and aesthetic to render ( x-vaue )
+    getYScale() {
+        // get y-values
         const { data, aes } = this.props;
+        const yValues       = data.map(item => item[aes]);
 
-        // get x-values
-        const xValues  = data.map(item => item[aes]);
-        const scaleObj = new scaleFinder(xValues);
+        // create xScale
+        let scaleObj  = new scaleFinder(yValues);
 
         return scaleObj;
     }
 
-    getScaleType(){
-        const { dimensions, scaleType } = this.props;
-        const scaleObj                  = this.getXScale();
-        let xScale;
+    getScaleType() {
+        const { scaleType, dimensions } = this.props;
+        const scaleObj                  = this.getYScale();
+        let yScale;
 
         if(scaleType === "linear")
-            xScale = scaleObj.getLinearScale().nice();
+            yScale = scaleObj.getLinearScale().nice();
 
         if(scaleType === "time")
-            xScale = scaleObj.getTimeScale().nice();
+            yScale = scaleObj.getTimeScale().nice();
 
         //if(scaleType === "ordinal")
-        //    xScale = scaleObj.getOrdinalScale(); // .nice() method not available
+        //    yScale = scaleObj.getOrdinalScale(); // .nice() method not available
 
         // set scale range
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
+        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
 
-        return xScale;
+        return yScale;
     }
 
-    findXAxis(){
+    findYAxis(){
         const { dimensions } = this.props;
-        const xScale         = this.getScaleType();
-        const axisLocation   = `translate(0, ${dimensions.height - dimensions.padding})`;
+        let yScale           = this.getScaleType();
+        let axisLocation     = `translate(${dimensions.padding}, 0)`;
 
-        // select node returned by component and appends x-axis
+        // Append y-axis
         select(this.node)
             .attr("transform", axisLocation)
-            .call(axisBottom(xScale));
+            .call(axisLeft(yScale));
     }
 
     render(){
@@ -82,12 +81,12 @@ class XAxis extends Component{
     }
 
     componentDidMount(){
-        this.findXAxis();
+        this.findYAxis();
     }
 
     componentDidUpdate(){
-        this.findXAxis();
+        this.findYAxis();
     }
 }
 
-export default XAxis;
+export default YAxis;
