@@ -3,7 +3,7 @@ import { Component }   from "react";
 import PropTypes       from "prop-types";
 import { select }      from "d3-selection";
 import { axisLeft }    from "d3-axis";
-import { scaleFinder } from "../../Utilities/";
+import { scaleFinder } from "../Utilities/";
 
 class YAxis extends Component {
     static defaultProps = {

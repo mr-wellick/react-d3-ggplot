@@ -1,10 +1,11 @@
 import React         from "react";
 import { Component } from "react";
-import { XAxis }     from "../../Components/";
-import { YAxis }     from "../../Components/";
-import { Line }      from "../../Components/";
+import { hot }       from "react-hot-loader";
+import { XAxis }     from "./XAxis/";
+import { YAxis }     from "./YAxis/";
+import { Line }      from "./Line/";
 
-class Home extends Component{
+class App extends Component{
     state = {
         data: [],
         dimensions:
@@ -74,4 +75,11 @@ class Home extends Component{
     }
 }
 
-export default Home;
+let Application;
+
+if(process.env.NODE_ENV === "development")
+    Application = hot(module)(App);
+else
+    Application = App;
+
+export default Application;

@@ -4,7 +4,7 @@ import PropTypes           from "prop-types";
 import { line }            from "d3-shape";
 import { curveCatmullRom } from "d3-shape";
 import { select }          from "d3-selection";
-import { scaleFinder }     from "../../Utilities/";
+import { scaleFinder }     from "../Utilities/";
 
 class Line extends Component {
     static defaultProps = {
