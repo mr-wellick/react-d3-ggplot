@@ -1,5 +1,3 @@
-# Note: Figure out how to convert to "proper" npm package so installations work.
-
 # React & D3 for data visualization
 + Using react with d3 to create components for data visualization
 
@@ -62,7 +60,7 @@ class GGPlot extends Component {
 ```js
 import XAxis from "react-d3-ggplot";
 
-// 1. data 
+// 1. data
 // 2. dimensions
 // 3. aes (short for aesthetic)
 // 4. scaleType
@@ -77,5 +75,5 @@ const GGPLOT = () => (
             className={ className + " x-axis" }
         />
     </svg>
-); 
+);
 ```
