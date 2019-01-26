@@ -14,18 +14,6 @@ module.exports = () => ({
         rules:
         [
             {
-                test: /\.scss$/,
-                use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
-            },
-            {
-                test: /\.(png|jpg|svg)$/,
-                use:
-                {
-                    loader: "url-loader",
-                    options: { limit: 500 }
-                }
-            },
-            {
                 test: /\.ts$/, use: [ "ts-loader" ]
             },
             {
