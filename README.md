@@ -92,7 +92,11 @@ const state = {
 }
 
 const GGPLOT = () => (
-    <svg width="500" height="500" className={ state.className }>
+    <svg
+        width={ state.dimensions.width }
+        height={ state.dimensions.height }
+        className={ state.className }
+    >
         <XAxis
             data={ state.data }
             dimensions={ state.dimensions }
@@ -139,7 +143,11 @@ const state = {
 }
 
 const GGPLOT = () => (
-    <svg width="500" height="500" className={ state.className }>
+    <svg
+        width={ state.dimensions.width }
+        height={ state.dimensions.height }
+        className={ state.className }
+    >
         <YAxis
             data={ state.data }
             dimensions={ state.dimensions }
