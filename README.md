@@ -9,8 +9,8 @@
 ```js
 // here's an example of a valid format
 const data = [
-    { experience: 3, pay: 1000, hrs: 65 },
-    { experience: 7, pay: 3000, hrs: 100 }
+    { experience: 3, pay: 1000, hrs: 65 }, // The "length" of each object is 3.
+    { experience: 7, pay: 3000, hrs: 100 } // And each object has the same properties: experience, pay, and hrs.
 ];
 ```
 
@@ -18,19 +18,23 @@ const data = [
 | Prop            | Required | Description                                                                          |
 |-----------------|----------|--------------------------------------------------------------------------------------|
 | data            | true     | `data` must be an array of objects                                                     |
-| aes (aesthetic) | true     | Aes is short for aesthetic. We use `aes` to select the property that we want to use as our x-vaue or y-value.|
+| aes (aesthetic) | true     | Aes is short for aesthetic. We use `aes` to select the property that we want to use as our x-value or y-value.|
 | scaleType       | true     | We use `scaleType` to select the type of scale we want: linear (for numerical data), time (used when working with dates), and ordinal (for categorical data)|
 | dimensions      | true     | The `dimensions` object must contain three properties: width, height, and padding.       |
 | className       | false    | `className` is optional and is used to define a regular CSS class name |
 
 ## 3. Using components from react-d3-gglpot library
-+ Here's the workflow when working with `react-d3-ggplot`
++ Here's the workflow when using components from `react-d3-ggplot`
 ```js
 import React         from "react";
 import { Component } from "react";
-import XAxis         from "react-d3-gglot";
-import YAxis         from "react-d3-gglot";
-import Rects         from "react-d3-gglot";
+
+// The XAxis and YAxis will form the base of all your data visualizations
+import XAxis from "react-d3-gglot";
+import YAxis from "react-d3-gglot";  
+
+// Then we import the type of plot we want: Rects (for barplots), Points (for scatterplots), and Line (for line charts)
+import Rects from "react-d3-gglot";
 
 class BarPlot extends Component{
     state = {
@@ -45,6 +49,7 @@ class BarPlot extends Component{
         const { dimensions, data } = this.state;
 
         return(
+            // Wrap all react-d3-ggplot components in an svg
             <svg width={ dimensions.width } height={ dimensions.height }>
                 <XAxis
                     data={ data }             // Pass in the data first
@@ -68,6 +73,10 @@ class BarPlot extends Component{
         );
     }
 }
+```
+
+## 4. As we can see, the workflow is always the same for each component from the react-d3-ggplot library
+```js
 ```
 
 # API
