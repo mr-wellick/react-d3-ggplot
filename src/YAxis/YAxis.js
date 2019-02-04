@@ -51,7 +51,7 @@ class YAxis extends Component {
             yScale = scaleObj.getTimeScale().nice();
 
         //if(scaleType === "ordinal")
-        //    yScale = scaleObj.getOrdinalScale(); // .nice() method not available
+        //    yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
         // set scale range
         yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
