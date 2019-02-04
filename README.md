@@ -26,7 +26,7 @@ const data = [
 |-----------------|----------|--------------------------------------------------------------------------------------|
 | data            | true     | `data` must be an array of objects                                                     |
 | aes             | true     | Aes is short for aesthetic. We use `aes` to select the property that we want to use as our x-value or y-value.|
-| scaleType(s)    | true     | We use `scaleType` to select the type of scale we want: linear (for numerical data), time (used when working with dates), and ordinal (for categorical data)|
+| scaleType       | true     | We use `scaleType` to select the type of scale we want: linear (for numerical data), time (used when working with dates), and ordinal (for categorical data)|
 | dimensions      | true     | The `dimensions` object must contain three properties: width, height, and padding.       |
 | className       | false    | `className` is optional and is used to define a regular CSS class name |
 
