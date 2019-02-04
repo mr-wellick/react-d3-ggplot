@@ -1,60 +1,75 @@
-# React & D3 for data visualization
-+ Using react with d3 to create components for data visualization
+# react-d3-ggplot
++ Using React.js and D3.js to build simple and reusable components for data visualizations on the web.
 
-# Quick Start
+# Introduction
++ Before we look at some examples, we first need to talk about our data. The structure of our data is important to get right the first time because this will make it easier to work with.
 
-## 1. Process Data
+## 1. We must first format our data as an array of objects
++ Each object in the array can have as many properties as you want, as long as the object "lengths" match and the property names match.
 ```js
-// Format data as an array of objects
+// here's an example of a valid format
 const data = [
     { experience: 3, pay: 1000, hrs: 65 },
     { experience: 7, pay: 3000, hrs: 100 }
 ];
 ```
-## 2. Import React & XAxis
+
+## 2. The React props that each component in the `react-d3-ggplot` library accepts are the following:
+| Prop            | Required | Description                                                                          |
+|-----------------|----------|--------------------------------------------------------------------------------------|
+| data            | true     | `data` must be an array of objects                                                     |
+| aes (aesthetic) | true     | Aes is short for aesthetic. We use `aes` to select the property that we want to use as our x-vaue or y-value.|
+| scaleType       | true     | We use `scaleType` to select the type of scale we want: linear (for numerical data), time (used when working with dates), and ordinal (for categorical data)|
+| dimensions      | true     | The `dimensions` object must contain three properties: width, height, and padding.       |
+| className       | false    | `className` is optional and is used to define a regular CSS class name |
+
+## 3. Using components from react-d3-gglpot library
++ Here's the workflow when working with `react-d3-ggplot`
 ```js
 import React         from "react";
 import { Component } from "react";
-import XAxis         from "react-d3-ggplot";
+import XAxis         from "react-d3-gglot";
+import YAxis         from "react-d3-gglot";
+import Rects         from "react-d3-gglot";
 
-// Create new component to hold individual pieces
-class GGPlot extends Component {
+class BarPlot extends Component{
     state = {
-        data:
-        [
+        data: [
             { experience: 3, pay: 1000, hrs: 65 },
             { experience: 7, pay: 3000, hrs: 100 }
         ],
-        dimensions:
-        {
-            width: window.innerWidth*0.9,
-            height: window.innerHeight*0.9,
-            padding: 50
-        },
-        className: "svg-chart__vis"
+        dimensions: { width: 600, height: 400, padding: 50 }
     }
 
     render(){
-        const { data, dimensions, className } = this.state;
+        const { dimensions, data } = this.state;
 
         return(
-            <svg
-                width={ dimensions.width }
-                height={ dimensions.height }
-                className={ className }
-            >
+            <svg width={ dimensions.width } height={ dimensions.height }>
                 <XAxis
-                    data={ data }
-                    dimensions={ dimensions }
-                    aes="experience"
-                    scaleType="linear"
-                    className={ className + " x-axis"}
+                    data={ data }             // Pass in the data first
+                    aes="experience"          // Select your x-value (chosen directly from your data)
+                    scaleType="linear"        // Select the scaleType: linear for numerical data
+                    dimensions={ dimensions } // Pass in the dimensions of your graph
+                />
+                <YAxis
+                    data={ data }             // Pass in the data first
+                    aes="pay"                 // Select your y-value (chosen directly from your data)
+                    scaleType="linear"        // Select the scaleType: linear for numerical data
+                    dimensions={ dimensions } // Pass in the dimensions of you graph
+                />
+                <Rects
+                    data={ data }                       // Pass in the data first
+                    aes={ ["experience", "pay"] }       // Pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value
+                    scaleTypes={ ["linear", "linear"] } // Pass in an array container two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis
+                    dimensions={ dimensions }           // Pass in the dimensions if your graph
                 />
             </svg>
         );
     }
 }
 ```
+
 # API
 ## XAxis
 | Prop            | Type   | Shape                                                                                |
@@ -63,7 +78,7 @@ class GGPlot extends Component {
 | aes (aesthetic) | String | Must pass in a string to select the property you want as your x-value                |
 | scaleType       | String | Must pass in a string with one of the following options: linear, time, ordinal       |
 | dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
-| className       | String | Optional. Can pass in a string with a CSS className.                                   |
+| className       | String | Optional. Can pass in a string with a CSS className.                                 |
 
 ```js
 import XAxis from "react-d3-ggplot";
@@ -99,9 +114,9 @@ const GGPLOT = () => (
     >
         <XAxis
             data={ state.data }
-            dimensions={ state.dimensions }
             aes="experience"
             scaleType="linear"
+            dimensions={ state.dimensions }
             className={ className + " x-axis" }
         />
     </svg>
@@ -150,11 +165,10 @@ const GGPLOT = () => (
     >
         <YAxis
             data={ state.data }
-            dimensions={ state.dimensions }
             aes="pay"
             scaleType="linear"
+            dimensions={ state.dimensions }
             className={ className + " y-axis" }
         />
     </svg>
 );
-```
