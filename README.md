@@ -1,6 +1,6 @@
 # react-d3-ggplot
 + Using React.js and D3.js to build simple and reusable components for data visualizations on the web.
-```js
+```zsh
 // yarn
 yarn add react-d3-ggplot
 
