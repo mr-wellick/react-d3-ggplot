@@ -74,7 +74,7 @@ class BarPlot extends Component{
                     data={ data }                       // Pass in the data first
                     aes={ ["experience", "pay"] }       // Pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value
                     scaleTypes={ ["linear", "linear"] } // Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis
-                    dimensions={ dimensions }           // Pass in the dimensions if your graph
+                    dimensions={ dimensions }           // Pass in the dimensions of your graph
                 />
             </svg>
         );
