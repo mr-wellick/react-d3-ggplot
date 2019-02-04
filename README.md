@@ -179,5 +179,7 @@ import Rects from "react-d3-ggplot";
         aes={ ["x-value", "y-value"] }
         scaleTypes={ ["x-scale-type", "y-scale-type"] }
         dimensions={ dimensions }
+        className="className"
+        color="color"
     />
 ```
