@@ -5,6 +5,17 @@ import { select }      from "d3-selection";
 import { scaleFinder } from "../Utilities/";
 
 class Rects extends Component{
+  static defaultProps = {
+        dimensions:
+        {
+            width: window.innerWidth*0.9,
+            height: window.innerHeight*0.9,
+            padding: 50
+        },
+        className: null,
+        color: "orange"
+    }
+
     static propTypes = {
         data: PropTypes.array.isRequired,
         dimensions: PropTypes.shape({
@@ -107,6 +118,7 @@ class Rects extends Component{
         return(
             <g
                 ref={ node => this.node = node }
+                className={ this.props.className }
             >
             </g>
         );
