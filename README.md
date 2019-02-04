@@ -1,5 +1,12 @@
 # react-d3-ggplot
 + Using React.js and D3.js to build simple and reusable components for data visualizations on the web.
+```js
+// yarn
+yarn add react-d3-ggplot
+
+// npm
+npm install react-d3-ggplot
+```
 
 # Introduction
 + Before we look at some examples, we first need to talk about our data. The structure of our data is important to get right the first time because this will make it easier to work with.
@@ -31,7 +38,7 @@ import { Component } from "react";
 
 // The XAxis and YAxis will form the base of all your data visualizations
 import XAxis from "react-d3-gglot";
-import YAxis from "react-d3-gglot";  
+import YAxis from "react-d3-gglot";
 
 // Then we import the type of plot we want: Rects (for barplots), Points (for scatterplots), and Line (for line charts)
 import Rects from "react-d3-gglot";
