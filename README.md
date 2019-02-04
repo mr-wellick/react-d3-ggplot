@@ -37,11 +37,11 @@ import React         from "react";
 import { Component } from "react";
 
 // The XAxis and YAxis will form the base of all your data visualizations
-import XAxis from "react-d3-gglot";
-import YAxis from "react-d3-gglot";
+import XAxis from "react-d3-ggplot";
+import YAxis from "react-d3-ggplot";
 
 // Then we import the type of plot we want: Rects (for barplots), Points (for scatterplots), and Line (for line charts)
-import Rects from "react-d3-gglot";
+import Rects from "react-d3-ggplot";
 
 class BarPlot extends Component{
     state = {
