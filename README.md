@@ -18,7 +18,7 @@ const data = [
 | Prop            | Required | Description                                                                          |
 |-----------------|----------|--------------------------------------------------------------------------------------|
 | data            | true     | `data` must be an array of objects                                                     |
-| aes (aesthetic) | true     | Aes is short for aesthetic. We use `aes` to select the property that we want to use as our x-value or y-value.|
+| aes             | true     | Aes is short for aesthetic. We use `aes` to select the property that we want to use as our x-value or y-value.|
 | scaleType       | true     | We use `scaleType` to select the type of scale we want: linear (for numerical data), time (used when working with dates), and ordinal (for categorical data)|
 | dimensions      | true     | The `dimensions` object must contain three properties: width, height, and padding.       |
 | className       | false    | `className` is optional and is used to define a regular CSS class name |
@@ -66,7 +66,7 @@ class BarPlot extends Component{
                 <Rects
                     data={ data }                       // Pass in the data first
                     aes={ ["experience", "pay"] }       // Pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value
-                    scaleTypes={ ["linear", "linear"] } // Pass in an array container two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis
+                    scaleTypes={ ["linear", "linear"] } // Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis
                     dimensions={ dimensions }           // Pass in the dimensions if your graph
                 />
             </svg>
@@ -76,7 +76,23 @@ class BarPlot extends Component{
 ```
 
 ## 4. As we can see, the workflow is always the same for each component from the react-d3-ggplot library
++ Pass in the data
++ Select the aesthetic (the x-value or y-value)
++ Select the scaleType
++ Pass in the dimensions
+
 ```js
+// NOTE: The API differs slightly for <Rects/>, <Points/>, and <Line/>
+
+// The reason aes and scaleTypes take an array instead of a single string value is because:
+// 1. We need to tell <Rects/> what our x and y values will be
+// 2. We need to tell <Rects/> what the scaleTypes will be for our x and y values
+     <Rects
+        data={ data }
+        aes={ ["experience", "pay"] }
+        scaleTypes={ ["linear", "linear"] }
+        dimensions={ dimensions }
+    />
 ```
 
 # API
@@ -97,38 +113,13 @@ import XAxis from "react-d3-ggplot";
 // 3. scaleType
 // 4. dimensions
 // 5. className
-const state = {
-        // data must be an array of objects
-        data:
-        [
-            { experience: 3, pay: 1000, hrs: 65 },
-            { experience: 7, pay: 3000, hrs: 100 }
-        ],
-        // dimensions object must contain all three options: width, height, and padding
-        dimensions:
-        {
-            width: window.innerWidth*0.9,
-            height: window.innerHeight*0.9,
-            padding: 50
-        },
-        // className is optional
-        className: "pay-chart"
-}
-
-const GGPLOT = () => (
-    <svg
-        width={ state.dimensions.width }
-        height={ state.dimensions.height }
-        className={ state.className }
-    >
-        <XAxis
-            data={ state.data }
-            aes="experience"
-            scaleType="linear"
-            dimensions={ state.dimensions }
-            className={ className + " x-axis" }
-        />
-    </svg>
+    <XAxis
+        data={ data }
+        aes="x-value"
+        scaleType="scale-type"
+        dimensions={ dimensions }
+        className={ className }
+    />
 );
 ```
 
@@ -148,36 +139,36 @@ import YAxis from "react-d3-ggplot";
 // 3. scaleType
 // 4. dimensions
 // 5. className
-const state = {
-        // data must be an array of objects
-        data:
-        [
-            { experience: 3, pay: 1000, hrs: 65 },
-            { experience: 7, pay: 3000, hrs: 100 }
-        ],
-        // dimensions object must contain all three options: width, height, and padding
-        dimensions:
-        {
-            width: window.innerWidth*0.9,
-            height: window.innerHeight*0.9,
-            padding: 50
-        },
-        // className is optional
-        className: "pay-chart"
-}
+    <YAxis
+        data={ data }
+        aes="y-value"
+        scaleType="scale-type"
+        dimensions={ dimensions }
+        className={ className }
+    />
+```
 
-const GGPLOT = () => (
-    <svg
-        width={ state.dimensions.width }
-        height={ state.dimensions.height }
-        className={ state.className }
-    >
-        <YAxis
-            data={ state.data }
-            aes="pay"
-            scaleType="linear"
-            dimensions={ state.dimensions }
-            className={ className + " y-axis" }
-        />
-    </svg>
-);
+## Rects
+| Prop            | Type   | Shape                                                                                |
+|-----------------|--------|--------------------------------------------------------------------------------------|
+| data            | Array  | Must pass in an array of objects                                                     |
+| aes (aesthetic) | Array  | Must pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value|
+| scaleType       | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
+| dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
+| className       | String | Optional. Can pass in a string with a CSS className.                                 |
+
+```js
+import Rects from "react-d3-ggplot";
+
+// 1. data
+// 2. aes - (choose your x-value and y-value by property name)
+// 3. scaleType - (choose the same scaleTypes used by your XAxis and YAxis components)
+// 4. dimensions
+// 5. className
+    <Rects
+        data={ data }
+        aes={ ["x-value", "y-value"] }
+        scaleTypes={ ["x-scale-type", "y-scale-type"] }
+        dimensions={ dimensions }
+    />
+```
