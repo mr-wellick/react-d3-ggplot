@@ -163,6 +163,7 @@ import YAxis from "react-d3-ggplot";
 | scaleType       | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
 | dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
 | className       | String | Optional. Can pass in a string with a CSS className.                                 |
+| color           | String | Optional. Can pass in a string to choose the color of the bars.                      |
 
 ```js
 import Rects from "react-d3-ggplot";
@@ -172,6 +173,7 @@ import Rects from "react-d3-ggplot";
 // 3. scaleType - (choose the same scaleTypes used by your XAxis and YAxis components)
 // 4. dimensions
 // 5. className
+// 6. color
     <Rects
         data={ data }
         aes={ ["x-value", "y-value"] }
