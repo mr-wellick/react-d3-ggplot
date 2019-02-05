@@ -30,7 +30,7 @@ const data = [
 | dimensions      | true     | The `dimensions` object must contain three properties: width, height, and padding.       |
 | className       | false    | `className` is optional and is used to define a regular CSS class name |
 
-## 3. Using components from react-d3-gglpot library
+## 3. Using components from react-d3-ggplot library
 + Here's the workflow when using components from `react-d3-ggplot`
 ```js
 import React         from "react";
