@@ -50,8 +50,8 @@ class YAxis extends Component {
         if(scaleType === "time")
             yScale = scaleObj.getTimeScale().nice();
 
-        //if(scaleType === "ordinal")
-        //    yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
+        if(scaleType === "ordinal")
+            yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
         // set scale range
         yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);

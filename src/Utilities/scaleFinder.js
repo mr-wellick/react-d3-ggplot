@@ -31,7 +31,7 @@ class ScaleFinder {
     }
 
     getOrdinalScale(binWidth){
-        const scale = scaleBand().domain();
+        const scale = scaleBand().domain(this.data);
         scale.padding([binWidth]);
 
         return scale;

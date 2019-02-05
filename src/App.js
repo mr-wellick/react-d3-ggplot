@@ -3,7 +3,8 @@ import { Component } from "react";
 import { hot }       from "react-hot-loader";
 import { XAxis }     from "./XAxis/";
 import { YAxis }     from "./YAxis/";
-import { Line }      from "./Line/";
+//import { Line }      from "./Line/";
+//import { Rects }     from "./Rects/";
 
 class App extends Component{
     state = {
@@ -25,22 +26,16 @@ class App extends Component{
             <svg
                 width={ dimensions.width }
                 height={ dimensions.height }
-                className="svg-chart__aapl"
             >
                 <XAxis
                     data={ data }
-                    scaleType="time"
                     aes="date"
+                    scaleType="time"
                 />
                 <YAxis
                     data={ data }
-                    scaleType="linear"
                     aes="close"
-                />
-                <Line
-                    data={ data }
-                    scaleTypes={ ["time", "linear"] }
-                    aes={ ["date", "close"] }
+                    scaleType="linear"
                 />
             </svg>
         );

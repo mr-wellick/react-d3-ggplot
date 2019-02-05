@@ -19,7 +19,7 @@ module.exports = ( { mode, presets } = { mode: "production", presets: undefined 
             {
                 path: path.join(__dirname, "build"),
                 filename: "index.js",
-                libraryTarget: "commonjs2"
+                //libraryTarget: "commonjs2"
             },
             plugins:
             [
@@ -27,9 +27,9 @@ module.exports = ( { mode, presets } = { mode: "production", presets: undefined 
                 new webpack.ProgressPlugin(),
                 new cleanBuildDir(["build"])
             ],
-            externals: {
-                "react": "commonjs react"
-            }
+            //externals: {
+            //    "react": "commonjs react"
+            //}
         },
         configType(mode),
         presets !== undefined ? configPreset({ mode, presets }) : null
