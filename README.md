@@ -37,11 +37,11 @@ import React         from "react";
 import { Component } from "react";
 
 // The XAxis and YAxis will form the base of all your data visualizations
-import XAxis from "react-d3-ggplot";
-import YAxis from "react-d3-ggplot";
+import { XAxis } from "react-d3-ggplot";
+import { YAxis } from "react-d3-ggplot";
 
 // Then we import the type of plot we want: Rects (for barplots), Points (for scatterplots), and Line (for line charts)
-import Rects from "react-d3-ggplot";
+import { Rects } from "react-d3-ggplot";
 
 class BarPlot extends Component{
     state = {
@@ -113,7 +113,7 @@ class BarPlot extends Component{
 | className       | String | Optional. Can pass in a string with a CSS className.                                 |
 
 ```js
-import XAxis from "react-d3-ggplot";
+import { XAxis } from "react-d3-ggplot";
 
 // 1. data
 // 2. aes - (choose your x-value by property name)
@@ -139,7 +139,7 @@ import XAxis from "react-d3-ggplot";
 | dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
 | className       | String | Optional. Can pass in a string with a CSS className.                                 |
 ```js
-import YAxis from "react-d3-ggplot";
+import { YAxis } from "react-d3-ggplot";
 
 // 1. data
 // 2. aes - (choose your y-value by property name)
@@ -166,7 +166,7 @@ import YAxis from "react-d3-ggplot";
 | color           | String | Optional. Can pass in a string to choose the color of the bars.                      |
 
 ```js
-import Rects from "react-d3-ggplot";
+import { Rects } from "react-d3-ggplot";
 
 // 1. data
 // 2. aes - (choose your x-value and y-value by property name)
