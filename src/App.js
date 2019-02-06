@@ -5,6 +5,7 @@ import { XAxis }     from "./XAxis/";
 import { YAxis }     from "./YAxis/";
 //import { Line }      from "./Line/";
 //import { Rects }     from "./Rects/";
+import { Points }    from "./Points/";
 
 class App extends Component{
     state = {
@@ -36,6 +37,11 @@ class App extends Component{
                     data={ data }
                     aes="close"
                     scaleType="linear"
+                />
+                <Points
+                    data={ data }
+                    aes={ ["date", "close"] }
+                    scaleTypes={ ["time", "linear"] }
                 />
             </svg>
         );

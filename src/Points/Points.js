@@ -1,14 +1,12 @@
-import React               from "react";
-import { Component }       from "react";
-import PropTypes           from "prop-types";
-import { line }            from "d3-shape";
-import { curveCatmullRom } from "d3-shape";
-import { select }          from "d3-selection";
-import { scaleFinder }     from "../Utilities/";
+import React           from "react";
+import { Component }   from "react";
+import PropTypes       from "prop-types";
+import { scaleFinder } from "../Utilities/";
+import { select }      from "d3-selection";
 
-class Line extends Component {
+class Points extends Component {
     static defaultProps = {
-        dimensions:
+         dimensions:
         {
             width: window.innerWidth*0.9,
             height: window.innerHeight*0.9,
@@ -16,7 +14,7 @@ class Line extends Component {
         },
         className: null,
         color: "orange",
-        lineWidth: 1
+        radius: 1
     }
 
     static propTypes = {
@@ -30,14 +28,14 @@ class Line extends Component {
         className: PropTypes.string,
         aes: PropTypes.array,
         color: PropTypes.string,
-        lineWidth: PropTypes.number
+        radius: PropTypes.number
     }
 
     getXScale(){
-        // get props and aesthetic to render
+        // get data and x and y value pair
         const { data, aes } = this.props;
 
-        // get x-values
+        // convert data to a scale to be used for our x-values
         const xValues  = data.map(item => item[aes[0]]);
         const scaleObj = new scaleFinder(xValues);
 
@@ -49,14 +47,15 @@ class Line extends Component {
         const scaleObj                   = this.getXScale();
         let xScale;
 
+        // find appropiate scale
         if(scaleTypes[0] === "linear")
             xScale = scaleObj.getLinearScale().nice();
 
         if(scaleTypes[0] === "time")
             xScale = scaleObj.getTimeScale().nice();
 
-        //if(scaleTypes[0] === "ordinal")
-        //    xScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
+        if(scaleTypes[0] === "ordinal")
+            xScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
         // set scale range
         xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
@@ -64,18 +63,18 @@ class Line extends Component {
         return xScale;
     }
 
-    getYScale() {
-        // get y-values
+    getYScale(){
+       // get y-values
         const { data, aes } = this.props;
         const yValues       = data.map(item => item[aes[1]]);
 
         // create xScale
-        let scaleObj  = new scaleFinder(yValues);
+        const scaleObj  = new scaleFinder(yValues);
 
         return scaleObj;
     }
 
-    getYScaleType() {
+    getYScaleType(){
         const { scaleTypes, dimensions } = this.props;
         const scaleObj                   = this.getYScale();
         let yScale;
@@ -86,8 +85,8 @@ class Line extends Component {
         if(scaleTypes[1] === "time")
             yScale = scaleObj.getTimeScale().nice();
 
-        //if(scaleTypes[1] === "ordinal")
-        //    yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
+        if(scaleTypes[1] === "ordinal")
+            yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
         // set scale range
         yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
@@ -95,50 +94,48 @@ class Line extends Component {
         return yScale;
     }
 
-    createLine() {
-        const { aes } = this.props;
-        const xScale  = this.getXScaleType();
-        const yScale  = this.getYScaleType();
+    appendCircles(){
+        // scales
+        const xScale            = this.getXScaleType();
+        const yScale            = this.getYScaleType();
 
-        // create line for chart
-        const chartLine = line()
-            .x(d => xScale(d[aes[0]]))
-            .y(d => yScale(d[aes[1]]))
-            .curve(curveCatmullRom);
+        // all props needed for points
+        const { color, radius } = this.props;
+        const { data, aes }     = this.props;
 
-        return chartLine;
-    }
+        // clear graph for next set of data points
+        if(this.node.children.length > 0)
+            select(this.node).selectAll("circle").remove();
 
-    appendLine() {
-        const { data, color, lineWidth } = this.props;
-        const lineToAppend               = this.createLine();
-
-        // append line to plot
+        // append new points
         select(this.node)
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", color)
-            .attr("stroke-width", lineWidth)
-            .attr("d", lineToAppend);
+            .selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("cx", d => xScale(d[aes[0]]))
+            .attr("cy", d => yScale(d[aes[1]]))
+            .attr("r", radius)
+            .attr("fill", color);
     }
 
-    render() {
+    render(){
         return(
-            <g className={ this.props.className }>
-                <path
-                    ref={ node => this.node = node }
-                />
+            <g
+                ref={ node => this.node = node }
+                className={ this.props.className }
+            >
             </g>
         );
     }
 
-    componentDidMount() {
-        this.appendLine();
+    componentDidMount(){
+        this.appendCircles();
     }
 
-    componentDidUpdate() {
-        this.appendLine();
+    componentDidUpdate(){
+        this.appendCircles();
     }
 }
 
-export default Line;
+export default Points;
