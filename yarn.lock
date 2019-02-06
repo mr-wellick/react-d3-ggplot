@@ -6203,15 +6203,6 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-d3-ggplot@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-d3-ggplot/-/react-d3-ggplot-1.0.5.tgz#71e30c5876a475e7a9fe89209cccd1c3941c40ea"
-  integrity sha512-l7j/PEJqjysk48slHl5+gp9kPa8GIKIPMxLlshhf6McHbdz7EjoAIuGGe0zMNbcwcNEsLcz/16SapzGgY6Tseg==
-  dependencies:
-    d3 "5.7.0"
-    react "^16.6.3"
-    react-dom "^16.6.3"
-
 react-dom@^16.6.3:
   version "16.6.3"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.3.tgz#8fa7ba6883c85211b8da2d0efeffc9d3825cccc0"
