@@ -8,9 +8,15 @@
     },
     "license": "GPL-3.0",
     "name": "react-d3-ggplot",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "React and D3 visualization components",
     "main": "build/index.js",
+    "module": "build/index.js",
+    "files": [ "dist", "README.md" ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Ll2NZ/react-d3-ggplot"
+    },
     "author": "Pablo Lorenzo",
     "devDependencies": {
         "@babel/cli": "^7.2.3",
