@@ -1,15 +1,4 @@
-let uglifyJS = require("uglifyjs-webpack-plugin");
-
 module.exports = () => ({
-    optimization:
-    {
-        minimizer:
-        [
-            new uglifyJS({
-                parallel: true
-            })
-        ]
-    },
     module:
     {
         rules:
