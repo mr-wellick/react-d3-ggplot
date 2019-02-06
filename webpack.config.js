@@ -1,16 +1,14 @@
 // Base webpack config
-let path          = require("path");
-let webpack       = require("webpack");
-let merge         = require("webpack-merge");
-let template      = require("html-webpack-plugin");
-let cleanBuildDir = require("clean-webpack-plugin");
+let path     = require("path");
+let webpack  = require("webpack");
+let merge    = require("webpack-merge");
+let template = require("html-webpack-plugin");
 
 // Development, production, and presets
-let configType   = (env) => require(`./build-utils/webpack.${env}`)(env);
-let configPreset =          require("./build-utils/loadPresets.js");
+let configType = (env) => require(`./build-utils/webpack.${env}`)(env);
 
 // Final webpack configuration
-module.exports = ( { mode, presets } = { mode: "production", presets: undefined } ) => {
+module.exports = ( { mode } = { mode: "production" } ) => {
     return merge(
         {
             mode,
@@ -18,20 +16,14 @@ module.exports = ( { mode, presets } = { mode: "production", presets: undefined 
             output:
             {
                 path: path.join(__dirname, "build"),
-                filename: "index.js",
-                //libraryTarget: "commonjs2"
+                filename: "index.js"
             },
             plugins:
             [
                 new template({ template: "src/index.html" }),
-                new webpack.ProgressPlugin(),
-                new cleanBuildDir(["build"])
-            ],
-            //externals: {
-            //    "react": "commonjs react"
-            //}
+                new webpack.ProgressPlugin()
+            ]
         },
-        configType(mode),
-        presets !== undefined ? configPreset({ mode, presets }) : null
+        configType(mode)
     );
 };
