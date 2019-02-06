@@ -1,5 +1,6 @@
 import React         from "react";
 import { Component } from "react";
+import { render }    from "react-dom";
 import { hot }       from "react-hot-loader";
 import { XAxis }     from "./XAxis/";
 import { YAxis }     from "./YAxis/";
@@ -77,11 +78,6 @@ class App extends Component{
     }
 }
 
-let Application;
+const Application = hot(module)(App);
 
-if(process.env.NODE_ENV === "development")
-    Application = hot(module)(App);
-else
-    Application = App;
-
-export default Application;
+render(<Application/>, window.document.querySelector(".app"));

@@ -1,16 +1,16 @@
 {
     "scripts": {
         "dev": "yarn run webpack-dev-server --env.mode development --open --hot",
-        "prod": "rimraf build && babel src --out-dir build --ignore src/index.js --ignore src/index.html --ignore src/App.js",
+        "prod": "rimraf build && babel src --out-dir build --ignore src/index.html --ignore src/App.js",
         "prod:analyze": "yarn prod --env.presets analyze",
         "test": "jest --coverage",
         "test:watch": "jest --watch"
     },
     "license": "GPL-3.0",
     "name": "react-d3-ggplot",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "React and D3 visualization components",
-    "main": "build",
+    "main": "build/index.js",
     "author": "Pablo Lorenzo",
     "devDependencies": {
         "@babel/cli": "^7.2.3",
@@ -47,6 +47,7 @@
     "dependencies": {
         "d3": "5.7.0",
         "react": "^16.6.3",
+        "react-d3-ggplot": "^1.0.5",
         "react-dom": "^16.6.3"
     }
 }
