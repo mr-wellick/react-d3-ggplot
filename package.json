@@ -1,13 +1,13 @@
 {
     "scripts": {
         "dev": "yarn run webpack-dev-server --env.mode development --open --hot",
-        "prod": "rimraf build && babel src --out-dir build --ignore src/index.html --ignore src/App.js",
+        "prod": "rimraf build && babel src --out-dir build --ignore src/index.html --ignore src/App.js --ignore src/Utilities",
         "test": "jest --coverage",
         "test:watch": "jest --watch"
     },
     "license": "GPL-3.0",
     "name": "react-d3-ggplot",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "React and D3 visualization components",
     "main": "build/index.js",
     "module": "build/index.js",

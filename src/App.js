@@ -2,11 +2,9 @@ import React         from "react";
 import { Component } from "react";
 import { render }    from "react-dom";
 import { hot }       from "react-hot-loader";
-import { XAxis }     from "./XAxis/";
-import { YAxis }     from "./YAxis/";
-//import { Line }      from "./Line/";
-//import { Rects }     from "./Rects/";
-import { Points }    from "./Points/";
+import XAxis         from "./XAxis/XAxis.js";
+import YAxis         from "./YAxis/YAxis.js";
+import Points        from "./Points/Points.js";
 
 class App extends Component{
     state = {
