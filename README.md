@@ -159,7 +159,7 @@ import { YAxis } from "react-d3-ggplot";
 |-----------------|--------|--------------------------------------------------------------------------------------|
 | data            | Array  | Must pass in an array of objects                                                     |
 | aes (aesthetic) | Array  | Must pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value|
-| scaleType       | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
+| scaleTypes      | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
 | dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
 | className       | String | Optional. Can pass in a string with a CSS className.                                 |
 | color           | String | Optional. Can pass in a string to choose the color of the bars.                      |
@@ -188,7 +188,7 @@ import { Rects } from "react-d3-ggplot";
 |-----------------|--------|--------------------------------------------------------------------------------------|
 | data            | Array  | Must pass in an array of objects                                                     |
 | aes (aesthetic) | Array  | Must pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value|
-| scaleType       | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
+| scaleTypes      | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
 | dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
 | className       | String | Optional. Can pass in a string with a CSS className.                                 |
 | color           | String | Optional. Can pass in a string to choose the color of our points.                    |
@@ -220,7 +220,7 @@ import { Points } from "react-d3-ggplot";
 |-----------------|--------|--------------------------------------------------------------------------------------|
 | data            | Array  | Must pass in an array of objects                                                     |
 | aes (aesthetic) | Array  | Must pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value|
-| scaleType       | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
+| scaleTypes      | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
 | dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
 | className       | String | Optional. Can pass in a string with a CSS className.                                 |
 | color           | String | Optional. Can pass in a string to choose the color of our line.                      |
