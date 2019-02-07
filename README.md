@@ -227,7 +227,7 @@ import { Points } from "react-d3-ggplot";
 | lineWidth       | Number | Optional. Can pass in a number to change the width of our line.                      |
 
 ```js
-import { Points } from "react-d3-ggplot";
+import { Line } from "react-d3-ggplot";
 
 // 1. data
 // 2. aes - (choose your x-value and y-value by property name)
