@@ -127,7 +127,6 @@ import { XAxis } from "react-d3-ggplot";
         dimensions={ dimensions }
         className={ className }
     />
-);
 ```
 
 ## YAxis
@@ -181,5 +180,69 @@ import { Rects } from "react-d3-ggplot";
         dimensions={ dimensions }
         className="className"
         color="color"
+    />
+```
+
+## Points
+| Prop            | Type   | Shape                                                                                |
+|-----------------|--------|--------------------------------------------------------------------------------------|
+| data            | Array  | Must pass in an array of objects                                                     |
+| aes (aesthetic) | Array  | Must pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value|
+| scaleType       | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
+| dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
+| className       | String | Optional. Can pass in a string with a CSS className.                                 |
+| color           | String | Optional. Can pass in a string to choose the color of our points.                    |
+| radius          | Number | Optional. Can pass in a number to change the size of our points.                     |
+
+```js
+import { Points } from "react-d3-ggplot";
+
+// 1. data
+// 2. aes - (choose your x-value and y-value by property name)
+// 3. scaleType - (choose the same scaleTypes used by your XAxis and YAxis components)
+// 4. dimensions
+// 5. className
+// 6. color
+// 7. radius
+    <Points
+        data={ data }
+        aes={ ["x-value", "y-value"] }
+        scaleTypes={ ["x-scale-type", "y-scale-type"] }
+        dimensions={ dimensions }
+        className="className"
+        color="color"
+        radius={ number }
+    />
+```
+
+## Line
+| Prop            | Type   | Shape                                                                                |
+|-----------------|--------|--------------------------------------------------------------------------------------|
+| data            | Array  | Must pass in an array of objects                                                     |
+| aes (aesthetic) | Array  | Must pass in an array cotaining two string values. The first entry must be your x-value and the second entry must be your your y-value|
+| scaleType       | Array  | Pass in an array containing two string values. The first entry must be the scaleType of your XAxis and the second value must be the scaleType of your YAxis|
+| dimensions      | Object | Must pass in an object with all following properties defined: width, height, padding |
+| className       | String | Optional. Can pass in a string with a CSS className.                                 |
+| color           | String | Optional. Can pass in a string to choose the color of our line.                      |
+| lineWidth       | Number | Optional. Can pass in a number to change the width of our line.                      |
+
+```js
+import { Points } from "react-d3-ggplot";
+
+// 1. data
+// 2. aes - (choose your x-value and y-value by property name)
+// 3. scaleType - (choose the same scaleTypes used by your XAxis and YAxis components)
+// 4. dimensions
+// 5. className
+// 6. color
+// 7. lineWidth
+    <Line
+        data={ data }
+        aes={ ["x-value", "y-value"] }
+        scaleTypes={ ["x-scale-type", "y-scale-type"] }
+        dimensions={ dimensions }
+        className="className"
+        color="color"
+        lineWidth={ number }
     />
 ```
