@@ -1,26 +1,34 @@
 import React         from "react";
 import { Component } from "react";
 import { Fragment }  from "react";
+import PropTypes     from "prop-types";
 import { select }    from "d3-selection";
 import uniq          from "lodash.uniq";
 
 class Color extends Component{
+    static propTypes = {
+        data: PropTypes.array,
+        subset: PropTypes.string,
+        className: PropTypes.string
+    }
+
+    generateRandomHEXValue(){
+        return "#000000".replace(/0/g, () => (~~(Math.random()*16)).toString(16) );
+    }
+
+    getUniqueItems(){
+        const { data, subset }  = this.props;
+        const objectItems       = data.map(item => item[subset]);
+        const uniqueObjectItems = uniq(objectItems);
+
+        return uniqueObjectItems;
+    }
 
     determineFillColor(){
-        const { data, subset } = this.props;
-        const objectKeys       = uniq(data.map(item => item[subset]));
+        const objectItems = this.getUniqueItems();
+        const colors      = objectItems.map(item => ({ subset: item, fill: this.generateRandomHEXValue() }));
 
-        // randomly generate N colors
-        const colors = objectKeys.map(() =>
-            "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);})
-        );
-
-        const pairs = [];
-
-        for(let i = 0; i < objectKeys.length; i++)
-            pairs.push({ subset: objectKeys[i], fill: colors[i] });
-
-        return pairs;
+        return colors;
     }
 
     colorCodeNodes(){
@@ -32,7 +40,6 @@ class Color extends Component{
             .attr("fill", d => {
 
                 const colorToUse = fills.filter(item => item["subset"] === d[subset]);
-
                 return colorToUse[0]["fill"];
             });
     }
