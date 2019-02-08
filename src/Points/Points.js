@@ -14,7 +14,7 @@ class Points extends Component {
         },
         className: "points",
         color: "orange",
-        radius: 1
+        radius: 3
     }
 
     static propTypes = {

@@ -1,7 +1,7 @@
 {
     "scripts": {
         "dev": "yarn run webpack-dev-server --env.mode development --open --hot",
-        "prod": "rimraf build && babel src --out-dir build --ignore src/index.html --ignore src/App.js",
+        "prod": "rimraf build && babel src --out-dir build --ignore src/index.html --ignore src/App.js --ignore src/Plot.js --ignore src/Data",
         "test": "jest --coverage",
         "test:watch": "jest --watch"
     },
@@ -39,6 +39,7 @@
     },
     "dependencies": {
         "d3": "5.7.0",
+        "d3-svg-legend": "^2.25.6",
         "lodash.uniq": "^4.5.0",
         "react": "^16.6.3",
         "react-dom": "^16.6.3"

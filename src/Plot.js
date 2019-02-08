@@ -1,8 +1,7 @@
 import React         from "react";
 import { Component } from "react";
 import { hot }       from "react-hot-loader";
-import { XAxis }     from "./XAxis/";
-import { YAxis }     from "./YAxis/";
+import { GGPLOT }    from "./GGPLOT/";
 import { Points }    from "./Points/";
 import { Color }     from "./Color/";
 import mpg           from "./Data/mpg.json";
@@ -25,33 +24,24 @@ class Plot extends Component{
             return <h1>No data to render.</h1>;
 
         return(
-            <svg
-                width={ dimensions.width }
-                height={ dimensions.height }
-                ref={ node => this.node = node }
+            <GGPLOT
+                data={ data }
+                aes={ ["displ", "hwy"] }
+                scaleTypes={ ["linear", "linear"] }
+                dimensions={ dimensions }
             >
-                <XAxis
-                    data={ mpg }
-                    aes="displ"
-                    scaleType="linear"
-                />
-                <YAxis
-                    data={ mpg }
-                    aes="hwy"
-                    scaleType="linear"
-                />
                 <Points
-                    data={ mpg }
+                    data={ data }
                     aes={ ["displ", "hwy"] }
                     scaleTypes={ ["linear", "linear"] }
-                    radius={ 3 }
+                    dimensions={ dimensions }
                 />
                 <Color
                     data={ data }
-                    className="points"
                     subset="class"
+                    className="points"
                 />
-            </svg>
+            </GGPLOT>
         );
     }
 
