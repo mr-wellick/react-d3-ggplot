@@ -22,8 +22,8 @@ const data = [
 
 // remarks on using dates
 const someOtherData = [
-    { experience: 3, pay: 1000, hrs: 65, date: Date("01-01-2010") }, // When using dates, they must be formatted as
-    { experience: 7, pay: 3000, hrs: 100, date: Date("01-07-2018") } // valid JavaScript date objects, as in this example.
+    { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") }, // When using dates, they must be formatted as
+    { experience: 7, pay: 3000, hrs: 100, date: new Date("01-07-2018") } // valid JavaScript date objects, as in this example.
 ];
 ```
 
