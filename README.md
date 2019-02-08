@@ -19,6 +19,12 @@ const data = [
     { experience: 3, pay: 1000, hrs: 65 }, // The "length" of each object is 3.
     { experience: 7, pay: 3000, hrs: 100 } // And each object has the same properties: experience, pay, and hrs.
 ];
+
+// remarks on using dates
+const someOtherData = [
+    { experience: 3, pay: 1000, hrs: 65, date: Date("01-01-2010") }, // When using dates, they must be formatted as
+    { experience: 7, pay: 3000, hrs: 100, date: Date("01-07-2018") } // valid JavaScript date objects, as in this example.
+];
 ```
 
 ## 2. The React props that each component in the `react-d3-ggplot` library accepts are the following:
