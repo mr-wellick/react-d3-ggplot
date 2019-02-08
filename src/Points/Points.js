@@ -12,7 +12,7 @@ class Points extends Component {
             height: window.innerHeight*0.9,
             padding: 50
         },
-        className: null,
+        className: "points",
         color: "orange",
         radius: 1
     }

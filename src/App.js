@@ -5,10 +5,12 @@ import { hot }       from "react-hot-loader";
 import { XAxis }     from "./XAxis/";
 import { YAxis }     from "./YAxis/";
 import { Points }    from "./Points/";
+import { Color }     from "./Color/";
+import mpg           from "./Data/mpg.json";
 
 class App extends Component{
     state = {
-        data: [],
+        data: mpg,
         dimensions:
         {
             width: window.innerWidth*0.9,
@@ -27,53 +29,60 @@ class App extends Component{
             <svg
                 width={ dimensions.width }
                 height={ dimensions.height }
+                ref={ node => this.node = node }
             >
                 <XAxis
-                    data={ data }
-                    aes="date"
-                    scaleType="time"
+                    data={ mpg }
+                    aes="displ"
+                    scaleType="linear"
                 />
                 <YAxis
-                    data={ data }
-                    aes="close"
+                    data={ mpg }
+                    aes="hwy"
                     scaleType="linear"
                 />
                 <Points
+                    data={ mpg }
+                    aes={ ["displ", "hwy"] }
+                    scaleTypes={ ["linear", "linear"] }
+                    radius={ 3 }
+                />
+                <Color
                     data={ data }
-                    aes={ ["date", "close"] }
-                    scaleTypes={ ["time", "linear"] }
+                    className="points"
+                    subset="class"
                 />
             </svg>
         );
     }
 
-    componentDidMount(){
-        if(!localStorage.getItem("data"))
-        {
-            fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
-                .then(response => response.json())
-                .then(data => {
-                    const formattedData = data.map(item => ({
-                        ...item,
-                        date: new Date(item.date)
-                    }));
+    //componentDidMount(){
+    //    if(!localStorage.getItem("data"))
+    //    {
+    //        fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
+    //            .then(response => response.json())
+    //            .then(data => {
+    //                const formattedData = data.map(item => ({
+    //                    ...item,
+    //                    date: new Date(item.date)
+    //                }));
 
-                    this.setState({ data: formattedData });
-                    localStorage.setItem("data", JSON.stringify(data));
-                });
-        }
-        else
-        {
-            this.setState({
-                data: JSON
-                        .parse(localStorage.getItem("data"))
-                        .map(item => ({
-                            ...item,
-                            date: new Date(item.date)
-                        }))
-            });
-        }
-    }
+    //                this.setState({ data: formattedData });
+    //                localStorage.setItem("data", JSON.stringify(data));
+    //            });
+    //    }
+    //    else
+    //    {
+    //        this.setState({
+    //            data: JSON
+    //                    .parse(localStorage.getItem("data"))
+    //                    .map(item => ({
+    //                        ...item,
+    //                        date: new Date(item.date)
+    //                    }))
+    //        });
+    //    }
+    //}
 }
 
 const Application = hot(module)(App);
