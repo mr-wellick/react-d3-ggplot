@@ -29,6 +29,7 @@ class Plot extends Component{
                 aes={ ["displ", "hwy"] }
                 scaleTypes={ ["linear", "linear"] }
                 dimensions={ dimensions }
+                className="mpg"
             >
                 <Points
                     data={ data }
@@ -38,8 +39,10 @@ class Plot extends Component{
                 />
                 <Color
                     data={ data }
-                    subset="class"
+                    subset="year"
                     className="points"
+                    chartClassName="mpg"
+                    dimensions={ dimensions }
                 />
             </GGPLOT>
         );

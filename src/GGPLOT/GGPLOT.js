@@ -13,14 +13,15 @@ class GGPLOT extends Component{
             width: PropTypes.number,
             height: PropTypes.number,
             padding: PropTypes.number
-        })
+        }),
+        className: PropTypes.string
     }
 
     render(){
-        const { data, aes, scaleTypes, dimensions } = this.props;
+        const { data, aes, scaleTypes, dimensions, className } = this.props;
 
         return(
-            <svg width={ dimensions.width } height={ dimensions.height }>
+            <svg width={ dimensions.width } height={ dimensions.height } className={ className }>
                 <XAxis
                     data={ data }
                     aes={ aes[0] }

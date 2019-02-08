@@ -1,9 +1,13 @@
-import React         from "react";
-import { Component } from "react";
-import { Fragment }  from "react";
-import PropTypes     from "prop-types";
-import { select }    from "d3-selection";
-import uniq          from "lodash.uniq";
+import React           from "react";
+import { Component }   from "react";
+import { Fragment }    from "react";
+import PropTypes       from "prop-types";
+import uniq            from "lodash.uniq";
+import { select }      from "d3-selection";
+import { scaleBand }   from "d3-scale";
+import { legendColor } from "d3-svg-legend";
+import { format }      from "d3-format";
+import { transition }  from "d3-transition";
 
 class Color extends Component{
     static propTypes = {
@@ -42,6 +46,46 @@ class Color extends Component{
                 const colorToUse = fills.filter(item => item["subset"] === d[subset]);
                 return colorToUse[0]["fill"];
             });
+
+        this.createLegend(fills);
+    }
+
+    createLegend(colors){
+        const { chartClassName }     = this.props;
+        const { dimensions, subset } = this.props;
+
+        // create scale
+        const legendValues  = colors.map(item => item.subset);
+        const scale         = scaleBand().domain(legendValues);
+        const legendColors  = colors.map(item => item.fill);
+
+        // get rid of previous legend
+        if((select(".legendOrdinal")._groups[0][0] !== null))
+        {
+            select(".legendOrdinal").remove();
+            select(".text-info").remove();
+        }
+
+        // append new group for legend
+        select(`.${chartClassName}`)
+            .append("g")
+            .attr("class", "legendOrdinal")
+            .attr("transform", `translate(${dimensions.width*0.9 - dimensions.padding}, ${dimensions.padding + 15})`);
+
+        select(`.${chartClassName}`)
+            .append("text")
+            .attr("class", "text-info")
+            .text(`${subset}`)
+            .attr("transform", `translate(${dimensions.width*0.9 - dimensions.padding}, ${dimensions.padding})`);
+
+        // create scale for legend
+        const colorLegend = legendColor().scale(scale);
+
+        // append new legend
+        select(".legendOrdinal")
+            .call(colorLegend)
+            .selectAll("rect")
+            .attr("fill", (value, index) => legendColors[index]);
     }
 
     render(){
