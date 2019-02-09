@@ -8,7 +8,7 @@ yarn add react-d3-ggplot
 npm install react-d3-ggplot
 ```
 
-# Demo
+# Demo (gif)
 ![graph-demo](demos/ggplot-demo.gif)
 
 # Introduction
