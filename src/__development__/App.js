@@ -1,13 +1,12 @@
 import React         from "react";
 import { Component } from "react";
-import { hot }       from "react-hot-loader";
-import { GGPLOT }    from "./GGPLOT/";
-import { Points }    from "./Points/";
-import { Color }     from "./Color/";
-import { Labels }    from "./Labels/";
+import { GGPLOT }    from "../GGPLOT/";
+import { Points }    from "../Points/";
+import { Color }     from "../Color/";
+import { Labels }    from "../Labels/";
 import mpg           from "./Data/mpg.json";
 
-class Plot extends Component{
+class App extends Component{
     state = {
         data: mpg,
         dimensions:
@@ -69,36 +68,6 @@ class Plot extends Component{
     componentWillUnmount() {
         window.removeEventListener("resize", this.resize);
     }
-
-    //componentDidMount(){
-    //    if(!localStorage.getItem("data"))
-    //    {
-    //        fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
-    //            .then(response => response.json())
-    //            .then(data => {
-    //                const formattedData = data.map(item => ({
-    //                    ...item,
-    //                    date: new Date(item.date)
-    //                }));
-
-    //                this.setState({ data: formattedData });
-    //                localStorage.setItem("data", JSON.stringify(data));
-    //            });
-    //    }
-    //    else
-    //    {
-    //        this.setState({
-    //            data: JSON
-    //                    .parse(localStorage.getItem("data"))
-    //                    .map(item => ({
-    //                        ...item,
-    //                        date: new Date(item.date)
-    //                    }))
-    //        });
-    //    }
-    //}
 }
 
-const __Plot__ = hot(module)(Plot);
-
-export default __Plot__;
+export default App;
