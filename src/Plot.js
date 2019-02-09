@@ -4,6 +4,7 @@ import { hot }       from "react-hot-loader";
 import { GGPLOT }    from "./GGPLOT/";
 import { Points }    from "./Points/";
 import { Color }     from "./Color/";
+import { Labels }    from "./Labels/";
 import mpg           from "./Data/mpg.json";
 
 class Plot extends Component{
@@ -29,8 +30,11 @@ class Plot extends Component{
                 aes={ ["displ", "hwy"] }
                 scaleTypes={ ["linear", "linear"] }
                 dimensions={ dimensions }
-                className="mpg"
             >
+                <Labels
+                    labels={ ["displ", "hwy"] }
+                    dimensions={ dimensions }
+                />
                 <Points
                     data={ data }
                     aes={ ["displ", "hwy"] }
@@ -40,8 +44,7 @@ class Plot extends Component{
                 <Color
                     data={ data }
                     subset="year"
-                    className="points"
-                    chartClassName="mpg"
+                    chartType="points"
                     dimensions={ dimensions }
                 />
             </GGPLOT>

@@ -1,19 +1,22 @@
 import React           from "react";
 import { Component }   from "react";
-import { Fragment }    from "react";
 import PropTypes       from "prop-types";
 import uniq            from "lodash.uniq";
 import { select }      from "d3-selection";
 import { scaleBand }   from "d3-scale";
 import { legendColor } from "d3-svg-legend";
-import { format }      from "d3-format";
-import { transition }  from "d3-transition";
+import { transition }  from "d3-transition"; // needed for legendColor.
 
 class Color extends Component{
     static propTypes = {
         data: PropTypes.array,
         subset: PropTypes.string,
-        className: PropTypes.string
+        chartType: PropTypes.string,
+        dimensions: PropTypes.shape({
+            width: PropTypes.number,
+            height: PropTypes.number,
+            padding: PropTypes.number
+        })
     }
 
     generateRandomHEXValue(){
@@ -36,10 +39,10 @@ class Color extends Component{
     }
 
     colorCodeNodes(){
-        const { className, subset } = this.props;
+        const { chartType, subset } = this.props;
         const fills                 = this.determineFillColor();
 
-        select(`.${className}`)
+        select(`.${chartType}`)
             .selectAll("circle")
             .attr("fill", d => {
 
@@ -51,7 +54,6 @@ class Color extends Component{
     }
 
     createLegend(colors){
-        const { chartClassName }     = this.props;
         const { dimensions, subset } = this.props;
 
         // create scale
@@ -60,37 +62,39 @@ class Color extends Component{
         const legendColors  = colors.map(item => item.fill);
 
         // get rid of previous legend
-        if((select(".legendOrdinal")._groups[0][0] !== null))
+        if(this.node.children.length > 0)
         {
-            select(".legendOrdinal").remove();
-            select(".text-info").remove();
+            select(this.node).select("g").remove();
+            select(this.node).select("text").remove();
         }
 
-        // append new group for legend
-        select(`.${chartClassName}`)
-            .append("g")
-            .attr("class", "legendOrdinal")
+        // move "g" to right side of graph
+        select(this.node)
             .attr("transform", `translate(${dimensions.width*0.9 - dimensions.padding}, ${dimensions.padding + 15})`);
 
-        select(`.${chartClassName}`)
+        // append text
+        select(this.node)
             .append("text")
-            .attr("class", "text-info")
             .text(`${subset}`)
-            .attr("transform", `translate(${dimensions.width*0.9 - dimensions.padding}, ${dimensions.padding})`);
+            .attr("transform", "translate(0,-15)"); // give a little padding to label
 
         // create scale for legend
         const colorLegend = legendColor().scale(scale);
 
         // append new legend
-        select(".legendOrdinal")
+        select(this.node)
             .call(colorLegend)
             .selectAll("rect")
+            .attr("paddingBottom", "10px")
             .attr("fill", (value, index) => legendColors[index]);
     }
 
     render(){
         return(
-            <Fragment></Fragment>
+            <g
+                ref={ node => this.node = node }
+            >
+            </g>
         );
     }
 
