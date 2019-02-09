@@ -18,6 +18,16 @@ class Plot extends Component{
         }
     }
 
+    resize = () => {
+        this.setState({
+            dimensions: {
+                ...this.state.dimensions,
+                width: window.innerWidth*0.9,
+                height: window.innerHeight*0.9
+            }
+        });
+    }
+
     render(){
         const { dimensions, data } = this.state;
 
@@ -49,6 +59,15 @@ class Plot extends Component{
                 />
             </GGPLOT>
         );
+    }
+
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.resize);
     }
 
     //componentDidMount(){

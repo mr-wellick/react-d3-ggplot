@@ -8,6 +8,9 @@ yarn add react-d3-ggplot
 npm install react-d3-ggplot
 ```
 
+# Demo
+![graph-demo](demos/ggplot-demo.gif)
+
 # Introduction
 + Before we look at some examples, we first need to talk about our data. The structure of our data is important to get right the first time because this will make it easier to work with.
 
