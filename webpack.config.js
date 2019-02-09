@@ -1,33 +1,29 @@
 // Base webpack config
-let path          = require("path");
-let webpack       = require("webpack");
-let merge         = require("webpack-merge");
-let template      = require("html-webpack-plugin");
-let cleanBuildDir = require("clean-webpack-plugin");
+let path     = require("path");
+let webpack  = require("webpack");
+let merge    = require("webpack-merge");
+let template = require("html-webpack-plugin");
 
 // Development, production, and presets
-let configType   = (env) => require(`./build-utils/webpack.${env}`)(env);
-let configPreset =          require("./build-utils/loadPresets.js");
+let configType = (env) => require(`./build-utils/webpack.${env}`)(env);
 
 // Final webpack configuration
-module.exports = ( { mode, presets } = { mode: "production", presets: undefined } ) => {
+module.exports = ( { mode } = { mode: "production" } ) => {
     return merge(
         {
             mode,
-            entry: path.join(__dirname, "./src/index.js"),
+            entry: path.join(__dirname, "./src/__development__/index.js"),
             output:
             {
                 path: path.join(__dirname, "build"),
-                filename: "[name].js"
+                filename: "index.js"
             },
             plugins:
             [
-                new template({ template: "src/index.html" }),
-                new webpack.ProgressPlugin(),
-                new cleanBuildDir(["build"])
+                new template({ template: "src/__development__/index.html" }),
+                new webpack.ProgressPlugin()
             ]
         },
-        configType(mode),
-        presets !== undefined ? configPreset({ mode, presets }) : null
+        configType(mode)
     );
 };

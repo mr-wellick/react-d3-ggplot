@@ -51,8 +51,8 @@ class XAxis extends Component{
         if(scaleType === "time")
             xScale = scaleObj.getTimeScale().nice();
 
-        //if(scaleType === "ordinal")
-        //    xScale = scaleObj.getOrdinalScale(); // .nice() method not available
+        if(scaleType === "ordinal")
+            xScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
         // set scale range
         xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);

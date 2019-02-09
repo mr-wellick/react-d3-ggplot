@@ -1,5 +1,13 @@
-import React      from "react";
-import { render } from "react-dom";
-import App        from "./App";
+// base
+export { XAxis }  from "./XAxis/";
+export { YAxis }  from "./YAxis/";
+export { Labels } from "./Labels/";
 
-render(<App/>, window.document.querySelector(".app"));
+// shapes
+export { Points } from "./Points/";
+export { Rects }  from "./Rects/";
+export { Line }   from "./Line/";
+
+// Extensions
+export { Color }  from "./Color/";
+export { GGPLOT } from "./GGPLOT/";

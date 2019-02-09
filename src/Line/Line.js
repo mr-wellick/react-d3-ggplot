@@ -46,7 +46,7 @@ class Line extends Component {
 
     getXScaleType(){
         const { dimensions, scaleTypes } = this.props;
-        const scaleObj                  = this.getXScale();
+        const scaleObj                   = this.getXScale();
         let xScale;
 
         if(scaleTypes[0] === "linear")
@@ -55,8 +55,8 @@ class Line extends Component {
         if(scaleTypes[0] === "time")
             xScale = scaleObj.getTimeScale().nice();
 
-        //if(scaleType === "ordinal")
-        //    xScale = scaleObj.getOrdinalScale(); // .nice() method not available
+        //if(scaleTypes[0] === "ordinal")
+        //    xScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
         // set scale range
         xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
@@ -77,7 +77,7 @@ class Line extends Component {
 
     getYScaleType() {
         const { scaleTypes, dimensions } = this.props;
-        const scaleObj                  = this.getYScale();
+        const scaleObj                   = this.getYScale();
         let yScale;
 
         if(scaleTypes[1] === "linear")
@@ -86,8 +86,8 @@ class Line extends Component {
         if(scaleTypes[1] === "time")
             yScale = scaleObj.getTimeScale().nice();
 
-        //if(scaleType === "ordinal")
-        //    yScale = scaleObj.getOrdinalScale(); // .nice() method not available
+        //if(scaleTypes[1] === "ordinal")
+        //    yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
         // set scale range
         yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
@@ -95,11 +95,10 @@ class Line extends Component {
         return yScale;
     }
 
-    appendLineToChart() {
-        const { color, data }    = this.props;
-        const { aes, lineWidth } = this.props;
-        const xScale             = this.getXScaleType();
-        const yScale             = this.getYScaleType();
+    createLine() {
+        const { aes } = this.props;
+        const xScale  = this.getXScaleType();
+        const yScale  = this.getYScaleType();
 
         // create line for chart
         const chartLine = line()
@@ -107,13 +106,20 @@ class Line extends Component {
             .y(d => yScale(d[aes[1]]))
             .curve(curveCatmullRom);
 
+        return chartLine;
+    }
+
+    appendLine() {
+        const { data, color, lineWidth } = this.props;
+        const lineToAppend               = this.createLine();
+
         // append line to plot
         select(this.node)
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", color)
             .attr("stroke-width", lineWidth)
-            .attr("d", chartLine);
+            .attr("d", lineToAppend);
     }
 
     render() {
@@ -127,11 +133,11 @@ class Line extends Component {
     }
 
     componentDidMount() {
-        this.appendLineToChart();
+        this.appendLine();
     }
 
     componentDidUpdate() {
-        this.appendLineToChart();
+        this.appendLine();
     }
 }
 

@@ -1,1 +1,1 @@
-export { default as GGPLOT } from "./GGPlot.js";
+export { default as GGPLOT } from "./GGPLOT.js";
