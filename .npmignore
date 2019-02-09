@@ -1,2 +1,9 @@
 src
 build-utils
+coverage
+demos
+.babelrc
+jest.config.json
+webpack.config.js
+yarn-error.log
+.babelrc
