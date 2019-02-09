@@ -96,8 +96,8 @@ class Points extends Component {
 
     appendCircles(){
         // scales
-        const xScale            = this.getXScaleType();
-        const yScale            = this.getYScaleType();
+        const xScale = this.getXScaleType();
+        const yScale = this.getYScaleType();
 
         // all props needed for points
         const { color, radius } = this.props;
