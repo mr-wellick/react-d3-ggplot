@@ -7,7 +7,7 @@
     },
     "license": "GPL-3.0",
     "name": "react-d3-ggplot",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "description": "React and D3 visualization components",
     "main": "build/index.js",
     "author": "Pablo Lorenzo",

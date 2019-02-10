@@ -43,7 +43,7 @@ const someOtherData = [
 |-----------------|----------|-------------------------------------------------------------------------------------------|
 | data            | true     | `data` must be an array of objects                                                        |
 | aes (aesthetic) | true     | `aes` must be an array containing two strings: "x-value" and "y-value"                    |
-| scaleTypes      | true     | `scaleTypes` must be an array containing two strings: "x-scale-type" and "y-scale-type"   | 
+| scaleTypes      | true     | `scaleTypes` must be an array containing two strings: "x-scale-type" and "y-scale-type"   |
 | dimensions      | true     | `dimensions` must be an object with three properties: width, height, and padding. |
 
 ## 3. Using react-d3-ggplot library
@@ -60,14 +60,14 @@ import { Points } from "react-d3-ggplot";
 // We can also add labels
 import { Labels } from "react-d3-ggplot";
 
-class BarPlot extends Component{
+class ScatterPlot extends Component{
     state = {
         data: [
             { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") },
             { experience: 7, pay: 3000, hrs: 100, date: new Date("01-01-2020") }
         ],
         aes: ["experience", "pay"],       // Choose x-values and y-values directly from data. (Must pass in x first and y second)
-        scaleTypes: ["linear", "linear"], // Choose the scale-type for x and y. Since both our x-values and y-values are numbers, we choose linear for both. (Must pass in scale-type for x first and scale-type for y second.) 
+        scaleTypes: ["linear", "linear"], // Choose the scale-type for x and y. Since both our x-values and y-values are numbers, we choose linear for both. (Must pass in scale-type for x first and scale-type for y second.)
 
         dimensions: { width: 600, height: 400, padding: 50 } // Finally, choose the dimensions of your graph.
     }
