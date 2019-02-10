@@ -7,4 +7,4 @@ export { Rects }  from "./Rects/";
 export { Line }   from "./Line/";
 
 // extensions
-export { Color }  from "./Color/";
+//export { Color }  from "./Color/";
