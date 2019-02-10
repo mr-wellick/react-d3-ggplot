@@ -1,11 +1,12 @@
-import React         from "react";
-import { Component } from "react";
-import { GGPLOT }    from "../GGPLOT/";
-import { Points }    from "../Points/";
+import React           from "react";
+import { Component }   from "react";
+import { GGPLOT }      from "../GGPLOT/";
+import { Points }      from "../Points/";
 //import { Line }      from "../Line/";
 //import { Rects }     from "../Rects/";
-import { Labels }    from "../Labels/";
-import mpg           from "./Data/mpg.json";
+import { Labels }      from "../Labels/";
+import { GEOM_POINTS } from "../GEOM_POINTS/";
+import mpg             from "./Data/mpg.json";
 
 class App extends Component{
     state = {
@@ -18,7 +19,7 @@ class App extends Component{
             height: window.innerHeight*0.9,
             padding: 50
         },
-
+        className: "points"
     }
 
     resize = () => {
@@ -42,6 +43,7 @@ class App extends Component{
                     y_lab="hwy"
                 />
                 <Points/>
+                <GEOM_POINTS color="year"/>
             </GGPLOT>
         );
     }

@@ -4,7 +4,8 @@ const ScalesContext = React.createContext({
     data: [],
     aes: [],
     scalesTypes: [],
-    dimensions: {}
+    dimensions: {},
+    className: ""
 });
 
 export const ScalesProvider = ScalesContext.Provider;

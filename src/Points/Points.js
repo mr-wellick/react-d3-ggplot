@@ -10,7 +10,7 @@ class Points extends Component {
     static defaultProps = {
         color: "orange",
         radius: 3,
-        opacity: 0.5
+        //opacity: 0.5
     }
 
     static propTypes = {
@@ -27,8 +27,8 @@ class Points extends Component {
         const yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
 
         // all props needed for points
-        const { color, radius, opacity } = this.props;
-        const { data, dimensions }       = this.context;
+        const { color, radius, }   = this.props;
+        const { data, dimensions } = this.context;
 
         // spreads our points across our x and y axes visually
         xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
@@ -47,8 +47,7 @@ class Points extends Component {
             .attr("cx", d => xScale(d[aes[0]]))
             .attr("cy", d => yScale(d[aes[1]]))
             .attr("r", radius)
-            .attr("fill", color)
-            .attr("opacity", opacity);
+            .attr("fill", color);
     }
 
     render(){
@@ -56,7 +55,7 @@ class Points extends Component {
         return(
             <g
                 ref={ node => this.node = node }
-                className={ this.props.className }
+                className={ this.context.className }
             >
             </g>
         );
