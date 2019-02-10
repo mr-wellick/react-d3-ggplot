@@ -1,102 +1,37 @@
-import React           from "react";
-import PropTypes       from "prop-types";
-import { Component }   from "react";
-import { select }      from "d3-selection";
-import { scaleFinder } from "../Utilities/";
+import React              from "react";
+import PropTypes          from "prop-types";
+import { Component }      from "react";
+import { select }         from "d3-selection";
+import { ScalesConsumer } from "../Context/";
 
 class Rects extends Component{
-  static defaultProps = {
-        dimensions:
-        {
-            width: window.innerWidth*0.9,
-            height: window.innerHeight*0.9,
-            padding: 50
-        },
+    static contextType = ScalesConsumer;
+
+    static defaultProps = {
         className: null,
         color: "orange"
     }
 
     static propTypes = {
-        data: PropTypes.array.isRequired,
-        dimensions: PropTypes.shape({
-            width: PropTypes.number,
-            height: PropTypes.number,
-            padding: PropTypes.number
-        }),
-        scaleTypes: PropTypes.array,
         className: PropTypes.string,
-        aes: PropTypes.array.isRequired,
-        color: PropTypes.string
-    }
-
-    getXScale(){
-        // get props and aesthetic to render
-        const { data, aes } = this.props;
-
-        // get x-values
-        const xValues  = data.map(item => item[aes[0]]);
-        const scaleObj = new scaleFinder(xValues);
-
-        return scaleObj;
-    }
-
-    getXScaleType(){
-        const { dimensions, scaleTypes } = this.props;
-        const scaleObj                   = this.getXScale();
-        let xScale;
-
-        if(scaleTypes[0] === "time")
-            xScale = scaleObj.getTimeScale();
-
-        if(scaleTypes[0] === "linear")
-            xScale = scaleObj.getLinearScale();
-
-        if(scaleTypes[0] === "ordinal")
-            xScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
-
-        // set scale range
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
-
-        return xScale;
-    }
-
-    getYScale(){
-       // get y-values
-        const { data, aes } = this.props;
-        const yValues       = data.map(item => item[aes[1]]);
-
-        // create xScale
-        const scaleObj  = new scaleFinder(yValues);
-
-        return scaleObj;
-    }
-
-    getYScaleType(){
-        const { scaleTypes, dimensions } = this.props;
-        const scaleObj                   = this.getYScale();
-        let yScale;
-
-        if(scaleTypes[1] === "linear")
-            yScale = scaleObj.getLinearScale().nice();
-
-        if(scaleTypes[1] === "time")
-            yScale = scaleObj.getTimeScale().nice();
-
-        if(scaleTypes[1] === "ordinal")
-            yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
-
-        // set scale range
-        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
-
-        return yScale;
+        color: PropTypes.string,
+        createScaleType: PropTypes.func
     }
 
     appendRects(){
-        let { data, aes } = this.props;
-        let { color }     = this.props;
-        let xScale        = this.getXScaleType();
-        let yScale        = this.getYScaleType();
+        // create x and y scales
+        let { aes, scaleTypes } = this.context;
+        let xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
+        let yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
+        
+        // get other props needed for rects
+        let { data, dimensions }  = this.context;
+        let { color }             = this.props;
 
+        // spreads our points across our x and y axes visually
+        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
+        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
+        
         // clear graph for next set of data points if we have data
         if(this.node.children.length > 0)
             select(this.node).selectAll("rect").remove();
@@ -123,6 +58,7 @@ class Rects extends Component{
             </g>
         );
     }
+
     componentDidMount(){
         this.appendRects();
     }

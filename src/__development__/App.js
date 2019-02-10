@@ -3,6 +3,7 @@ import { Component } from "react";
 import { GGPLOT }    from "../GGPLOT/";
 //import { Points }    from "../Points/";
 //import { Line }      from "../Line/";
+import { Rects }     from "../Rects/";
 import { Labels }    from "../Labels/";
 import mpg           from "./Data/mpg.json";
 
@@ -35,15 +36,16 @@ class App extends Component{
 
         return(
             <GGPLOT
-                data={ data }
+                data={ data.slice(0, 10) }
                 aes={ ["displ", "hwy"] }
-                scaleTypes={ ["linear", "linear"] }
+                scaleTypes={ ["ordinal", "linear"] }
                 dimensions={ dimensions }
             >
                 <Labels
                     x_lab="displ"
                     y_lab="hwy"
                 />
+                <Rects/>
             </GGPLOT>
         );
     }
