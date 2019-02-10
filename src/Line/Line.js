@@ -4,101 +4,31 @@ import PropTypes           from "prop-types";
 import { line }            from "d3-shape";
 import { curveCatmullRom } from "d3-shape";
 import { select }          from "d3-selection";
-import { scaleFinder }     from "../Utilities/";
+import { ScalesConsumer }  from "../Context/";
 
 class Line extends Component {
+    static contextType = ScalesConsumer;
+
     static defaultProps = {
-        dimensions:
-        {
-            width: window.innerWidth*0.9,
-            height: window.innerHeight*0.9,
-            padding: 50
-        },
-        className: null,
         color: "orange",
         lineWidth: 1
     }
 
     static propTypes = {
-        data: PropTypes.array.isRequired,
-        dimensions: PropTypes.shape({
-            width: PropTypes.number,
-            height: PropTypes.number,
-            padding: PropTypes.number
-        }),
-        scaleTypes: PropTypes.array,
-        className: PropTypes.string,
-        aes: PropTypes.array,
         color: PropTypes.string,
-        lineWidth: PropTypes.number
-    }
-
-    getXScale(){
-        // get props and aesthetic to render
-        const { data, aes } = this.props;
-
-        // get x-values
-        const xValues  = data.map(item => item[aes[0]]);
-        const scaleObj = new scaleFinder(xValues);
-
-        return scaleObj;
-    }
-
-    getXScaleType(){
-        const { dimensions, scaleTypes } = this.props;
-        const scaleObj                   = this.getXScale();
-        let xScale;
-
-        if(scaleTypes[0] === "linear")
-            xScale = scaleObj.getLinearScale().nice();
-
-        if(scaleTypes[0] === "time")
-            xScale = scaleObj.getTimeScale().nice();
-
-        //if(scaleTypes[0] === "ordinal")
-        //    xScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
-
-        // set scale range
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
-
-        return xScale;
-    }
-
-    getYScale() {
-        // get y-values
-        const { data, aes } = this.props;
-        const yValues       = data.map(item => item[aes[1]]);
-
-        // create xScale
-        let scaleObj  = new scaleFinder(yValues);
-
-        return scaleObj;
-    }
-
-    getYScaleType() {
-        const { scaleTypes, dimensions } = this.props;
-        const scaleObj                   = this.getYScale();
-        let yScale;
-
-        if(scaleTypes[1] === "linear")
-            yScale = scaleObj.getLinearScale().nice();
-
-        if(scaleTypes[1] === "time")
-            yScale = scaleObj.getTimeScale().nice();
-
-        //if(scaleTypes[1] === "ordinal")
-        //    yScale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
-
-        // set scale range
-        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
-
-        return yScale;
+        lineWidth: PropTypes.number,
+        createScaleType: PropTypes.func
     }
 
     createLine() {
-        const { aes } = this.props;
-        const xScale  = this.getXScaleType();
-        const yScale  = this.getYScaleType();
+        const { aes, scaleTypes } = this.context;
+        const xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
+        const yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
+
+        // spreads our points across our x and y axes visually
+        const { dimensions } = this.context;
+        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
+        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
 
         // create line for chart
         const chartLine = line()
@@ -110,8 +40,9 @@ class Line extends Component {
     }
 
     appendLine() {
-        const { data, color, lineWidth } = this.props;
-        const lineToAppend               = this.createLine();
+        const { color, lineWidth } = this.props;
+        const { data }             = this.context;
+        const lineToAppend         = this.createLine();
 
         // append line to plot
         select(this.node)
