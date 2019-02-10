@@ -16,7 +16,8 @@ class GGPLOT extends Component{
             height: PropTypes.number,
             padding: PropTypes.number
         }),
-        className: PropTypes.string
+        className: PropTypes.string,
+        children: PropTypes.any
     }
 
     render(){
@@ -30,25 +31,15 @@ class GGPLOT extends Component{
                         <>
                             <XAxis createScaleType={ createScaleType }/>
                             <YAxis createScaleType={ createScaleType }/>
+                            {React.Children.map(this.props.children, child => {
+                                return React.cloneElement(child, {
+                                    createScaleType: createScaleType
+                                });
+                            })}
                         </>
                         )}
                     </WithScales>
-                    { this.props.children }
                 </ScalesProvider>
-                    {/*
-                    <XAxis
-                        data={ data }
-                        aes={ aes[0] }
-                        scaleType={ scaleTypes[0] }
-                        dimensions={ dimensions }
-                    />
-                    <YAxis
-                        data={ data }
-                        aes={ aes[1] }
-                        scaleType={ scaleTypes[1] }
-                        dimensions={ dimensions }
-                    />
-                    */}
             </svg>
         );
     }

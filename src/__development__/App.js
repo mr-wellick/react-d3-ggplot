@@ -1,7 +1,7 @@
 import React         from "react";
 import { Component } from "react";
 import { GGPLOT }    from "../GGPLOT/";
-//import { Points }    from "../Points/";
+import { Points }    from "../Points/";
 //import { Color }     from "../Color/";
 import { Labels }    from "../Labels/";
 import mpg           from "./Data/mpg.json";
@@ -40,10 +40,13 @@ class App extends Component{
                 scaleTypes={ ["linear", "linear"] }
                 dimensions={ dimensions }
             >
+            {/*
                 <Labels
                     x_lab="displ"
                     y_lab="hwy"
                 />
+            */}
+                <Points/>
             </GGPLOT>
         );
     }
