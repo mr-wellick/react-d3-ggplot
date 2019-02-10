@@ -1,8 +1,10 @@
-import React         from "react";
-import { Component } from "react";
-import PropTypes     from "prop-types";
-import { XAxis }     from "../XAxis/";
-import { YAxis }     from "../YAxis/";
+import React              from "react";
+import { Component }      from "react";
+import PropTypes          from "prop-types";
+import { ScalesProvider } from "../Context/";
+import { WithScales }     from "../WithScales/";
+import { XAxis }          from "../XAxis/";
+import { YAxis }          from "../YAxis/";
 
 class GGPLOT extends Component{
     static propTypes = {
@@ -18,23 +20,35 @@ class GGPLOT extends Component{
     }
 
     render(){
-        const { data, aes, scaleTypes, dimensions, className } = this.props;
+        const { dimensions, className } = this.props;
 
         return(
             <svg width={ dimensions.width } height={ dimensions.height } className={ className }>
-                <XAxis
-                    data={ data }
-                    aes={ aes[0] }
-                    scaleType={ scaleTypes[0] }
-                    dimensions={ dimensions }
-                />
-                <YAxis
-                    data={ data }
-                    aes={ aes[1] }
-                    scaleType={ scaleTypes[1] }
-                    dimensions={ dimensions }
-                />
-                { this.props.children }
+                <ScalesProvider value={ this.props }>
+                    <WithScales>
+                        {({ createScaleType })=> (
+                        <>
+                            <XAxis createScaleType={ createScaleType }/>
+                            <YAxis createScaleType={ createScaleType }/>
+                        </>
+                        )}
+                    </WithScales>
+                </ScalesProvider>
+                    {/*
+                    <XAxis
+                        data={ data }
+                        aes={ aes[0] }
+                        scaleType={ scaleTypes[0] }
+                        dimensions={ dimensions }
+                    />
+                    <YAxis
+                        data={ data }
+                        aes={ aes[1] }
+                        scaleType={ scaleTypes[1] }
+                        dimensions={ dimensions }
+                    />
+                    { this.props.children }
+                    */}
             </svg>
         );
     }

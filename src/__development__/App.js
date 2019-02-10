@@ -40,22 +40,6 @@ class App extends Component{
                 scaleTypes={ ["linear", "linear"] }
                 dimensions={ dimensions }
             >
-                <Labels
-                    labels={ ["displ", "hwy"] }
-                    dimensions={ dimensions }
-                />
-                <Points
-                    data={ data }
-                    aes={ ["displ", "hwy"] }
-                    scaleTypes={ ["linear", "linear"] }
-                    dimensions={ dimensions }
-                />
-                <Color
-                    data={ data }
-                    subset="year"
-                    chartType="points"
-                    dimensions={ dimensions }
-                />
             </GGPLOT>
         );
     }

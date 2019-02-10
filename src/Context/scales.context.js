@@ -1,8 +1,9 @@
 import React from "react";
 
 const ScalesContext = React.createContext({
-    xScale: "",
-    yScale: "",
+    data: [],
+    aes: [],
+    scalesTypes: [],
     dimensions: {}
 });
 
