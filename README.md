@@ -84,7 +84,7 @@ class ScatterPlot extends Component{
 ```
 
 ## 4. As we can see, the workflow is always the same when using `<GGPLOT/>` to create graphs
-+ Define the our data
++ Define our data
 + Select the aes (the x-value and y-value)
 + Select the scaleTypes
 + Set the dimensions of the graph
