@@ -9,12 +9,14 @@ class Points extends Component {
 
     static defaultProps = {
         color: "orange",
-        radius: 3
+        radius: 3,
+        opacity: 0.5
     }
 
     static propTypes = {
         color: PropTypes.string,
         radius: PropTypes.number,
+        opacity: PropTypes.number,
         createScaleType: PropTypes.func
     }
 
@@ -25,13 +27,13 @@ class Points extends Component {
         const yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
 
         // all props needed for points
-        const { color, radius }    = this.props;
-        const { data, dimensions } = this.context;
+        const { color, radius, opacity } = this.props;
+        const { data, dimensions }       = this.context;
 
         // spreads our points across our x and y axes visually
         xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
         yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
-        
+
         // clear graph for next set of data points
         if(this.node.children.length > 0)
             select(this.node).selectAll("circle").remove();
@@ -45,7 +47,8 @@ class Points extends Component {
             .attr("cx", d => xScale(d[aes[0]]))
             .attr("cy", d => yScale(d[aes[1]]))
             .attr("r", radius)
-            .attr("fill", color);
+            .attr("fill", color)
+            .attr("opacity", opacity);
     }
 
     render(){
