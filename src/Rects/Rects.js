@@ -23,7 +23,7 @@ class Rects extends Component{
         let { aes, scaleTypes } = this.context;
         let xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
         let yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
-        
+
         // get other props needed for rects
         let { data, dimensions }  = this.context;
         let { color }             = this.props;
@@ -31,7 +31,7 @@ class Rects extends Component{
         // spreads our points across our x and y axes visually
         xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
         yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
-        
+
         // clear graph for next set of data points if we have data
         if(this.node.children.length > 0)
             select(this.node).selectAll("rect").remove();

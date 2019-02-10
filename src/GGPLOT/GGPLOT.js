@@ -5,6 +5,8 @@ import { ScalesProvider } from "../Context/";
 import { WithScales }     from "../WithScales/";
 import { XAxis }          from "../XAxis/";
 import { YAxis }          from "../YAxis/";
+import { XGrid }          from "../XGrid/";
+import { YGrid }          from "../YGrid/";
 
 class GGPLOT extends Component{
     static propTypes = {
@@ -30,10 +32,13 @@ class GGPLOT extends Component{
                         {({ createScaleType })=> (
                         <>
                             <XAxis createScaleType={ createScaleType }/>
+                            <XGrid createScaleType= { createScaleType }/>
                             <YAxis createScaleType={ createScaleType }/>
+                            <YGrid createScaleType={ createScaleType }/>
+
                             {/*
                               * Here, we clone each child passed into <GGPLOT/> to
-                              * get acces to createScaleType so that <GGPLOT/> is modular 
+                              * get acces to createScaleType so that <GGPLOT/> is modular
                             */}
                             {React.Children.map(this.props.children, child => {
                                 return React.cloneElement(child, {
