@@ -1,13 +1,10 @@
-// base
-export { XAxis }  from "./XAxis/";
-export { YAxis }  from "./YAxis/";
-export { Labels } from "./Labels/";
+// base plot
+export { GGPLOT } from "./GGPLOT/";
 
-// shapes
+// geoms
 export { Points } from "./Points/";
 export { Rects }  from "./Rects/";
 export { Line }   from "./Line/";
 
-// Extensions
+// extensions
 export { Color }  from "./Color/";
-export { GGPLOT } from "./GGPLOT/";
