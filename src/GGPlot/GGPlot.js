@@ -31,6 +31,10 @@ class GGPLOT extends Component{
                         <>
                             <XAxis createScaleType={ createScaleType }/>
                             <YAxis createScaleType={ createScaleType }/>
+                            {/*
+                              * Here, we clone each child passed into <GGPLOT/> to
+                              * get acces to createScaleType so that <GGPLOT/> is modular 
+                            */}
                             {React.Children.map(this.props.children, child => {
                                 return React.cloneElement(child, {
                                     createScaleType: createScaleType
