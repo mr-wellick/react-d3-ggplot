@@ -33,6 +33,7 @@ class GGPLOT extends Component{
                         </>
                         )}
                     </WithScales>
+                    { this.props.children }
                 </ScalesProvider>
                     {/*
                     <XAxis
@@ -47,7 +48,6 @@ class GGPLOT extends Component{
                         scaleType={ scaleTypes[1] }
                         dimensions={ dimensions }
                     />
-                    { this.props.children }
                     */}
             </svg>
         );

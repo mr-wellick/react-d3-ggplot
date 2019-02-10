@@ -1,12 +1,16 @@
 import React              from "react";
 import { Component }      from "react";
-//import PropTypes          from "prop-types";
+import PropTypes          from "prop-types";
 import { ScalesConsumer } from "../Context/";
 import { select }         from "d3-selection";
 import { axisLeft }       from "d3-axis";
 
 class YAxis extends Component {
     static contextType = ScalesConsumer;
+
+    static propTypes = {
+        createScaleType: PropTypes.func.isRequired
+    }
 
     findYAxis(){
         // first create scale object

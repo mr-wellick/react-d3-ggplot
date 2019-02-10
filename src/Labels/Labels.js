@@ -1,38 +1,37 @@
-import React         from "react";
-import { Component } from "react";
-import PropTypes     from "prop-types";
-import { select }    from "d3-selection";
+import React              from "react";
+import { Component }      from "react";
+import PropTypes          from "prop-types";
+import { select }         from "d3-selection";
+import { ScalesConsumer } from "../Context/";
 
 class Labels extends Component{
+    static contextType = ScalesConsumer;
+
     static propTypes = {
-        labels: PropTypes.array,
-        dimensions: PropTypes.shape({
-            width: PropTypes.number,
-            height: PropTypes.number,
-            padding: PropTypes.number
-        })
+        x_lab: PropTypes.string.isRequired,
+        y_lab: PropTypes.string.isRequired
     }
 
     addXLabel(){
-        const { dimensions } = this.props;
-        let { labels }       = this.props;
+        const { dimensions } = this.context;
+        let { x_lab }        = this.props;
 
         select(this.node)
             .append("text")
             .attr("x", (dimensions.width - dimensions.padding*2))
             .attr("y", (dimensions.height - dimensions.padding*1.2))
-            .text(labels[0]);
+            .text(x_lab);
     }
 
     addYLabel(){
-        let { dimensions } = this.props;
-        let { labels }     = this.props;
+        let { dimensions } = this.context;
+        let { y_lab }      = this.props;
 
         select(this.node)
             .append("text")
             .attr("x", dimensions.padding*1.2)
             .attr("y", dimensions.padding*1.2)
-            .text(labels[1]);
+            .text(y_lab);
     }
 
     render(){
