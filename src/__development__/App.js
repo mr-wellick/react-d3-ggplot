@@ -1,21 +1,24 @@
 import React         from "react";
 import { Component } from "react";
 import { GGPLOT }    from "../GGPLOT/";
-//import { Points }    from "../Points/";
+import { Points }    from "../Points/";
 //import { Line }      from "../Line/";
-import { Rects }     from "../Rects/";
+//import { Rects }     from "../Rects/";
 import { Labels }    from "../Labels/";
 import mpg           from "./Data/mpg.json";
 
 class App extends Component{
     state = {
         data: mpg,
+        aes: ["displ", "hwy"],
+        scaleTypes: ["linear", "linear"],
         dimensions:
         {
             width: window.innerWidth*0.9,
             height: window.innerHeight*0.9,
             padding: 50
-        }
+        },
+
     }
 
     resize = () => {
@@ -29,23 +32,16 @@ class App extends Component{
     }
 
     render(){
-        const { dimensions, data } = this.state;
-
-        if(data.length === 0)
+        if(this.state.data.length === 0)
             return <h1>No data to render.</h1>;
 
         return(
-            <GGPLOT
-                data={ data.slice(0, 10) }
-                aes={ ["displ", "hwy"] }
-                scaleTypes={ ["ordinal", "linear"] }
-                dimensions={ dimensions }
-            >
+            <GGPLOT { ...this.state }>
                 <Labels
                     x_lab="displ"
                     y_lab="hwy"
                 />
-                <Rects/>
+                <Points/>
             </GGPLOT>
         );
     }
