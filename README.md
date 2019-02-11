@@ -65,7 +65,7 @@ class ScatterPlot extends Component{
             { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") },
             { experience: 7, pay: 3000, hrs: 100, date: new Date("01-01-2020") }
         ],
-        aes: ["experience", "pay"],                          // Choose x-values and y-values directly from data. (Must pass in x first and y second)
+        aes: ["experience", "pay"], // Choose x-values and y-values directly from data. (Must pass in x first and y second)
         dimensions: { width: 600, height: 400, padding: 50 } // Finally, choose the dimensions of your graph.
     }
 
