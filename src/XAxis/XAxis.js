@@ -14,8 +14,8 @@ class XAxis extends Component{
 
     findXAxis(){
         // first create scale object
-        const { aes, scaleTypes } = this.context;
-        const xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
+        const { aes } = this.context;
+        const xScale  = this.props.createScaleType(aes[0]);
 
         // ajust x-axis to bottom 
         const { dimensions } = this.context;

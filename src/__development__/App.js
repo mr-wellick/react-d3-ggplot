@@ -12,14 +12,13 @@ class App extends Component{
     state = {
         data: mpg,
         aes: ["displ", "hwy"],
-        scaleTypes: ["linear", "linear"],
         dimensions:
         {
             width: window.innerWidth*0.9,
             height: window.innerHeight*0.9,
             padding: 50
         },
-        className: "points"
+        className: "points" // GEOM_POINTS uses to selects Points node to color code points. (change this)
     }
 
     resize = () => {
@@ -38,19 +37,25 @@ class App extends Component{
 
         return(
             <GGPLOT { ...this.state }>
-                <Labels
-                    x_lab="displ"
-                    y_lab="hwy"
-                />
+                <Labels/>
                 <Points/>
                 <GEOM_POINTS color="year"/>
             </GGPLOT>
         );
     }
 
-
     componentDidMount() {
         window.addEventListener("resize", this.resize);
+
+        //fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
+        //    .then(res => res.json())
+        //    .then(data => {
+        //        const formatData = data.map(item => ({
+        //            ...item,
+        //            date: new Date(item.date)
+        //        }));
+        //        this.setState({ data: formatData });
+        //    });
     }
 
     componentWillUnmount() {

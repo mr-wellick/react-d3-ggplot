@@ -14,8 +14,8 @@ class XGrid extends Component {
 
     createXGridLines(){
         // create new xScale
-        const { aes, scaleTypes } = this.context;
-        const xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
+        const { aes } = this.context;
+        const xScale  = this.props.createScaleType(aes[0]);
 
         const { dimensions } = this.context;
         const axisPosition   = `translate(0, ${(dimensions.height - dimensions.padding)})`;

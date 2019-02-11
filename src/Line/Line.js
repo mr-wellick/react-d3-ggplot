@@ -21,9 +21,9 @@ class Line extends Component {
     }
 
     createLine() {
-        const { aes, scaleTypes } = this.context;
-        const xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
-        const yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
+        const { aes } = this.context;
+        const xScale  = this.props.createScaleType(aes[0]);
+        const yScale  = this.props.createScaleType(aes[1]);
 
         // spreads our points across our x and y axes visually
         const { dimensions } = this.context;

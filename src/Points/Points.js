@@ -22,9 +22,9 @@ class Points extends Component {
 
     appendCircles(){
         // get x and y scales
-        const { aes, scaleTypes } = this.context;
-        const xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
-        const yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
+        const { aes } = this.context;
+        const xScale  = this.props.createScaleType(aes[0]);
+        const yScale  = this.props.createScaleType(aes[1]);
 
         // all props needed for points
         const { color, radius, }   = this.props;

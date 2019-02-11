@@ -17,19 +17,23 @@ class WithScales extends Component {
         return scaleObj;
     }
 
-    createScaleType = (aes, scaleType) => {
-        const { dimensions } = this.context;
-        const scaleObj       = this.createScale(aes);
+    createScaleType = (aes) => {
+        // create scale
+        const scaleObj = this.createScale(aes);
+
+        // determine scaleType
         let scale;
 
-        if(scaleType === "linear")
+        if((typeof scaleObj.data[0]) === "number")
             scale = scaleObj.getLinearScale().nice();
 
-        if(scaleType === "time")
+        if((typeof scaleObj.data[0]) === "object")
             scale = scaleObj.getTimeScale().nice();
 
-        if(scaleType === "ordinal")
+        if((typeof scaleObj.data[0]) === "string")
             scale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
+
+
 
         return scale;
     }

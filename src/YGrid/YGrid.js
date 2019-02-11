@@ -14,8 +14,8 @@ class YGrid extends Component {
 
     createYGridLines(){
         // create new yScale
-        const { aes, scaleTypes } = this.context;
-        const yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
+        const { aes } = this.context;
+        const yScale  = this.props.createScaleType(aes[1]);
 
         const { dimensions } = this.context;
         const axisPosition   = `translate(${dimensions.padding}, 0)`;

@@ -20,9 +20,9 @@ class Rects extends Component{
 
     appendRects(){
         // create x and y scales
-        let { aes, scaleTypes } = this.context;
-        let xScale              = this.props.createScaleType(aes[0], scaleTypes[0]);
-        let yScale              = this.props.createScaleType(aes[1], scaleTypes[1]);
+        let { aes } = this.context;
+        let xScale  = this.props.createScaleType(aes[0]);
+        let yScale  = this.props.createScaleType(aes[1]);
 
         // get other props needed for rects
         let { data, dimensions }  = this.context;
