@@ -37,13 +37,12 @@ const someOtherData = [
     + Line
     + Rects
 
-+ `<GGPLOT/>` has four main props that are required
++ `<GGPLOT/>` has 3 main props that are required
 
 | Prop            | Required | Description                                                                               |
 |-----------------|----------|-------------------------------------------------------------------------------------------|
 | data            | true     | `data` must be an array of objects                                                        |
 | aes (aesthetic) | true     | `aes` must be an array containing two strings: "x-value" and "y-value"                    |
-| scaleTypes      | true     | `scaleTypes` must be an array containing two strings: "x-scale-type" and "y-scale-type"   |
 | dimensions      | true     | `dimensions` must be an object with three properties: width, height, and padding. |
 
 ## 3. Using react-d3-ggplot library
@@ -66,16 +65,14 @@ class ScatterPlot extends Component{
             { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") },
             { experience: 7, pay: 3000, hrs: 100, date: new Date("01-01-2020") }
         ],
-        aes: ["experience", "pay"],       // Choose x-values and y-values directly from data. (Must pass in x first and y second)
-        scaleTypes: ["linear", "linear"], // Choose the scale-type for x and y. Since both our x-values and y-values are numbers, we choose linear for both. (Must pass in scale-type for x first and scale-type for y second.)
-
+        aes: ["experience", "pay"],                          // Choose x-values and y-values directly from data. (Must pass in x first and y second)
         dimensions: { width: 600, height: 400, padding: 50 } // Finally, choose the dimensions of your graph.
     }
 
     render(){
         return(
             <GGPLOT { ...this.state } >
-                <Labels x_lab="experience" y_lab="pay"/>
+                <Labels/>
                 <Points/>
             </GGPLOT>
         );
@@ -86,5 +83,4 @@ class ScatterPlot extends Component{
 ## 4. As we can see, the workflow is always the same when using `<GGPLOT/>` to create graphs
 + Define our data
 + Select the aes (the x-value and y-value)
-+ Select the scaleTypes
 + Set the dimensions of the graph
