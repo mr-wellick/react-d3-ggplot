@@ -3,7 +3,7 @@ import { Component }   from "react";
 import { GGPLOT }      from "../GGPLOT/";
 import { Points }      from "../Points/";
 import { Line }      from "../Line/";
-//import { Rects }     from "../Rects/";
+import { Rects }     from "../Rects/";
 import { GEOM_POINTS } from "../GEOM_POINTS/";
 import mpg             from "./Data/mpg.json";
 import { hot }         from "react-hot-loader";
@@ -14,12 +14,20 @@ class App extends Component{
         aes: ["displ", "hwy"],
         dimensions:
         {
-            width: 500,
-            height: 300,
+            width: window.innerWidth*0.8,
+            height: window.innerHeight*0.8,
             padding: 50
         },
         className: "points" // GEOM_POINTS uses to selects Points node to color code points. (change this)
     }
+
+    resize = () => this.setState({
+        dimensions: {
+            ...this.state.dimensions,
+            width: window.innerWidth*0.8,
+            height: window.innerHeight*0.8
+        }
+    });
 
     render(){
         if(this.state.data.length === 0)
@@ -27,9 +35,8 @@ class App extends Component{
 
         return(
             <GGPLOT { ...this.state }>
-
-                {/*
                 <Points/>
+                {/*
                     <GEOM_POINTS var_name="class"/>
                     <Line/>
                     <Rects/>
@@ -39,6 +46,8 @@ class App extends Component{
     }
 
     componentDidMount() {
+        window.addEventListener("resize", this.resize);
+
         //fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
         //    .then(res => res.json())
         //    .then(data => {
@@ -50,6 +59,10 @@ class App extends Component{
         //    });
     }
 
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.resize);
+    }
 }
 
 let Application;
