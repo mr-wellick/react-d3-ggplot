@@ -37,13 +37,13 @@ class App extends Component{
 
         return(
             <GGPLOT { ...this.state }>
-                <Labels/>
                 <Points/>
                 {/*
+                <GEOM_POINTS var_name="class"/>
+                <Labels/>
                     <Line/>
                     <Rects/>
                 */}
-                <GEOM_POINTS var_name="class"/>
             </GGPLOT>
         );
     }

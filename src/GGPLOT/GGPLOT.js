@@ -27,9 +27,18 @@ class GGPLOT extends Component{
 
         return(
             <svg width={ dimensions.width } height={ dimensions.height } className={ className }>
+                {/* used as background color */}
+                <rect
+                    width={ dimensions.width - dimensions.padding*2 }
+                    height={ dimensions.height - dimensions.padding*2 }
+                    fill="rgb(232, 232, 232)"
+                    transform={ `translate(${dimensions.padding}, ${dimensions.padding})` }
+                />
+
+                {/* main graph */}
                 <ScalesProvider value={ this.props }>
                     <WithScales>
-                        {({ createScaleType })=> (
+                        {({ createScaleType }) => (
                         <>
                             <XAxis createScaleType={ createScaleType }/>
                             <XGrid createScaleType= { createScaleType }/>

@@ -36,7 +36,7 @@ class YGrid extends Component {
         // color lines
         select(".y-grid")
             .selectAll("line")
-            .attr("stroke", "lightgrey");
+            .attr("stroke", "rgb(255, 255, 255)");
     }
 
     render(){
