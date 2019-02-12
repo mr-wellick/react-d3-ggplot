@@ -61,9 +61,6 @@ import { GGPLOT } from "react-d3-ggplot";
 // Then we import the type of plot we want: Rects (for barplots), Points (for scatterplots), and Line (for line charts)
 import { Points } from "react-d3-ggplot";
 
-// We can also add labels
-import { Labels } from "react-d3-ggplot";
-
 class ScatterPlot extends Component{
     state = {
         data: [
@@ -77,7 +74,6 @@ class ScatterPlot extends Component{
     render(){
         return(
             <GGPLOT { ...this.state } >
-                <Labels/>
                 <Points/>
             </GGPLOT>
         );
