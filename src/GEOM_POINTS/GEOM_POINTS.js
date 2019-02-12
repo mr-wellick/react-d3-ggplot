@@ -1,89 +1,81 @@
 import React              from "react";
 import { Component }      from "react";
 import PropTypes          from "prop-types";
-import uniq               from "lodash.uniq";
 import { select }         from "d3-selection";
-//import { scaleBand }      from "d3-scale";
-//import { legendColor }    from "d3-svg-legend";
-//import { transition }     from "d3-transition"; // needed for legendColor.
+import { scaleBand }      from "d3-scale";
+import { legendColor }    from "d3-svg-legend";
+import { transition }     from "d3-transition"; // needed for legendColor.
 import { ScalesConsumer } from "../Context/";
-import { randomHEXColor } from "../Utilities/";
+import { ColorCode }      from "../Utilities/";
 
 class GEOM_POINTS extends Component{
     static contextType = ScalesConsumer;
 
     static propTypes = {
-        color: PropTypes.string
+        var_name: PropTypes.string
     }
 
-    getUniqueCategories(){
-        const { data }  = this.context;
-        const { color } = this.props;
+    createColorCodes(){
+        const { data }     = this.context;
+        const { var_name } = this.props;
+        const colorCombos  = new ColorCode(data, var_name).getColorCombo();
 
-        // get all unique entries of variable that we'll use to subset
-        const categoriesToSubsetBy = data.map(item => item[color]);
-        const uniqueCategories     = uniq(categoriesToSubsetBy);
-
-        return uniqueCategories;
-    }
-
-    getColorCombo(){
-        const objectItems = this.getUniqueCategories();
-        const colorCombo  = objectItems.map(item => ({ color: item, fill: randomHEXColor() }));
-
-        return colorCombo;
+        return colorCombos;
     }
 
     colorCodePoints(){
+        const colorCombos   = this.createColorCodes();
         const { className } = this.context;
-        const { color }     = this.props;
-        const colorCombo    = this.getColorCombo();
+        const { var_name }  = this.props;
 
         select(`.${className}`)
             .selectAll("circle")
-            .attr("fill", d => {
-                const colorToUse = colorCombo.filter(item => item["color"] === d[color]);
-                return colorToUse[0]["fill"];
-            });
+            .attr("fill", data => {
 
-        //this.createLegend(fills);
+                const colorToUse = colorCombos.filter(pair => pair["category"] === data[var_name])[0];
+                return colorToUse["fill"];
+            });
     }
 
-    //createLegend(colors){
-    //    const { dimensions, subset } = this.props;
+    createLegend(){
+        // get unique categories to color code points
+        const { data }     = this.context;
+        const { var_name } = this.props;
+        const colorCombos  = new ColorCode(data, var_name).getColorCombo();
 
-    //    // create scale
-    //    const legendValues  = colors.map(item => item.subset);
-    //    const scale         = scaleBand().domain(legendValues);
-    //    const legendColors  = colors.map(item => item.fill);
+        // create scale
+        const scale = scaleBand().domain(colorCombos.map(item => item["category"]));
 
-    //    // get rid of previous legend
-    //    if(this.node.children.length > 0)
-    //    {
-    //        select(this.node).select("g").remove();
-    //        select(this.node).select("text").remove();
-    //    }
+        // get rid of previous legend
+        if(this.node.children.length > 0)
+        {
+            select(this.node).select("g").remove();
+            select(this.node).select("text").remove();
+        }
 
-    //    // move "g" to right side of graph
-    //    select(this.node)
-    //        .attr("transform", `translate(${dimensions.width*0.9 - dimensions.padding}, ${dimensions.padding + 15})`);
+        // move "g" tag to right side of graph
+        const { dimensions } = this.context;
 
-    //    // append text
-    //    select(this.node)
-    //        .append("text")
-    //        .text(`${subset}`)
-    //        .attr("transform", "translate(0,-15)"); // give a little padding to label
+        select(this.node)
+            .attr("transform", `translate(${dimensions.width*0.9 - dimensions.padding}, ${dimensions.padding + 15})`);
 
-    //    // create scale for legend
-    //    const colorLegend = legendColor().scale(scale);
+        // append text
+        select(this.node)
+            .append("text")
+            .text(`${var_name}`)
+            .attr("transform", "translate(0,-15)"); // give a little padding to label
 
-    //    // append new legend
-    //    select(this.node)
-    //        .call(colorLegend)
-    //        .selectAll("rect")
-    //        .attr("paddingBottom", "10px")
-    //        .attr("fill", (value, index) => legendColors[index]);
-    //}
+        // create scale for legend
+        const legendColors = colorCombos.map(item => item["fill"]);
+        const colorLegend  = legendColor().scale(scale);
+
+        // append new legend
+        select(this.node)
+            .call(colorLegend)
+            .selectAll("rect")
+            .attr("paddingBottom", "10px")
+            .attr("fill", (value, index) => legendColors[index]);
+    }
 
     render(){
         return(
@@ -96,10 +88,12 @@ class GEOM_POINTS extends Component{
 
     componentDidMount(){
         this.colorCodePoints();
+        this.createLegend();
     }
 
     componentDidUpdate(){
         this.colorCodePoints();
+        this.createLegend();
     }
 }
 
