@@ -37,9 +37,9 @@ class App extends Component{
             <GGPLOT { ...this.state }>
                 <Points/>
                 {/*
-                    <GEOM_POINTS var_name="class"/>
-                    <Line/>
                     <Rects/>
+                    <GEOM_POINTS var_name="year"/>
+                    <Line/>
                 */}
             </GGPLOT>
         );

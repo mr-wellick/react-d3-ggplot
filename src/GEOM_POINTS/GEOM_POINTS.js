@@ -88,12 +88,12 @@ class GEOM_POINTS extends Component{
 
     componentDidMount(){
         this.colorCodePoints();
-        this.createLegend();
+        //this.createLegend();
     }
 
     componentDidUpdate(){
         this.colorCodePoints();
-        this.createLegend();
+        //this.createLegend();
     }
 }
 
