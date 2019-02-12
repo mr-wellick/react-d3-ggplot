@@ -4,17 +4,16 @@ import PropTypes          from "prop-types";
 import { select }         from "d3-selection";
 import { ScalesConsumer } from "../Context/";
 
-class XLabel extends Component{
+class YLabel extends Component{
     static contextType = ScalesConsumer;
 
     static propTypes = {
-        x_lab: PropTypes.string,
         y_lab: PropTypes.string
     }
 
-    addXLabel(){
+    addYLabel(){
         const { dimensions, aes } = this.context;
-        const x_lab               = this.props.x_lab || aes[0];
+        const y_lab               = this.props.y_lab || aes[1];
 
         // remove old text nodes before updating
         if(this.node.children.length > 0)
@@ -22,9 +21,9 @@ class XLabel extends Component{
 
         select(this.node)
             .append("text")
-            .attr("x", (dimensions.width/2))
-            .attr("y", (dimensions.padding/2))
-            .text(x_lab);
+            .attr("x", dimensions.padding*0.5)
+            .attr("y", (dimensions.height/2))
+            .text(y_lab);
     }
 
     render(){
@@ -32,10 +31,9 @@ class XLabel extends Component{
 
         return(
             <svg
-                width={ dimensions.width }
-                height={ dimensions.height*0.1 }
+                width={ dimensions.width*0.1 }
+                height={ dimensions.height }
                 ref={ node => this.node = node }
-                style={{ gridColumn: "2" }}
             >
                 <text></text>
             </svg>
@@ -43,13 +41,13 @@ class XLabel extends Component{
     }
 
     componentDidMount(){
-        this.addXLabel();
+        this.addYLabel();
     }
 
     componentDidUpdate(){
-        this.addXLabel();
+        this.addYLabel();
     }
 }
 
 
-export default XLabel;
+export default YLabel;

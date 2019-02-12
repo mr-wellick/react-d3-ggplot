@@ -8,7 +8,7 @@ import { YAxis }          from "../YAxis/";
 import { XGrid }          from "../XGrid/";
 import { YGrid }          from "../YGrid/";
 
-class GGPLOT extends Component{
+class GGPLOT extends Component {
     static propTypes = {
         data: PropTypes.array,
         aes: PropTypes.array,
@@ -26,17 +26,16 @@ class GGPLOT extends Component{
         const { dimensions, className } = this.props;
 
         return(
-            <svg width={ dimensions.width } height={ dimensions.height } className={ className }>
-                {/* used as background color */}
-                <rect
-                    width={ dimensions.width - dimensions.padding*2 }
-                    height={ dimensions.height - dimensions.padding*2 }
-                    fill="rgb(232, 232, 232)"
-                    transform={ `translate(${dimensions.padding}, ${dimensions.padding})` }
-                />
+            <ScalesProvider value={ this.props }>
+                <svg width={ dimensions.width } height={ dimensions.height } className={ className }>
+                    {/* used as background color */}
+                    <rect
+                        width={ dimensions.width - dimensions.padding*2 }
+                        height={ dimensions.height - dimensions.padding*2 }
+                        fill="rgb(232, 232, 232)"
+                        transform={ `translate(${dimensions.padding}, ${dimensions.padding})` }
+                    />
 
-                {/* main graph */}
-                <ScalesProvider value={ this.props }>
                     <WithScales>
                         {({ createScaleType }) => (
                         <>
@@ -48,7 +47,7 @@ class GGPLOT extends Component{
                             {/*
                               * Here, we clone each child passed into <GGPLOT/> to
                               * get acces to createScaleType so that <GGPLOT/> is modular
-                            */}
+                              */}
                             {React.Children.map(this.props.children, child => {
                                 return React.cloneElement(child, {
                                     createScaleType: createScaleType
@@ -57,8 +56,8 @@ class GGPLOT extends Component{
                         </>
                         )}
                     </WithScales>
-                </ScalesProvider>
-            </svg>
+                </svg>
+            </ScalesProvider>
         );
     }
 }
