@@ -2,9 +2,9 @@ import React           from "react";
 import { Component }   from "react";
 import { GGPLOT }      from "../GGPLOT/";
 import { Points }      from "../Points/";
-//import { Line }      from "../Line/";
+import { Line }      from "../Line/";
 //import { Rects }     from "../Rects/";
-import { Labels }      from "../Labels/";
+//import { Labels }      from "../Labels/";
 import { GEOM_POINTS } from "../GEOM_POINTS/";
 import mpg             from "./Data/mpg.json";
 import { hot }         from "react-hot-loader";
@@ -39,10 +39,11 @@ class App extends Component{
         return(
             <GGPLOT { ...this.state }>
                 <Points/>
+
                 {/*
-                <GEOM_POINTS var_name="class"/>
-                <Labels/>
+                    <GEOM_POINTS var_name="class"/>
                     <Line/>
+                    <Labels/>
                     <Rects/>
                 */}
             </GGPLOT>

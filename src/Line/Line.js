@@ -10,13 +10,15 @@ class Line extends Component {
     static contextType = ScalesConsumer;
 
     static defaultProps = {
-        color: "orange",
+        color: "black",
+        opacity: 1,
         lineWidth: 1
     }
 
     static propTypes = {
         color: PropTypes.string,
         lineWidth: PropTypes.number,
+        opacity: PropTypes.any,
         createScaleType: PropTypes.func
     }
 
@@ -35,9 +37,9 @@ class Line extends Component {
     }
 
     appendLine() {
-        const { color, lineWidth } = this.props;
-        const { data }             = this.context;
-        const lineToAppend         = this.createLine();
+        const { color, lineWidth, opacity } = this.props;
+        const { data }                      = this.context;
+        const lineToAppend                  = this.createLine();
 
         // append line to plot
         select(this.node)
@@ -45,7 +47,8 @@ class Line extends Component {
             .attr("fill", "none")
             .attr("stroke", color)
             .attr("stroke-width", lineWidth)
-            .attr("d", lineToAppend);
+            .attr("d", lineToAppend)
+            .attr("opacity", opacity);
     }
 
     render() {

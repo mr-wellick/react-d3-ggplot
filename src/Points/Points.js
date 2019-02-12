@@ -8,15 +8,15 @@ class Points extends Component {
     static contextType = ScalesConsumer;
 
     static defaultProps = {
-        color: "orange",
+        color: "black",
         radius: 3,
-        //opacity: 0.5
+        opacity: 1
     }
 
     static propTypes = {
         color: PropTypes.string,
         radius: PropTypes.number,
-        opacity: PropTypes.number,
+        opacity: PropTypes.any,
         createScaleType: PropTypes.func
     }
 
@@ -27,8 +27,8 @@ class Points extends Component {
         const yScale  = this.props.createScaleType(aes[1], "YAxis"); // to spread our points visually, so they are properly displayed
 
         // all props needed for points
-        const { color, radius } = this.props;
-        const { data }          = this.context;
+        const { color, radius, opacity } = this.props;
+        const { data }                   = this.context;
 
         // clear graph for next set of data points
         if(this.node.children.length > 0)
@@ -43,7 +43,8 @@ class Points extends Component {
             .attr("cx", d => xScale(d[aes[0]]))
             .attr("cy", d => yScale(d[aes[1]]))
             .attr("r", radius)
-            .attr("fill", color);
+            .attr("fill", color)
+            .attr("opacity", opacity);
     }
 
     render(){

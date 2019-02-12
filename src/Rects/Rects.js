@@ -9,12 +9,14 @@ class Rects extends Component{
 
     static defaultProps = {
         className: null,
-        color: "orange"
+        color: "black",
+        opacity: 1
     }
 
     static propTypes = {
         className: PropTypes.string,
         color: PropTypes.string,
+        opacity: PropTypes.any,
         createScaleType: PropTypes.func
     }
 
@@ -25,8 +27,8 @@ class Rects extends Component{
         let yScale  = this.props.createScaleType(aes[1], "YAxis"); // properly display the rects visually
 
         // get other props needed for rects
-        let { data }  = this.context;
-        let { color } = this.props;
+        let { data }           = this.context;
+        let { color, opacity } = this.props;
 
         // clear graph for next set of data points if we have data
         if(this.node.children.length > 0)
@@ -42,7 +44,8 @@ class Rects extends Component{
             .attr("height", d => yScale.range()[0] - yScale(d[aes[1]]))
             .attr("x", d => xScale(d[aes[0]]))
             .attr("y", d => yScale(d[aes[1]]))
-            .attr("fill", color);
+            .attr("fill", color)
+            .attr("opacity", opacity);
     }
 
     render(){
