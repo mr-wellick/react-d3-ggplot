@@ -37,6 +37,11 @@ class YGrid extends Component {
         select(".y-grid")
             .selectAll("line")
             .attr("stroke", "rgb(255, 255, 255)");
+
+        // get rid of black color overlaying y-axis
+        select(".y-grid")
+            .select("path")
+            .attr("stroke", "rgb(255, 255, 255)");
     }
 
     render(){

@@ -26,6 +26,11 @@ class YAxis extends Component {
         select(this.node)
             .attr("transform", axisLocation)
             .call(axisLeft(yScale));
+
+        // color y-axis
+        select(this.node)
+            .select("path")
+            .attr("stroke", "rgb(255, 255, 255)");
     }
 
     render(){

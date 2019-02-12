@@ -7,6 +7,7 @@ import { Points }      from "../Points/";
 import { Labels }      from "../Labels/";
 import { GEOM_POINTS } from "../GEOM_POINTS/";
 import mpg             from "./Data/mpg.json";
+import { hot }         from "react-hot-loader";
 
 class App extends Component{
     state = {
@@ -67,4 +68,11 @@ class App extends Component{
     }
 }
 
-export default App;
+let Application;
+
+if(process.env.NODE_ENV === "development")
+    Application = hot(module)(App);
+else
+    Application = App;
+
+export default Application;

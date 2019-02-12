@@ -26,6 +26,11 @@ class XAxis extends Component{
         select(this.node)
             .attr("transform", axisLocation)
             .call(axisBottom(xScale));
+
+        // color x-axis path
+        select(this.node)
+            .select("path")
+            .attr("stroke", "rgb(255, 255, 255)");
     }
 
     render(){
