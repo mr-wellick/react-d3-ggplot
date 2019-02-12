@@ -40,6 +40,10 @@ class App extends Component{
                 <Labels/>
                 <Points/>
                 <GEOM_POINTS color="year"/>
+                {/*
+                    <Line/>
+                    <Rects/>
+                */}
             </GGPLOT>
         );
     }

@@ -17,7 +17,7 @@ class WithScales extends Component {
         return scaleObj;
     }
 
-    createScaleType = (aes) => {
+    createScaleType = (aes, componentName) => {
         // create scale
         const scaleObj = this.createScale(aes);
 
@@ -33,7 +33,19 @@ class WithScales extends Component {
         if((typeof scaleObj.data[0]) === "string")
             scale = scaleObj.getOrdinalScale(0.5); // .nice() method not available
 
+        // set the range of both scales
+        const { dimensions } = this.context;
 
+        if(componentName === "XAxis" || componentName === "XGrid")
+        {
+            // spreads our x-axis & x-grid lines visually
+            scale.range([dimensions.padding, dimensions.width - dimensions.padding]);
+        }
+        else if(componentName === "YAxis" || componentName === "YGrid")
+        {
+            // spreads our y-axis & x-grid lines visually
+            scale.range([dimensions.height - dimensions.padding, dimensions.padding]);
+        }
 
         return scale;
     }

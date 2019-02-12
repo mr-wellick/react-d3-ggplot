@@ -14,12 +14,13 @@ class YGrid extends Component {
 
     createYGridLines(){
         // create new yScale
-        const { aes } = this.context;
-        const yScale  = this.props.createScaleType(aes[1]);
+        const { aes }       = this.context;
+        const componentName = this.constructor.name;
+        const yScale        = this.props.createScaleType(aes[1], componentName);
 
+        // find location of grid lines
         const { dimensions } = this.context;
         const axisPosition   = `translate(${dimensions.padding}, 0)`;
-        yScale.range([(dimensions.height - dimensions.padding), dimensions.padding]);
 
         // append YGrid lines
         select(this.node)

@@ -14,12 +14,13 @@ class XGrid extends Component {
 
     createXGridLines(){
         // create new xScale
-        const { aes } = this.context;
-        const xScale  = this.props.createScaleType(aes[0]);
+        const { aes }       = this.context;
+        const componentName = this.constructor.name;
+        const xScale        = this.props.createScaleType(aes[0], componentName);
 
+        // find grid line locations
         const { dimensions } = this.context;
         const axisPosition   = `translate(0, ${(dimensions.height - dimensions.padding)})`;
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
 
         // append XGrid lines
         select(this.node)

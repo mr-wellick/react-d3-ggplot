@@ -21,16 +21,12 @@ class Rects extends Component{
     appendRects(){
         // create x and y scales
         let { aes } = this.context;
-        let xScale  = this.props.createScaleType(aes[0]);
-        let yScale  = this.props.createScaleType(aes[1]);
+        let xScale  = this.props.createScaleType(aes[0], "XAxis"); // We need to pass in XAxis & YAxis to
+        let yScale  = this.props.createScaleType(aes[1], "YAxis"); // properly display the rects visually
 
         // get other props needed for rects
-        let { data, dimensions }  = this.context;
-        let { color }             = this.props;
-
-        // spreads our points across our x and y axes visually
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
-        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
+        let { data }  = this.context;
+        let { color } = this.props;
 
         // clear graph for next set of data points if we have data
         if(this.node.children.length > 0)

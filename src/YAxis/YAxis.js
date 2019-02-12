@@ -14,15 +14,13 @@ class YAxis extends Component {
 
     findYAxis(){
         // first create scale object
-        const { aes } = this.context;
-        const yScale  = this.props.createScaleType(aes[1]);
+        const { aes }       = this.context;
+        const componentName = this.constructor.name;
+        const yScale        = this.props.createScaleType(aes[1], componentName);
 
         // append y-axis to left
         const { dimensions } = this.context;
         const axisLocation   = `translate(${dimensions.padding}, 0)`;
-
-        // spreads our y-axis visually
-        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
 
         // Append y-axis
         select(this.node)

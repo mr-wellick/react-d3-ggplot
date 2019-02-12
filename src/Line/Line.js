@@ -22,13 +22,8 @@ class Line extends Component {
 
     createLine() {
         const { aes } = this.context;
-        const xScale  = this.props.createScaleType(aes[0]);
-        const yScale  = this.props.createScaleType(aes[1]);
-
-        // spreads our points across our x and y axes visually
-        const { dimensions } = this.context;
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
-        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
+        const xScale  = this.props.createScaleType(aes[0], "XAxis"); // We need to pass in XAxis & YAxis
+        const yScale  = this.props.createScaleType(aes[1], "YAxis"); // to properly display the line visually.
 
         // create line for chart
         const chartLine = line()

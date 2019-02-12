@@ -14,17 +14,15 @@ class XAxis extends Component{
 
     findXAxis(){
         // first create scale object
-        const { aes } = this.context;
-        const xScale  = this.props.createScaleType(aes[0]);
+        const { aes }       = this.context;
+        const componentName = this.constructor.name;
+        const xScale        = this.props.createScaleType(aes[0], componentName);
 
-        // ajust x-axis to bottom 
+        // ajust x-axis to bottom
         const { dimensions } = this.context;
         const axisLocation   = `translate(0, ${dimensions.height - dimensions.padding})`;
 
-        // spreads our x-axis visually
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
-
-        //// select node returned by component and appends x-axis
+        // select node returned by component and appends x-axis
         select(this.node)
             .attr("transform", axisLocation)
             .call(axisBottom(xScale));

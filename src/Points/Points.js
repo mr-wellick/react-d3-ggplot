@@ -23,16 +23,12 @@ class Points extends Component {
     appendCircles(){
         // get x and y scales
         const { aes } = this.context;
-        const xScale  = this.props.createScaleType(aes[0]);
-        const yScale  = this.props.createScaleType(aes[1]);
+        const xScale  = this.props.createScaleType(aes[0], "XAxis"); // Here we need to pass in XAxis and YAxis
+        const yScale  = this.props.createScaleType(aes[1], "YAxis"); // to spread our points visually, so they are properly displayed
 
         // all props needed for points
-        const { color, radius, }   = this.props;
-        const { data, dimensions } = this.context;
-
-        // spreads our points across our x and y axes visually
-        xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
-        yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
+        const { color, radius } = this.props;
+        const { data }          = this.context;
 
         // clear graph for next set of data points
         if(this.node.children.length > 0)
