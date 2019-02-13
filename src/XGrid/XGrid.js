@@ -37,6 +37,11 @@ class XGrid extends Component {
         select(".x-grid")
             .selectAll("line")
             .attr("stroke", "rgb(255, 255, 255)");
+
+        // color path
+        select(".x-grid")
+            .select("path")
+            .attr("stroke", "rgb(255, 255, 255)");
     }
 
     render(){

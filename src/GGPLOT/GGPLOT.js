@@ -39,9 +39,12 @@ class GGPLOT extends Component {
                     <WithScales>
                         {({ createScaleType }) => (
                         <>
+                            {/* axis */}
                             <XAxis createScaleType={ createScaleType }/>
-                            <XGrid createScaleType= { createScaleType }/>
                             <YAxis createScaleType={ createScaleType }/>
+
+                            {/* grids */}
+                            <XGrid createScaleType= { createScaleType }/>
                             <YGrid createScaleType={ createScaleType }/>
 
                             {/*

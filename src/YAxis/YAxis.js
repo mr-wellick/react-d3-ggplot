@@ -4,12 +4,25 @@ import PropTypes          from "prop-types";
 import { ScalesConsumer } from "../Context/";
 import { select }         from "d3-selection";
 import { axisLeft }       from "d3-axis";
+import { format }         from "d3-format";
 
 class YAxis extends Component {
     static contextType = ScalesConsumer;
 
     static propTypes = {
         createScaleType: PropTypes.func.isRequired
+    }
+
+    formatAxisLabels(){
+        const { data, aes } = this.context;
+        const yValue        = data[0][aes[1]];
+
+        if((typeof yValue) === "number")
+        {
+            select(this.node)
+                .selectAll("text")
+                .html(d => format(".0s")(d));
+        }
     }
 
     findYAxis(){
@@ -31,6 +44,9 @@ class YAxis extends Component {
         select(this.node)
             .select("path")
             .attr("stroke", "rgb(255, 255, 255)");
+
+        // format ticks
+        this.formatAxisLabels();
     }
 
     render(){

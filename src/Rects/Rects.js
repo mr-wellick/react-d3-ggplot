@@ -10,7 +10,7 @@ class Rects extends Component{
     static defaultProps = {
         className: null,
         color: "black",
-        opacity: 1 
+        opacity: 1
     }
 
     static propTypes = {

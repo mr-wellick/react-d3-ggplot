@@ -3,6 +3,7 @@ import { Component }      from "react";
 import PropTypes          from "prop-types";
 import { select }         from "d3-selection";
 import { axisBottom }     from "d3-axis";
+import { format }         from "d3-format";
 import { ScalesConsumer } from "../Context/";
 
 class XAxis extends Component{
@@ -10,6 +11,18 @@ class XAxis extends Component{
 
     static propTypes = {
         createScaleType: PropTypes.func.isRequired
+    }
+
+    formatAxisLabels(){
+        const { data, aes } = this.context;
+        const xValue        = data[0][aes[0]];
+
+        if((typeof xValue) === "number")
+        {
+            select(this.node)
+                .selectAll("text")
+                .html(d => format(".0s")(d));
+        }
     }
 
     findXAxis(){
@@ -31,6 +44,9 @@ class XAxis extends Component{
         select(this.node)
             .select("path")
             .attr("stroke", "rgb(255, 255, 255)");
+
+        // format x-labels
+        this.formatAxisLabels();
     }
 
     render(){
