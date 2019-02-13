@@ -1,19 +1,29 @@
 import React           from "react";
 import { Component }   from "react";
 import { hot }         from "react-hot-loader";
-import { GGPLOT }      from "../GGPLOT/";
+//import { GGPLOT }      from "../GGPLOT/";
+import { GEOM_POINTS } from "../GEOM_POINTS/";
 import { Points }      from "../Points/";
-import { Stacks }      from "../Stacks/";
 import mpg             from "./Data/mpg.json";
 
-class App extends Component{
+// create multiple charts by category
+import { FACETS }      from "../FACETS/";
+import { nest }        from "d3-collection";
+
+class App extends Component {
+
+    formatData(){
+        const subset = nest().key(d => d["year"]).entries(mpg).map(item => item["values"]);
+        return subset;
+    }
+
     state = {
-        data: mpg,
+        data: this.formatData(),
         aes: ["displ", "hwy"],
         dimensions:
         {
-            width: window.innerWidth*0.8,
-            height: window.innerHeight*0.8,
+            width: window.innerWidth*0.4,
+            height: window.innerHeight*0.6,
             padding: 50
         },
         className: "points" // GEOM_POINTS uses to selects Points node to color code points. (change this)
@@ -22,8 +32,8 @@ class App extends Component{
     resize = () => this.setState({
         dimensions: {
             ...this.state.dimensions,
-            width: window.innerWidth*0.8,
-            height: window.innerHeight*0.8
+            width: window.innerWidth*0.4,
+            height: window.innerHeight*0.6
         }
     });
 
@@ -32,27 +42,17 @@ class App extends Component{
             return <h1>No data to render.</h1>;
 
         return(
-            <>
-                <Stacks { ...this.state }/>
-                <GGPLOT { ...this.state }>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <FACETS { ...this.state }>
                     <Points/>
-                </GGPLOT>
-            </>
+                    <GEOM_POINTS var_name="class"/>
+                </FACETS>
+            </div>
         );
     }
 
     componentDidMount() {
         window.addEventListener("resize", this.resize);
-
-        //fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
-        //    .then(res => res.json())
-        //    .then(data => {
-        //        const formatData = data.map(item => ({
-        //            ...item,
-        //            date: new Date(item.date)
-        //        }));
-        //        this.setState({ data: formatData });
-        //    });
     }
 
 
