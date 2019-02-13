@@ -85,3 +85,68 @@ class ScatterPlot extends Component{
 + Define our data
 + Select the aes (the x-value and y-value)
 + Set the dimensions of the graph
+
+# Live Example
++ https://codesandbox.io/s/p9wrv4moz7
+```js
+import React         from "react";
+import { Component } from "react";
+import { GGPLOT }    from "react-d3-ggplot";
+import { Line }      from "react-d3-ggplot";
+
+class LineChart extends Component {
+    state = {
+        data: [],
+        aes: ["date", "close"],
+        dimensions: {
+            width: window.innerWidth*0.8,
+            height: window.innerHeight*0.8,
+            padding: 50
+        }
+    }
+
+    resizeChart = () => {
+        this.setState({
+            dimensions: {
+                ...this.state.dimensions,
+                width: window.innerWidth*0.8,
+                height: window.innerHeight*0.8,
+            }
+        });
+    }
+
+    render(){
+        if(this.state.data.length === 0)
+            return <h1>Loading....</h1>;
+
+        return(
+            <GGPLOT { ...this.state }>
+                <Line/>
+            </GGPLOT>
+        );
+    }
+
+    componentDidMount(){
+        // add resizeChart event listener
+        window.addEventListener("resize", this.resizeChart);
+
+        // fetch data from IEX api
+        fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
+            .then(res => res.json())
+            .then(data => {
+                // format date to JS date objects
+                const formattedData = data.map(item => ({
+                    ...item,
+                    date: new Date(item.date)
+                }));
+                // update state with correctly formatted data 
+                this.setState({ data: formattedData });
+            });
+    }
+
+    componentWillUnmount() {
+        // remove resizeChart event listener
+        window.removeEventListener("resize", this.resizeChart);
+    }
+}
+```
