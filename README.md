@@ -150,3 +150,60 @@ class LineChart extends Component {
     }
 }
 ```
+
+# Experimental
+```js
+import React           from "react";
+import { Component }   from "react";
+import { Points }      from "react-d3-ggplot";
+import { FACETS }      from "react-d3-ggplot"; // not available. under development.
+import { GEOM_POINTS } from "react-d3-ggplot"; // not available. under development.
+
+// we'll use nest, a cool helper from D3.js.
+// and also import data mpg for testing
+import { nest } from "d3-collection";
+import mpg      from "./Data/mpg.json";
+
+class MultiCharts extends Component {
+
+    formatData(){
+        // this subsets our data by year (there are two years in our dataset: 1999 and 2008)
+         const subset = nest().key(d => d["year"]).entries(mpg);
+
+         // here, we want only the rawData. This returns an array with two arrays. One array
+         // for each category. Since we have two years, 1999 & 2008, we have two arrays.
+         const rawData = subset.map(item => item["values"]);
+
+        return rawData;
+    }
+
+    state = {
+        data: this.formatData(),
+        aes: ["displ", "hwy"],
+        dimensions: {
+            width: window.innerWidth*0.4,
+            height: window.innerHeight*0.6,
+            padding: 50
+        }
+    }
+
+    render(){
+        return(
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <FACETS { ...this.state }>
+                    <Points/>
+                    <GEOM_POINTS var_name="class"/>
+                </FACETS>
+            </div>
+        );
+    }
+}
+```
++ This plot shows us cars grouped into two main categories: `1999 & 2008`
++ `displacement`: engine displacement, in litres
++ `hwy`: miles per gallon
++ the color codes represent `class` or the type of vehicle: compact, midsize, etc...
+    + `<GEOM_POINTS var_name="class">`
+
+
+![facets-example](./demos/facets.png)
