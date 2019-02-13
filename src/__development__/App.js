@@ -1,12 +1,10 @@
 import React           from "react";
 import { Component }   from "react";
+import { hot }         from "react-hot-loader";
 import { GGPLOT }      from "../GGPLOT/";
 import { Points }      from "../Points/";
-import { Line }      from "../Line/";
-import { Rects }     from "../Rects/";
-import { GEOM_POINTS } from "../GEOM_POINTS/";
+import { Stacks }      from "../Stacks/";
 import mpg             from "./Data/mpg.json";
-import { hot }         from "react-hot-loader";
 
 class App extends Component{
     state = {
@@ -34,14 +32,12 @@ class App extends Component{
             return <h1>No data to render.</h1>;
 
         return(
-            <GGPLOT { ...this.state }>
-                <Points/>
-                {/*
-                    <Rects/>
-                    <GEOM_POINTS var_name="year"/>
-                    <Line/>
-                */}
-            </GGPLOT>
+            <>
+                <Stacks { ...this.state }/>
+                <GGPLOT { ...this.state }>
+                    <Points/>
+                </GGPLOT>
+            </>
         );
     }
 
