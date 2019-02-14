@@ -15,7 +15,7 @@ class App extends Component {
             height: window.innerHeight*0.6,
             padding: 50
         },
-        className: "points" // GEOM_POINTS uses to selects Points node to color code points. (change this)
+        className: "points" // Used by GEOM_POINTS to color code points (change this)
     }
 
     resize = () => this.setState({
