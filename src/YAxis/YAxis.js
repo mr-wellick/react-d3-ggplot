@@ -27,9 +27,8 @@ class YAxis extends Component {
 
     findYAxis(){
         // first create scale object
-        const { aes }       = this.context;
-        const componentName = this.constructor.name;
-        const yScale        = this.props.createScaleType(aes[1], componentName);
+        const { aes } = this.context;
+        const yScale  = this.props.createScaleType(aes[1], this.constructor.name);
 
         // append y-axis to left
         const { dimensions } = this.context;

@@ -14,9 +14,8 @@ class XGrid extends Component {
 
     createXGridLines(){
         // create new xScale
-        const { aes }       = this.context;
-        const componentName = this.constructor.name;
-        const xScale        = this.props.createScaleType(aes[0], componentName);
+        const { aes } = this.context;
+        const xScale  = this.props.createScaleType(aes[0], this.constructor.name);
 
         // find grid line locations
         const { dimensions } = this.context;

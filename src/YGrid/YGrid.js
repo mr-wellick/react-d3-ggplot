@@ -14,9 +14,8 @@ class YGrid extends Component {
 
     createYGridLines(){
         // create new yScale
-        const { aes }       = this.context;
-        const componentName = this.constructor.name;
-        const yScale        = this.props.createScaleType(aes[1], componentName);
+        const { aes } = this.context;
+        const yScale  = this.props.createScaleType(aes[1], this.constructor.name);
 
         // find location of grid lines
         const { dimensions } = this.context;
