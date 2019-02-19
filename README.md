@@ -139,7 +139,7 @@ class LineChart extends Component {
                     ...item,
                     date: new Date(item.date)
                 }));
-                // update state with correctly formatted data 
+                // update state with correctly formatted data
                 this.setState({ data: formattedData });
             });
     }
@@ -157,7 +157,6 @@ import React           from "react";
 import { Component }   from "react";
 import { Points }      from "react-d3-ggplot";
 import { FACETS }      from "react-d3-ggplot"; // not available. under development.
-import { GEOM_POINTS } from "react-d3-ggplot"; // not available. under development.
 
 // we'll use nest, a cool helper from D3.js.
 // and also import data mpg for testing
@@ -191,8 +190,9 @@ class MultiCharts extends Component {
         return(
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <FACETS { ...this.state }>
-                    <Points/>
-                    <GEOM_POINTS var_name="class"/>
+                    <Points
+                        var_name="class" // Here, we color code our points by class: compact, size, etc ...
+                    />
                 </FACETS>
             </div>
         );
@@ -202,8 +202,7 @@ class MultiCharts extends Component {
 + This plot shows us cars grouped into two main categories: `1999 & 2008`
 + `displacement`: engine displacement, in litres
 + `hwy`: miles per gallon
-+ the color codes represent `class` or the type of vehicle: compact, midsize, etc...
-    + `<GEOM_POINTS var_name="class">`
++ The color codes represent `class` or the type of vehicle: compact, midsize, etc...
 
 
 ![facets-example](./demos/facets.png)

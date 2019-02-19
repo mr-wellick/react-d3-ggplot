@@ -5,10 +5,13 @@ import { GGPLOT }    from "../GGPLOT/";
 
 class FACETS extends Component {
     render(){
+        // keep datasets with 10 or more entries
+        const new_data = this.props.data.filter(dataset => dataset.length >= 10);
+
         return(
             <Fragment>
                 {
-                    this.props.data.map((dataset, index)=> (
+                    new_data.map((dataset, index)=> (
                         <GGPLOT
                             { ...this.props }
                             key={ index }

@@ -2,6 +2,7 @@ import React              from "react";
 import { Component }      from "react";
 import PropTypes          from "prop-types";
 import { select }         from "d3-selection";
+import { ColorCode }      from "../Utilities/";
 import { ScalesConsumer } from "../Context/";
 
 class Points extends Component {
@@ -17,7 +18,30 @@ class Points extends Component {
         color: PropTypes.string,
         radius: PropTypes.number,
         opacity: PropTypes.any,
+        var_name: PropTypes.string,
         createScaleType: PropTypes.func
+    }
+
+    createColors(){
+        const { data }     = this.context;
+        const { var_name } = this.props;
+        const colorCombos  = new ColorCode(data, var_name).getColorCombo();
+
+        return colorCombos;
+    }
+
+    colorCodePoints(){
+        const colorCombos  = this.createColors();
+        const { var_name } = this.props;
+
+        // select graph to color code
+        select(this.node)
+            .selectAll("circle")
+            .attr("fill", data => {
+
+                const colorToUse = colorCombos.filter(pair => pair["category"] === data[var_name])[0];
+                return colorToUse["fill"];
+            });
     }
 
     appendCircles(){
@@ -45,6 +69,10 @@ class Points extends Component {
             .attr("r", radius)
             .attr("fill", color)
             .attr("opacity", opacity);
+
+        // color code node if specified in var_name prop
+        if(this.props.var_name)
+            this.colorCodePoints();
     }
 
     render(){

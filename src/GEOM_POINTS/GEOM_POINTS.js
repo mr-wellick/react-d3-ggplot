@@ -24,11 +24,11 @@ class GEOM_POINTS extends Component{
     }
 
     colorCodePoints(){
-        const colorCombos   = this.createColorCodes();
-        const { className } = this.context;
-        const { var_name }  = this.props;
+        const colorCombos  = this.createColorCodes();
+        const { var_name } = this.props;
 
-        select(`.${className}`)
+        // select graph to color code
+        select()
             .selectAll("circle")
             .attr("fill", data => {
 

@@ -3,9 +3,22 @@ import { Component } from "react";
 import { hot }       from "react-hot-loader";
 import { GGPLOT }    from "../GGPLOT/";
 import { Points }    from "../Points/";
+//import { nest }      from "d3-collection";
 import mpg           from "./Data/mpg.json";
 
 class App extends Component {
+
+    //formatData(){
+    //    // this subsets our data by year (there are two years in our dataset: 1999 and 2008)
+    //     const subset = nest().key(d => d["year"]).entries(mpg);
+
+    //     // here, we want only the rawData. This returns an array with two arrays. One array
+    //     // for each category. Since we have two years, 1999 & 2008, we have two arrays.
+    //     const rawData = subset.map(item => item["values"]);
+
+    //    return rawData;
+    //}
+
     state = {
         data: mpg,
         aes: ["displ", "hwy"],
@@ -14,8 +27,7 @@ class App extends Component {
             width: window.innerWidth*0.8,
             height: window.innerHeight*0.6,
             padding: 50
-        },
-        className: "points" // Used by GEOM_POINTS to color code points (change this)
+        }
     }
 
     resize = () => this.setState({
@@ -32,23 +44,13 @@ class App extends Component {
 
         return(
             <GGPLOT { ...this.state }>
-                <Points/>
+                <Points var_name="class"/>
             </GGPLOT>
         );
     }
 
     componentDidMount() {
         window.addEventListener("resize", this.resize);
-
-        //Promise
-        //    .all(
-        //        ["aapl", "tsla", "ibm", "nflx"]
-        //        .map(stock =>
-        //            fetch(`https://api.iextrading.com/1.0/stock/${stock}/quote`)
-        //            .then(res => res.json())
-        //        )
-        //    )
-        //    .then(data => this.setState({ data }));
     }
 
 
