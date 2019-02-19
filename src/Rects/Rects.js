@@ -8,13 +8,11 @@ class Rects extends Component{
     static contextType = ScalesConsumer;
 
     static defaultProps = {
-        className: null,
         color: "black",
         opacity: 1
     }
 
     static propTypes = {
-        className: PropTypes.string,
         color: PropTypes.string,
         opacity: PropTypes.any,
         createScaleType: PropTypes.func
@@ -22,13 +20,13 @@ class Rects extends Component{
 
     appendRects(){
         // create x and y scales
-        let { aes } = this.context;
-        let xScale  = this.props.createScaleType(aes[0], "XAxis"); // We need to pass in XAxis & YAxis to
-        let yScale  = this.props.createScaleType(aes[1], "YAxis"); // properly display the rects visually
+        const { aes } = this.context;
+        const xScale  = this.props.createScaleType(aes[0], "XAxis"); // We need to pass in XAxis & YAxis to
+        const yScale  = this.props.createScaleType(aes[1], "YAxis"); // properly display the rects visually
 
         // get other props needed for rects
-        let { data }           = this.context;
-        let { color, opacity } = this.props;
+        const { data }           = this.context;
+        const { color, opacity } = this.props;
 
         // clear graph for next set of data points if we have data
         if(this.node.children.length > 0)
@@ -50,10 +48,7 @@ class Rects extends Component{
 
     render(){
         return(
-            <g
-                ref={ node => this.node = node }
-                className={ this.props.className }
-            >
+            <g ref={ node => this.node = node }>
             </g>
         );
     }

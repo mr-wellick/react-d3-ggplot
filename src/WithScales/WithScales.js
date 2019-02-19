@@ -25,7 +25,9 @@ class WithScales extends Component {
         let scale;
 
         if((typeof scaleObj.data[0]) === "number")
+        {
             scale = scaleObj.getLinearScale().nice();
+        }
 
         if((typeof scaleObj.data[0]) === "object")
             scale = scaleObj.getTimeScale().nice();

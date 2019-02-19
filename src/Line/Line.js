@@ -53,10 +53,8 @@ class Line extends Component {
 
     render() {
         return(
-            <g className={ this.props.className }>
-                <path
-                    ref={ node => this.node = node }
-                />
+            <g> 
+                <path ref={ node => this.node = node }/>
             </g>
         );
     }

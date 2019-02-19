@@ -1,14 +1,14 @@
-import React           from "react";
-import { Component }   from "react";
-import { hot }         from "react-hot-loader";
-import { GGPLOT }      from "../GGPLOT/";
-import { Rects }       from "../Rects/";
-//import mpg             from "./Data/mpg.json";
+import React         from "react";
+import { Component } from "react";
+import { hot }       from "react-hot-loader";
+import { GGPLOT }    from "../GGPLOT/";
+import { Points }    from "../Points/";
+import mpg           from "./Data/mpg.json";
 
 class App extends Component {
     state = {
-        data: [],
-        aes: ["symbol", "marketCap"],
+        data: mpg,
+        aes: ["displ", "hwy"],
         dimensions:
         {
             width: window.innerWidth*0.8,
@@ -32,7 +32,7 @@ class App extends Component {
 
         return(
             <GGPLOT { ...this.state }>
-                <Rects/>
+                <Points/>
             </GGPLOT>
         );
     }
@@ -40,15 +40,15 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener("resize", this.resize);
 
-        Promise
-            .all(
-                ["aapl", "tsla", "ibm", "nflx"]
-                .map(stock =>
-                    fetch(`https://api.iextrading.com/1.0/stock/${stock}/quote`)
-                    .then(res => res.json())
-                )
-            )
-            .then(data => this.setState({ data }));
+        //Promise
+        //    .all(
+        //        ["aapl", "tsla", "ibm", "nflx"]
+        //        .map(stock =>
+        //            fetch(`https://api.iextrading.com/1.0/stock/${stock}/quote`)
+        //            .then(res => res.json())
+        //        )
+        //    )
+        //    .then(data => this.setState({ data }));
     }
 
 

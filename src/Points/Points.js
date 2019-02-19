@@ -50,10 +50,7 @@ class Points extends Component {
     render(){
 
         return(
-            <g
-                ref={ node => this.node = node }
-                className={ this.context.className }
-            >
+            <g ref={ node => this.node = node }>
             </g>
         );
     }

@@ -23,7 +23,6 @@ class YGrid extends Component {
 
         // append YGrid lines
         select(this.node)
-            .attr("class", "y-grid")
             .attr("transform", axisPosition)
             .call(
                 axisLeft(yScale)
@@ -32,13 +31,13 @@ class YGrid extends Component {
                 .tickFormat("")
             );
 
-        // color lines
-        select(".y-grid")
+        // color grid lines
+        select(this.node)
             .selectAll("line")
             .attr("stroke", "rgb(255, 255, 255)");
 
-        // get rid of black color overlaying y-axis
-        select(".y-grid")
+        // color path overlaying y-axis
+        select(this.node)
             .select("path")
             .attr("stroke", "rgb(255, 255, 255)");
     }
