@@ -7,6 +7,7 @@ import { XAxis }          from "../XAxis/";
 import { YAxis }          from "../YAxis/";
 import { XGrid }          from "../XGrid/";
 import { YGrid }          from "../YGrid/";
+import { Background }     from "../Background/";
 
 class GGPLOT extends Component {
     static propTypes = {
@@ -29,12 +30,7 @@ class GGPLOT extends Component {
             <ScalesProvider value={ this.props }>
                 <svg width={ dimensions.width } height={ dimensions.height } className={ className }>
                     {/* used as background color */}
-                    <rect
-                        width={ dimensions.width - dimensions.padding*2 }
-                        height={ dimensions.height - dimensions.padding*2 }
-                        fill="rgb(232, 232, 232)"
-                        transform={ `translate(${dimensions.padding}, ${dimensions.padding})` }
-                    />
+                    <Background/>
 
                     <WithScales>
                         {({ createScaleType }) => (

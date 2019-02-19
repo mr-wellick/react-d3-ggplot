@@ -3,7 +3,6 @@ import React from "react";
 const ScalesContext = React.createContext({
     data: [],
     aes: [],
-    scalesTypes: [],
     dimensions: {},
     className: ""
 });
