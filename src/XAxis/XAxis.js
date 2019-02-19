@@ -53,7 +53,6 @@ class XAxis extends Component{
         return(
             <g
                 ref={ node => this.node = node }
-                className={ this.props.className }
             >
             </g>
         );
