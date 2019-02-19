@@ -13,7 +13,6 @@ class GGPLOT extends Component {
     static propTypes = {
         data: PropTypes.array,
         aes: PropTypes.array,
-        scaleTypes: PropTypes.array,
         dimensions: PropTypes.shape({
             width: PropTypes.number,
             height: PropTypes.number,

@@ -38,12 +38,12 @@ class WithScales extends Component {
 
         if(componentName === "XAxis" || componentName === "XGrid")
         {
-            // spreads our x-axis & x-grid lines visually
+            // spreads our x-axis & x-grid lines horizontally.
             scale.range([dimensions.padding, dimensions.width - dimensions.padding]);
         }
         else if(componentName === "YAxis" || componentName === "YGrid")
         {
-            // spreads our y-axis & x-grid lines visually
+            // spreads our y-axis y-grid lines vertically
             scale.range([dimensions.height - dimensions.padding, dimensions.padding]);
         }
 
