@@ -15,14 +15,6 @@ class FACETS extends Component {
         // keep datasets with 10 or more entries
         const new_data = this.props.data.filter(dataset => dataset.length >= 10);
 
-        if(this.checkLengths().length > 0)
-        {
-            console.warn(
-                `You have passed in datasets without enough entries.
-                Will only keep datasets with 10 or more entries.`
-            );
-        }
-
         return(
             <Fragment>
                 {
@@ -38,6 +30,16 @@ class FACETS extends Component {
                 }
             </Fragment>
         );
+    }
+
+    componentDidMount(){
+        if(this.checkLengths().length > 0)
+        {
+            console.warn(
+                "You have passed in datasets without enough entries. Will only keep datasets with 10 or more entries."
+            );
+        }
+
     }
 }
 
