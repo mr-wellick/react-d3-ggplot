@@ -6,7 +6,7 @@ import { GGPLOT }    from "../GGPLOT/";
 class FACETS extends Component {
 
     checkLengths(){
-        const not_enough_data = this.props.data.filter(dataset => dataset.length <= 10);
+        const not_enough_data = this.props.data.filter(dataset => dataset.length < 10);
 
         return not_enough_data;
     }
