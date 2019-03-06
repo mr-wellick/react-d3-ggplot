@@ -26,19 +26,15 @@ class XGrid extends Component {
             .attr("transform", axisPosition)
             .call(
                 axisBottom(xScale)
-                .ticks()
+                .ticks(4)
                 .tickSize(-(dimensions.height - dimensions.padding*2))
                 .tickFormat("")
             );
 
         // color grid lines
         select(this.node)
+            .selectAll("g")
             .selectAll("line")
-            .attr("stroke", "rgb(255, 255, 255)");
-
-        // color path overlaying x-axis
-        select(this.node)
-            .select("path")
             .attr("stroke", "rgb(255, 255, 255)");
     }
 

@@ -21,7 +21,7 @@ class YAxis extends Component {
         {
             select(this.node)
                 .selectAll("text")
-                .html(d => format(".0s")(d));
+                .html(d => format(".2s")(d));
         }
     }
 
@@ -40,9 +40,9 @@ class YAxis extends Component {
             .call(axisLeft(yScale));
 
         // color y-axis
-        select(this.node)
-            .select("path")
-            .attr("stroke", "rgb(255, 255, 255)");
+        //select(this.node)
+        //    .select("path")
+        //    .attr("stroke", "rgb(255, 255, 255)");
 
         // format ticks
         this.formatAxisLabels();

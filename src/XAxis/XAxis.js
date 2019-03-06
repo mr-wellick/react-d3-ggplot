@@ -21,7 +21,7 @@ class XAxis extends Component{
         {
             select(this.node)
                 .selectAll("text")
-                .html(d => format(".0s")(d));
+                .html(d => format(".2s")(d));
         }
     }
 
@@ -40,9 +40,9 @@ class XAxis extends Component{
             .call(axisBottom(xScale));
 
         // color x-axis path
-        select(this.node)
-            .select("path")
-            .attr("stroke", "rgb(255, 255, 255)");
+        //select(this.node)
+        //    .select("path")
+        //    .attr("stroke", "rgb(255, 255, 255)");
 
         // format x-labels
         this.formatAxisLabels();

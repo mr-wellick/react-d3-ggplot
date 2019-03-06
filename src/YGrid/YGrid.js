@@ -26,7 +26,7 @@ class YGrid extends Component {
             .attr("transform", axisPosition)
             .call(
                 axisLeft(yScale)
-                .ticks()
+                .ticks(4)
                 .tickSize(-(dimensions.width - dimensions.padding*2))
                 .tickFormat("")
             );
