@@ -14,14 +14,14 @@ class XAxis extends Component{
     }
 
     formatAxisLabels(){
-        const { data, aes } = this.context;
-        const xValue        = data[0][aes[0]];
+        const { data, aes, x_lab } = this.context;
+        const xValue               = data[0][aes[0]];
 
-        if((typeof xValue) === "number")
+        if((typeof xValue) === "number" && x_lab)
         {
             select(this.node)
                 .selectAll("text")
-                .html(d => format(".2s")(d));
+                .html(d => format(x_lab)(d));
         }
     }
 

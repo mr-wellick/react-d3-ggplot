@@ -14,14 +14,14 @@ class YAxis extends Component {
     }
 
     formatAxisLabels(){
-        const { data, aes } = this.context;
-        const yValue        = data[0][aes[1]];
+        const { data, aes, y_lab } = this.context;
+        const yValue               = data[0][aes[1]];
 
-        if((typeof yValue) === "number")
+        if((typeof yValue) === "number" && y_lab)
         {
             select(this.node)
                 .selectAll("text")
-                .html(d => format(".2s")(d));
+                .html(d => format(y_lab)(d));
         }
     }
 

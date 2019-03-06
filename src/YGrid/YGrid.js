@@ -33,13 +33,15 @@ class YGrid extends Component {
 
         // color grid lines
         select(this.node)
+            .selectAll("g")
             .selectAll("line")
             .attr("stroke", "rgb(255, 255, 255)");
 
-        // color path overlaying y-axis
+        // temp fix
         select(this.node)
             .select("path")
             .attr("stroke", "rgb(255, 255, 255)");
+
     }
 
     render(){

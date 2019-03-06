@@ -23,13 +23,12 @@ class GEOMS extends Component {
         return(
             <ScalesProvider value={ this.props }>
                 <svg width={ dimensions.width } height={ dimensions.height } className={ className }>
-                    {/* used as background color */}
                     <WithScales>
                         {({ createScaleType }) => (
                         <>
                             {/*
-                              * Here, we clone each child passed into <GGPLOT/> to
-                              * get acces to createScaleType so that <GGPLOT/> is modular
+                              * Here, we clone each child passed into <GEOMS/> to
+                              * get acces to createScaleType so that <GEOMS/> is modular
                               */}
                             {React.Children.map(this.props.children, child => {
                                 return React.cloneElement(child, {
