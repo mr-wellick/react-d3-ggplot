@@ -1,6 +1,7 @@
 import React        from "react";
 import { useState } from "react";
 import { GGPLOT }   from "../GGPLOT/";
+import { Points }   from "../Points/";
 import mpg          from "./Data/mpg.json";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 
     return(
         <GGPLOT { ...state }>
+            <Points/>
         </GGPLOT>
     );
 }
