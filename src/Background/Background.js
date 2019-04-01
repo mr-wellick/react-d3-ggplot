@@ -1,22 +1,18 @@
-import React              from "react";
-import { Component }      from "react";
-import { ScalesConsumer } from "../Context/";
+import React            from "react";
+import { useContext }   from "react";
+import { ChartContext } from "../_context/";
 
-class Background extends Component {
-    static contextType = ScalesConsumer;
+function Background(props){
+    const context = useContext(ChartContext);
 
-    render(){
-        const { width, height, padding } = this.context.dimensions;
-
-        return(
-            <rect
-                width={ width - padding*2 }
-                height={ height - padding*2 }
-                fill="rgb(232, 232, 232)"
-                transform={ `translate(${padding}, ${padding})` }
-            />
-        );
-    }
+    return(
+        <rect
+            width={ context.dimensions.width - context.dimensions.padding*2 }
+            height={ context.dimensions.height - context.dimensions.padding*2 }
+            fill="rgb(232, 232, 232)"
+            transform={ `translate(${context.dimensions.padding}, ${context.dimensions.padding})` }
+        />
+    );
 }
 
 
