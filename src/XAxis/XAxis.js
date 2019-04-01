@@ -1,69 +1,34 @@
-import React              from "react";
-import { Component }      from "react";
-import PropTypes          from "prop-types";
-import { select }         from "d3-selection";
-import { axisBottom }     from "d3-axis";
-import { format }         from "d3-format";
-import { ScalesConsumer } from "../Context/";
+import React            from "react";
+import PropTypes        from "prop-types";
+import { useRef }       from "react";
+import { useContext }   from "react";
+import { useEffect }    from "react";
+import { ChartContext } from "../_context/";
+import { useScale }     from "../_hooks/";
+import { select }       from "d3-selection";
+import { axisBottom }   from "d3-axis";
+//import { format }       from "d3-format";
 
-class XAxis extends Component{
-    static contextType = ScalesConsumer;
+function XAxis(props) {
+    const node    = useRef(null);
+    const context = useContext(ChartContext);
+    const scale   = useScale(context, XAxis.name);
 
-    static propTypes = {
-        createScaleType: PropTypes.func.isRequired
-    }
-
-    formatAxisLabels(){
-        const { data, aes, x_lab } = this.context;
-        const xValue               = data[0][aes[0]];
-
-        if((typeof xValue) === "number" && x_lab)
-        {
-            select(this.node)
-                .selectAll("text")
-                .html(d => format(x_lab)(d));
-        }
-    }
-
-    findXAxis(){
-        // first create scale object
-        const { aes } = this.context;
-        const xScale  = this.props.createScaleType(aes[0], this.constructor.name);
-
-        // ajust x-axis to bottom
-        const { dimensions } = this.context;
+    useEffect(() => {
+        const { dimensions } = context;
         const axisLocation   = `translate(0, ${dimensions.height - dimensions.padding})`;
 
         // select node returned by component and appends x-axis
-        select(this.node)
+        select(node.current)
             .attr("transform", axisLocation)
-            .call(axisBottom(xScale));
+            .call(axisBottom(scale));
+    });
 
-        // color x-axis path
-        //select(this.node)
-        //    .select("path")
-        //    .attr("stroke", "rgb(255, 255, 255)");
 
-        // format x-labels
-        this.formatAxisLabels();
-    }
-
-    render(){
-        return(
-            <g
-                ref={ node => this.node = node }
-            >
-            </g>
-        );
-    }
-
-    componentDidMount(){
-        this.findXAxis();
-    }
-
-    componentDidUpdate(){
-        this.findXAxis();
-    }
+    return(
+        <g ref={ node }>
+        </g>
+    );
 }
 
 export default XAxis;

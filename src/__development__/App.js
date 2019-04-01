@@ -1,30 +1,24 @@
-import React         from "react";
-import { Component } from "react";
-import { hot }       from "react-hot-loader";
-//import { GGPLOT }    from "../GGPLOT/";
-//import { Points }    from "../Points/";
-//import { FACETS }    from "../FACETS/";
-import mpg           from "./Data/mpg.json";
+import React        from "react";
+import { useState } from "react";
+import { GGPLOT }   from "../GGPLOT/";
+import mpg          from "./Data/mpg.json";
 
-class App extends Component {
-    state = {
+function App() {
+    const [state] = useState({
         data: mpg,
         aes: ["displ", "hwy"],
-        dim: { w: window.innerWidth*0.8, h: window.innerHeight*0.9, p: 50 }
-    }
+        dimensions:
+        {
+            width: window.innerWidth*0.8,
+            height: window.innerHeight*0.9,
+            padding: 50
+        }
+    });
 
-    render(){
-        return(
-            <h1>Hello</h1>
-        );
-    }
+    return(
+        <GGPLOT { ...state }>
+        </GGPLOT>
+    );
 }
 
-let Application;
-
-if(process.env.NODE_ENV === "development")
-    Application = hot(module)(App);
-else
-    Application = App;
-
-export default Application;
+export default App;

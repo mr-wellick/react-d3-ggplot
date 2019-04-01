@@ -3,7 +3,7 @@ import { createContext } from "react";
 const ChartContext = createContext({
     data: [],
     aes: [],
-    dim: {}
+    dimensions: {}
 });
 
 export default ChartContext;
