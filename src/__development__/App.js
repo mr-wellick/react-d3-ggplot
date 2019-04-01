@@ -2,8 +2,9 @@ import React         from "react";
 import { useState }  from "react";
 import { useEffect } from "react";
 import { GGPLOT }    from "../GGPLOT/";
-//import { Points }    from "../Points/";
 import { Line }      from "../Line/";
+//import { Points }    from "../Points/";
+//import { Rects }     from "../Rects/";
 //import mpg           from "./Data/mpg.json";
 
 function App() {
@@ -34,8 +35,6 @@ function App() {
                 });
             });
     }, []);
-
-    console.log(state);
 
     if(state.data.length === 0)
         return <h1>Loading...</h1>;
