@@ -2,9 +2,15 @@ import React         from "react";
 import { useState }  from "react";
 import { useEffect } from "react";
 import { GGPLOT }    from "../GGPLOT/";
+import { GEOMS }     from "../GEOMS/";
+import { Background } from "../Background/";
+import { XGrid }     from "../XGrid/";
+import { YGrid }     from "../YGrid/";
+import { XAxis }     from "../XAxis/";
+import { YAxis }     from "../YAxis/";
 import { Line }      from "../Line/";
-//import { Points }    from "../Points/";
-//import { Rects }     from "../Rects/";
+import { Points }    from "../Points/";
+import { Rects }     from "../Rects/";
 //import mpg           from "./Data/mpg.json";
 
 function App() {
@@ -40,9 +46,14 @@ function App() {
         return <h1>Loading...</h1>;
 
     return(
-        <GGPLOT { ...state }>
+        <GEOMS { ...state }>
+            <Background/>
+            <XAxis/>
+            <YAxis/>
+            <YGrid/>
+            <XGrid/>
             <Line/>
-        </GGPLOT>
+        </GEOMS>
     );
 }
 
