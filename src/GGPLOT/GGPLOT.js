@@ -4,6 +4,7 @@ import { ChartContext } from "../_context/";
 import { Background }   from "../Background/";
 import { XAxis }        from "../XAxis/";
 import { YAxis }        from "../YAxis/";
+import { XGrid }        from "../XGrid/";
 
 function GGPLOT(props) {
         return(
@@ -12,6 +13,7 @@ function GGPLOT(props) {
                     <Background/>
                     <XAxis/>
                     <YAxis/>
+                    <XGrid/>
                     { props.children }
                 </svg>
             </ChartContext.Provider>
