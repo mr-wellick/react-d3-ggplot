@@ -1,5 +1,4 @@
 import React            from "react";
-import PropTypes        from "prop-types";
 import { useRef }       from "react";
 import { useContext }   from "react";
 import { useEffect }    from "react";
