@@ -1,4 +1,4 @@
-import { ScaleFinder } from "../Utilities/";
+import { ScaleFinder } from "../utilities/";
 
 function useScale(context, componentName) {
     const keyToUse = (componentName === "XAxis" || componentName === "XGrid") ? context.aes[0] : context.aes[1];
