@@ -1,22 +1,31 @@
-import React         from "react";
-import { useState }  from "react";
-import { useEffect } from "react";
-import { GGPLOT }    from "../GGPLOT/";
-import { GEOMS }     from "../GEOMS/";
+import React          from "react";
+import { useState }   from "react";
+import { useEffect }  from "react";
+import { GGPLOT }     from "../GGPLOT/";
+import { GEOMS }      from "../GEOMS/";
+import { FACETS }     from "../FACETS/";
 import { Background } from "../Background/";
-import { XGrid }     from "../XGrid/";
-import { YGrid }     from "../YGrid/";
-import { XAxis }     from "../XAxis/";
-import { YAxis }     from "../YAxis/";
-import { Line }      from "../Line/";
-import { Points }    from "../Points/";
-import { Rects }     from "../Rects/";
-//import mpg           from "./Data/mpg.json";
+import { XGrid }      from "../XGrid/";
+import { YGrid }      from "../YGrid/";
+import { XAxis }      from "../XAxis/";
+import { YAxis }      from "../YAxis/";
+import { Line }       from "../Line/";
+import { Points }     from "../Points/";
+import { Rects }      from "../Rects/";
+import mpg            from "./Data/mpg.json";
+import { nest }       from "d3-collection";
+
+function formatData(){
+    const subset  = nest().key(d => d["year"]).entries(mpg);
+    const rawData = subset.map(item => item["values"]);
+
+    return rawData;
+}
 
 function App() {
-    const [state, setState] = useState({
-        data: [],
-        aes: ["date", "close"],
+    const [state] = useState({
+        data: formatData(),
+        aes: ["displ", "hwy"],
         dimensions:
         {
             width: window.innerWidth*0.8,
@@ -25,35 +34,13 @@ function App() {
         }
     });
 
-    useEffect(() => {
-        fetch("https://api.iextrading.com/1.0/stock/aapl/chart/5y")
-            .then(res => res.json())
-            .then(data => {
-                // format date to JS date objects
-                const formattedData = data.map(item => ({
-                    ...item,
-                    date: new Date(item.date)
-                }));
-                // update state with correctly formatted data
-                setState({
-                    ...state,
-                    data: formattedData
-                });
-            });
-    }, []);
-
-    if(state.data.length === 0)
-        return <h1>Loading...</h1>;
 
     return(
-        <GEOMS { ...state }>
-            <Background/>
-            <XAxis/>
-            <YAxis/>
-            <YGrid/>
-            <XGrid/>
-            <Line/>
-        </GEOMS>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+            <FACETS { ...state }>
+                <Points/>
+            </FACETS>
+        </div>
     );
 }
 
