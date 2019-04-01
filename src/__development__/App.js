@@ -1,17 +1,17 @@
 import React          from "react";
 import { useState }   from "react";
-import { useEffect }  from "react";
-import { GGPLOT }     from "../GGPLOT/";
-import { GEOMS }      from "../GEOMS/";
+//import { useEffect }  from "react";
+//import { GGPLOT }     from "../GGPLOT/";
+//import { GEOMS }      from "../GEOMS/";
 import { FACETS }     from "../FACETS/";
-import { Background } from "../Background/";
-import { XGrid }      from "../XGrid/";
-import { YGrid }      from "../YGrid/";
-import { XAxis }      from "../XAxis/";
-import { YAxis }      from "../YAxis/";
-import { Line }       from "../Line/";
+//import { Background } from "../Background/";
+//import { XGrid }      from "../XGrid/";
+//import { YGrid }      from "../YGrid/";
+//import { XAxis }      from "../XAxis/";
+//import { YAxis }      from "../YAxis/";
+//import { Line }       from "../Line/";
 import { Points }     from "../Points/";
-import { Rects }      from "../Rects/";
+//import { Rects }      from "../Rects/";
 import mpg            from "./Data/mpg.json";
 import { nest }       from "d3-collection";
 
