@@ -52,10 +52,11 @@ const someOtherData = [
 
 ## 3. Using react-d3-ggplot library
 ```js
-import React        from "react";
-import { useState } from "react";
-import { GGPLOT }   from "react-d3-ggplot";
-import { Points }   from "react-d3-ggplot";
+import React         from "react";
+import { Component } from "react";
+import { useState }  from "react";
+import { GGPLOT }    from "react-d3-ggplot";
+import { Points }    from "react-d3-ggplot";
 
 // using react hooks
 function ScatterPlot() {
@@ -76,7 +77,7 @@ function ScatterPlot() {
 }
 
 // using ES6 Classes
-class ScatterPlot extends Component{
+class ScatterPlot extends Component {
     state = {
         data: [
             { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") },
