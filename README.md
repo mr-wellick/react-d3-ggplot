@@ -52,23 +52,38 @@ const someOtherData = [
 
 ## 3. Using react-d3-ggplot library
 ```js
-import React         from "react";
-import { Component } from "react";
+import React        from "react";
+import { useState } from "react";
+import { GGPLOT }   from "react-d3-ggplot";
+import { Points }   from "react-d3-ggplot";
 
-// We need to bring in <GGPLOT/>
-import { GGPLOT } from "react-d3-ggplot";
+// using react hooks
+function ScatterPlot() {
+    const [state] = useState({
+        data: [
+            { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") },
+            { experience: 7, pay: 3000, hrs: 100, date: new Date("01-01-2020") }
+        ],
+        aes: ["experience", "pay"],
+        dimensions: { width: 600, height: 400, padding: 50 }
+    })
 
-// Then we import the type of plot we want: Rects (for barplots), Points (for scatterplots), and Line (for line charts)
-import { Points } from "react-d3-ggplot";
+    return(
+        <GGPLOT { ...state }>
+            <Points/>
+        </GGPLOT>
+    );
+}
 
+// using ES6 Classes
 class ScatterPlot extends Component{
     state = {
         data: [
             { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") },
             { experience: 7, pay: 3000, hrs: 100, date: new Date("01-01-2020") }
         ],
-        aes: ["experience", "pay"], // Choose x-values and y-values directly from data. (Must pass in x first and y second)
-        dimensions: { width: 600, height: 400, padding: 50 } // Finally, choose the dimensions of your graph.
+        aes: ["experience", "pay"],
+        dimensions: { width: 600, height: 400, padding: 50 }
     }
 
     render(){
