@@ -169,10 +169,10 @@ class LineChart extends Component {
 
 # Experimental
 ```js
-import React           from "react";
-import { Component }   from "react";
-import { Points }      from "react-d3-ggplot";
-import { FACETS }      from "react-d3-ggplot"; // not available. under development.
+import React         from "react";
+import { Component } from "react";
+import { Points }    from "react-d3-ggplot";
+import { FACETS }    from "react-d3-ggplot"; // not available. under development.
 
 // we'll use nest, a cool helper from D3.js.
 // and also import data mpg for testing
