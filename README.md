@@ -215,7 +215,7 @@ class MultiCharts extends Component {
     }
 }
 ```
-+ This plot shows us cars grouped into two main categories: `1999 & 2008`
++ This plot shows cars grouped into two main categories: `1999 & 2008`
 + `displacement`: engine displacement, in litres
 + `hwy`: miles per gallon
 + The color codes represent `class` or the type of vehicle: compact, midsize, etc...
