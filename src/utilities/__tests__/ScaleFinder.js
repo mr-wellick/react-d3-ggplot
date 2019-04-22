@@ -1,4 +1,4 @@
-import { scaleFinder } from "../../Utilities/";
+import { ScaleFinder } from "../../utilities/";
 import uniq from "lodash.uniq";
 import mpg from "../../__development__/Data/mpg.json";
 
@@ -7,7 +7,7 @@ test("constructor initialization", () => {
   const xValues = mpg.map(item => item.hwy);
 
   // create new scale object and retrieve data
-  const data = new scaleFinder(xValues).data;
+  const data = new ScaleFinder(xValues).data;
 
   // xValues.length and data.length should be the same length
   expect(data).toHaveLength(xValues.length);
@@ -22,7 +22,7 @@ test("interval method is executed correctly", () => {
   const MAX = Math.max(...xValues);
 
   // create new scale object and retrive interval
-  const scale = new scaleFinder(xValues);
+  const scale = new ScaleFinder(xValues);
   const interval = scale.getInterval();
 
   // interval values should have the same values as MIN and MAX
@@ -35,7 +35,7 @@ test("creation of linear scale", () => {
   const xValues = mpg.map(item => item.hwy);
 
   // get linear scale
-  const scale = new scaleFinder(xValues).getLinearScale();
+  const scale = new ScaleFinder(xValues).getLinearScale();
 
   // call domain method to check scale initialization
   // scale.domain() should contain two values
@@ -47,7 +47,7 @@ test("creation of time scale", () => {
   const dates = [new Date("01-01-2010"), new Date("01-01-2020")];
 
   // get time scale
-  const scale = new scaleFinder(dates).getTimeScale();
+  const scale = new ScaleFinder(dates).getTimeScale();
 
   // call domain method to check scale initialization
   // scale.domain() should contain two values
@@ -60,7 +60,7 @@ test("creation of ordinal scale", () => {
   const categories = uniq(xValues); // get unique entries only
 
   // get ordinal scale
-  const scale = new scaleFinder(categories).getOrdinalScale();
+  const scale = new ScaleFinder(categories).getOrdinalScale();
 
   // call domain method to check scale initialization
   // scale.domain() should have the same length as categories
