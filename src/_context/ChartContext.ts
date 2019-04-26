@@ -6,10 +6,10 @@ interface IDimensions {
   padding: number;
 }
 
-interface IAppContext {
+export interface IAppContext {
   data: any[];
   aes: [string, string];
-  dimension: IDimensions;
+  dimensions: IDimensions;
 }
 
 const ChartContext = createContext<IAppContext | null>(null);
