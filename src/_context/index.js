@@ -1,1 +1,1 @@
-export { default as ChartContext } from "./ChartContext.js";
+export { default as ChartContext } from "./ChartContext.ts";
