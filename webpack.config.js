@@ -5,8 +5,7 @@ const merge = require("webpack-merge");
 const template = require("html-webpack-plugin");
 
 // Development, production, and presets
-const configType = env =>
-  require(`./build-utils/webpack.${env}`)(env);
+const configType = env => require(`./build-utils/webpack.${env}`)(env);
 
 // Final webpack configuration
 module.exports = ({ mode } = { mode: "production" }) => {
