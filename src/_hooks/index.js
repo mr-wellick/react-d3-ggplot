@@ -1,1 +1,1 @@
-export { default as useScale } from "./useScale.js";
+export { default as useScale } from "./useScale.ts";
