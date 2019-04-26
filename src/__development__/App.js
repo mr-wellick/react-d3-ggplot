@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
 //import { useEffect } from "react";
-import { Background } from "../Background/";
-import { GGPLOT } from "../GGPLOT/";
+//import { Background } from "../Background/";
+//import { GGPLOT } from "../GGPLOT/";
 //import { Line } from "../Line/";
-import { Points } from "../Points/";
+//import { Points } from "../Points/";
 //import { Rects } from "../Rects/";
+import { XAxis } from "../XAxis";
 import mpg from "./Data/mpg.json";
+import { ChartContext } from "../_context";
 //import { nest } from "d3-collection";
 
 //function formatData() {
@@ -30,9 +32,11 @@ function App() {
   });
 
   return (
-    <GGPLOT {...state}>
-      <Points />
-    </GGPLOT>
+    <ChartContext.Provider value={state}>
+      <svg width={state.dimensions.width} height={state.dimensions.height}>
+        <XAxis />
+      </svg>
+    </ChartContext.Provider>
   );
 }
 
