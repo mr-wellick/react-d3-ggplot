@@ -10,10 +10,7 @@ import { YGrid } from "../YGrid/";
 function GGPLOT(props) {
   return (
     <ChartContext.Provider value={props}>
-      <svg
-        width={props.dimensions.width}
-        height={props.dimensions.height}
-      >
+      <svg width={props.dimensions.width} height={props.dimensions.height}>
         <Background />
         <XAxis />
         <YAxis />

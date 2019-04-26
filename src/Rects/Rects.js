@@ -26,10 +26,7 @@ function Rects(props) {
       .enter()
       .append("rect")
       .attr("width", xScale.bandwidth())
-      .attr(
-        "height",
-        d => yScale.range()[0] - yScale(d[context.aes[1]])
-      )
+      .attr("height", d => yScale.range()[0] - yScale(d[context.aes[1]]))
       .attr("x", d => xScale(d[context.aes[0]]))
       .attr("y", d => yScale(d[context.aes[1]]))
       .attr("fill", "black")

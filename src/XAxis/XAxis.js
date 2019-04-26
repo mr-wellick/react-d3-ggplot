@@ -15,8 +15,7 @@ function XAxis(props) {
 
   useEffect(() => {
     const { dimensions } = context;
-    const axisLocation = `translate(0, ${dimensions.height -
-      dimensions.padding})`;
+    const axisLocation = `translate(0, ${dimensions.height - dimensions.padding})`;
 
     // select node returned by component and appends x-axis
     select(node.current)

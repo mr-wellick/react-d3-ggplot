@@ -15,8 +15,7 @@ function XGrid(props) {
   useEffect(() => {
     // find grid line locations
     const { dimensions } = context;
-    const axisPosition = `translate(0, ${dimensions.height -
-      dimensions.padding})`;
+    const axisPosition = `translate(0, ${dimensions.height - dimensions.padding})`;
 
     // append XGrid lines
     select(node.current)

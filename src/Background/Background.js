@@ -7,16 +7,10 @@ function Background(props) {
 
   return (
     <rect
-      width={
-        context.dimensions.width - context.dimensions.padding * 2
-      }
-      height={
-        context.dimensions.height - context.dimensions.padding * 2
-      }
+      width={context.dimensions.width - context.dimensions.padding * 2}
+      height={context.dimensions.height - context.dimensions.padding * 2}
       fill="rgb(232, 232, 232)"
-      transform={`translate(${context.dimensions.padding}, ${
-        context.dimensions.padding
-      })`}
+      transform={`translate(${context.dimensions.padding}, ${context.dimensions.padding})`}
     />
   );
 }

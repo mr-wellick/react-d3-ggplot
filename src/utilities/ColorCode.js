@@ -18,9 +18,7 @@ class ColorCode {
   }
 
   getUniqueCategories() {
-    const categoriesToSubsetBy = this.data.map(
-      item => item[this.variableName]
-    );
+    const categoriesToSubsetBy = this.data.map(item => item[this.variableName]);
     const uniqueCategories = uniq(categoriesToSubsetBy);
 
     return uniqueCategories;
