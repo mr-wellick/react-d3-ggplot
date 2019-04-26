@@ -1,11 +1,15 @@
 import { createContext } from "react";
 
-interface IAppContext {
-  data: any[];
-  aes: [string, string];
+interface IDimensions {
   width: number;
   height: number;
   padding: number;
+}
+
+interface IAppContext {
+  data: any[];
+  aes: [string, string];
+  dimension: IDimensions;
 }
 
 const ChartContext = createContext<IAppContext | null>(null);
