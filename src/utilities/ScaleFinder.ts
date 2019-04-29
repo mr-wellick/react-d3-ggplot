@@ -1,6 +1,5 @@
 import { max, min } from "d3-array";
-import { extent } from "d3-array";
-import { scaleLinear, ScaleLinear } from "d3-scale";
+import { scaleLinear } from "d3-scale";
 import { scaleTime } from "d3-scale";
 import { scaleBand } from "d3-scale";
 
