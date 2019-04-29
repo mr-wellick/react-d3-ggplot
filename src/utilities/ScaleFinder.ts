@@ -1,19 +1,20 @@
 import { max, min } from "d3-array";
+import { extent } from "d3-array";
 import { scaleLinear, ScaleLinear } from "d3-scale";
 import { scaleTime } from "d3-scale";
 import { scaleBand } from "d3-scale";
 
-class ScaleFinder {
-  private data: any[];
+class ScaleFinder<T> {
+  private data: T[];
 
-  constructor(data) {
+  constructor(data: T[]) {
     this.data = data;
   }
 
   private getInterval() {
-    const MAX: number = max(this.data, d => d);
-    const MIN: number = min(this.data, d => d);
-    const interval: number[] = [MIN, MAX];
+    const MAX = max(this.data, (d: any) => d);
+    const MIN = min(this.data, (d: any) => d);
+    const interval = [MIN, MAX];
 
     return interval;
   }
@@ -32,12 +33,12 @@ class ScaleFinder {
     return scale;
   }
 
-  public getOrdinalScale(binWidth: number) {
-    const scale = scaleBand().domain(this.data);
-    scale.padding(binWidth);
+  //public getOrdinalScale(binWidth: number) {
+  //  const scale = scaleBand().domain(this.data);
+  //  scale.padding(binWidth);
 
-    return scale;
-  }
+  //  return scale;
+  //}
 }
 
 export default ScaleFinder;
