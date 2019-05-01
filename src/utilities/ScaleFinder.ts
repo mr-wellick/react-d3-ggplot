@@ -1,7 +1,7 @@
 import { max, min, Numeric } from "d3-array";
-import { scaleLinear, ScaleLinear, ScaleTime, ScaleOrdinal, ScaleBand } from "d3-scale";
-import { scaleTime } from "d3-scale";
-import { scaleBand } from "d3-scale";
+import { scaleLinear, ScaleLinear } from "d3-scale";
+import { scaleTime, ScaleTime } from "d3-scale";
+import { scaleBand, ScaleBand } from "d3-scale";
 
 class ScaleFinder<T extends Numeric> {
   private data: T[];
