@@ -1,9 +1,9 @@
-import { max, min } from "d3-array";
-import { scaleLinear } from "d3-scale";
+import { max, min, Numeric } from "d3-array";
+import { scaleLinear, ScaleLinear, ScaleTime, ScaleOrdinal, ScaleBand } from "d3-scale";
 import { scaleTime } from "d3-scale";
 import { scaleBand } from "d3-scale";
 
-class ScaleFinder<T> {
+class ScaleFinder<T extends Numeric> {
   private data: T[];
 
   constructor(data: T[]) {
@@ -11,33 +11,48 @@ class ScaleFinder<T> {
   }
 
   private getInterval() {
-    const MAX = max(this.data, (d: any) => d);
-    const MIN = min(this.data, (d: any) => d);
-    const interval = [MIN, MAX];
+    const MAX = max(this.data);
+    const MIN = min(this.data);
 
-    return interval;
+    if (MIN === undefined || MAX === undefined) {
+      return undefined;
+    } else {
+      const interval = [MIN, MAX];
+      return interval;
+    }
   }
 
-  public getLinearScale() {
+  public getLinearScale(): ScaleLinear<T, T> | undefined {
     const interval = this.getInterval();
-    const scale = scaleLinear().domain(interval);
+    let scale: ScaleLinear<T, T>;
+
+    if (interval !== undefined) {
+      scale = scaleLinear<T, T>().domain(interval);
+      return scale;
+    }
+
+    return undefined;
+  }
+
+  public getTimeScale(): ScaleTime<T, T> | undefined {
+    const interval = this.getInterval();
+    let scale: ScaleTime<T, T>;
+
+    if (interval !== undefined) {
+      scale = scaleTime<T, T>().domain(interval);
+      return scale;
+    }
+
+    return undefined;
+  }
+
+  public getOrdinalScale(binWidth: number): ScaleBand<T> {
+    const scale = scaleBand<T>().domain(this.data);
+
+    scale.padding(binWidth);
 
     return scale;
   }
-
-  public getTimeScale() {
-    const interval = this.getInterval();
-    const scale = scaleTime().domain(interval);
-
-    return scale;
-  }
-
-  //public getOrdinalScale(binWidth: number) {
-  //  const scale = scaleBand().domain(this.data);
-  //  scale.padding(binWidth);
-
-  //  return scale;
-  //}
 }
 
 export default ScaleFinder;
