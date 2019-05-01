@@ -4,3 +4,4 @@ coverage
 build
 yarn-error.log
 .env
+tags
