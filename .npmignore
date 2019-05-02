@@ -8,3 +8,10 @@ webpack.config.js
 yarn-error.log
 .babelrc
 .env
+tags
+tsconfig.json
+tslint.json
+yarn.lock
+.gitmessage.txt
+.prettierrc
+.travis.yml
