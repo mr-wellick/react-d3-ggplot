@@ -1,3 +1,5 @@
+![Travis (.org)](https://api.travis-ci.org/Ll2NZ/react-d3-ggplot.svg?branch=master)
+
 # react-d3-ggplot
 
 - Using React.js and D3.js to build simple and reusable components for data visualizations on the web.
