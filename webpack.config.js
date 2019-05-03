@@ -12,13 +12,13 @@ module.exports = ({ mode } = { mode: "production" }) => {
   return merge(
     {
       mode,
-      entry: path.join(__dirname, "./src/__development__/index.js"),
+      entry: path.join(__dirname, "./__development__/index.js"),
       output: {
         path: path.join(__dirname, "build"),
         filename: "index.js"
       },
       plugins: [
-        new template({ template: "src/__development__/index.html" }),
+        new template({ template: "./__development__/index.html" }),
         new webpack.ProgressPlugin()
       ]
     },

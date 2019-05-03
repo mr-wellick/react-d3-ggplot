@@ -1,15 +1,8 @@
 import React from "react";
 import { useState } from "react";
-//import { useEffect } from "react";
-//import { Background } from "../Background/";
-//import { GGPLOT } from "../GGPLOT/";
-//import { Line } from "../Line/";
-//import { Points } from "../Points/";
-//import { Rects } from "../Rects/";
-import { XAxis } from "../XAxis";
-import { GEOMS } from "../GEOMS";
+import { XAxis } from "../src/XAxis";
+import { GEOMS } from "../src/GEOMS";
 import mpg from "./Data/mpg.json";
-import { geoStream } from "d3";
 //import { nest } from "d3-collection";
 
 //function formatData() {
