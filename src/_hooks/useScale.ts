@@ -1,7 +1,7 @@
 import { ScaleFinder } from "../utilities/";
 import { IAppContext } from "../_context/ChartContext";
 
-function findScale(context: IAppContext, componentName: string) {
+function findScale(context: IAppContext<string | number | object>, componentName: string) {
   let keyToUse: string;
 
   if (componentName === "XAxis" || componentName === "XGrid") {
@@ -9,16 +9,18 @@ function findScale(context: IAppContext, componentName: string) {
   } else if (componentName === "YAxis" || componentName === "YGrid") {
     keyToUse = context.aes[1];
   } else {
-    throw new Error("An invalid component name, used to calculate the scale, was used.");
+    throw new Error(
+      `Expected one of the following component names: XAxis, YAxis, XGrid, or YGrid. Instead, received the following: ${componentName}.`
+    );
   }
 
-  const values = context.data.map(item => item[keyToUse]);
+  const values: string[] | number[] | object[] = context.data.map(item => item[keyToUse]);
   const scale = new ScaleFinder(values);
 
   return scale;
 }
 
-function useScale(context: IAppContext, componentName: string) {
+function useScale(context: IAppContext<string | number | object>, componentName: string) {
   const scale = findScale(context, componentName);
 
   // find appropiate scale type
