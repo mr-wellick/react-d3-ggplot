@@ -1,6 +1,6 @@
 //import { ScaleFinder } from "../../utilities/";
 import uniq from "lodash.uniq";
-import mpg from "../../__development__/Data/mpg.json";
+import mpg from "../../../__development__/Data/mpg.json";
 
 test("constructor initialization", () => {
   // get x-values or y-values first
