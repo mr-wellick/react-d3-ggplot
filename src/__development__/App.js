@@ -7,8 +7,9 @@ import { useState } from "react";
 //import { Points } from "../Points/";
 //import { Rects } from "../Rects/";
 import { XAxis } from "../XAxis";
+import { GEOMS } from "../GEOMS";
 import mpg from "./Data/mpg.json";
-import { ChartContext } from "../_context";
+import { geoStream } from "d3";
 //import { nest } from "d3-collection";
 
 //function formatData() {
@@ -32,11 +33,9 @@ function App() {
   });
 
   return (
-    <ChartContext.Provider value={state}>
-      <svg width={state.dimensions.width} height={state.dimensions.height}>
-        <XAxis />
-      </svg>
-    </ChartContext.Provider>
+    <GEOMS {...state}>
+      <XAxis />
+    </GEOMS>
   );
 }
 

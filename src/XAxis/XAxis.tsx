@@ -8,7 +8,11 @@ import { select } from "d3-selection";
 import { axisBottom, AxisDomain, AxisScale } from "d3-axis";
 import { format } from "d3-format";
 
-function XAxis(props) {
+interface IProps {
+  label: string;
+}
+
+function XAxis(props: IProps) {
   const context = useContext<IAppContext<string | number | object>>(ChartContext);
   const scale: AxisScale<AxisDomain> = useScale(context, "XAxis");
 
@@ -23,7 +27,7 @@ function XAxis(props) {
 
     // format x-labels
     if (typeof data[0][aes[0]] === "number" && props.label !== undefined) {
-      node.selectAll<SVGTextElement, number>("text").html(d => format(props.label)(d));
+      node.selectAll<SVGTextElement, number>("text").html(datum => format(props.label)(datum));
     }
   });
 
