@@ -41,6 +41,12 @@ const someOtherData = [
   { experience: 3, pay: 1000, hrs: 65, date: new Date("01-01-2010") }, // When using dates, they must be formatted as
   { experience: 7, pay: 3000, hrs: 100, date: new Date("01-07-2018") } // valid JavaScript date objects, as in this example.
 ];
+
+// if you want to use categories, just use strings or covernt your values to strings
+const someOtherData = [
+  { role: "executive", pay: 1000, hrs: String(65), date: new Date("01-01-2010") },
+  { role: "developer", pay: 3000, hrs: String(100), date: new Date("01-07-2018") }
+];
 ```
 
 ## 2. The main component in `react-d3-ggplot` is `<GGPLOT/>`
