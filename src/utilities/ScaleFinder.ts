@@ -10,7 +10,7 @@ class ScaleFinder<T extends Numeric> {
     this.data = data;
   }
 
-  private getInterval() {
+  private getInterval(): T[] | undefined {
     const MAX = max(this.data);
     const MIN = min(this.data);
 
@@ -24,10 +24,9 @@ class ScaleFinder<T extends Numeric> {
 
   public getLinearScale(): ScaleLinear<T, T> | undefined {
     const interval = this.getInterval();
-    let scale: ScaleLinear<T, T>;
 
     if (interval !== undefined) {
-      scale = scaleLinear<T, T>().domain(interval);
+      const scale: ScaleLinear<T, T> = scaleLinear<T, T>().domain(interval);
       return scale;
     }
 
@@ -36,10 +35,9 @@ class ScaleFinder<T extends Numeric> {
 
   public getTimeScale(): ScaleTime<T, T> | undefined {
     const interval = this.getInterval();
-    let scale: ScaleTime<T, T>;
 
     if (interval !== undefined) {
-      scale = scaleTime<T, T>().domain(interval);
+      const scale: ScaleTime<T, T> = scaleTime<T, T>().domain(interval);
       return scale;
     }
 
@@ -48,7 +46,6 @@ class ScaleFinder<T extends Numeric> {
 
   public getOrdinalScale(binWidth: number): ScaleBand<T> {
     const scale = scaleBand<T>().domain(this.data);
-
     scale.padding(binWidth);
 
     return scale;
