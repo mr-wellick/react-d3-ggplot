@@ -4,7 +4,7 @@ import { scaleTime, ScaleTime } from "d3-scale";
 import { scaleBand, ScaleBand } from "d3-scale";
 
 class ScaleFinder<T extends Numeric> {
-  private data: T[];
+  public data: T[];
 
   constructor(data: T[]) {
     this.data = data;

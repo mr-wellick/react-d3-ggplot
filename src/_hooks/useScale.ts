@@ -1,7 +1,7 @@
 import { ScaleFinder } from "../utilities/";
-import { IAppContext } from "../_context/ChartContext";
+import { IAppContext } from "../_context/";
 
-function findScale(context: IAppContext<string | number | object>, componentName: string) {
+function findScale(context: IAppContext, componentName: string) {
   let keyToUse: string;
 
   if (componentName === "XAxis" || componentName === "XGrid") {
@@ -14,24 +14,32 @@ function findScale(context: IAppContext<string | number | object>, componentName
     );
   }
 
-  const values: string[] | number[] | object[] = context.data.map(item => item[keyToUse]);
+  const values: any = context.data.map(item => item[keyToUse]);
   const scale = new ScaleFinder(values);
 
   return scale;
 }
 
-function useScale(context: IAppContext<string | number | object>, componentName: string) {
+function useScale(context: IAppContext, componentName: string) {
   const scale = findScale(context, componentName);
 
   // find appropiate scale type
   let scaleType;
 
   if (typeof scale.data[0] === "number") {
-    scaleType = scale.getLinearScale().nice();
+    scaleType = scale.getLinearScale();
+
+    if (scaleType) {
+      scaleType = scaleType.nice();
+    }
   }
 
   if (typeof scale.data[0] === "object") {
-    scaleType = scale.getTimeScale().nice();
+    scaleType = scale.getTimeScale();
+
+    if (scaleType) {
+      scaleType = scaleType.nice();
+    }
   }
 
   if (typeof scale.data[0] === "string") {
@@ -42,9 +50,13 @@ function useScale(context: IAppContext<string | number | object>, componentName:
   const { width, height, padding } = context.dimensions;
 
   if (componentName === "XAxis" || componentName === "XGrid") {
-    scaleType.range([padding, width - padding]);
+    if (scaleType) {
+      scaleType.range([padding, width - padding]);
+    }
   } else if (componentName === "YAxis" || componentName === "YGrid") {
-    scaleType.range([height - padding, padding]);
+    if (scaleType) {
+      scaleType.range([height - padding, padding]);
+    }
   }
 
   return scaleType;
