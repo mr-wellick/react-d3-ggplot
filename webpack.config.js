@@ -17,6 +17,9 @@ module.exports = ({ mode } = { mode: "production" }) => {
         path: path.join(__dirname, "build"),
         filename: "index.js"
       },
+      resolve: {
+        extensions: [".ts", ".tsx", ".js"]
+      },
       plugins: [
         new template({ template: "./__development__/index.html" }),
         new webpack.ProgressPlugin()
