@@ -14,8 +14,8 @@ function XorYScale(context: IContext, componentName: string) {
     }
   } else if (componentName === "YAxis" || componentName === "YGrid") {
     if (typeof data[1][aes[1]] === "number") {
-      const xValues: Numeric[] = data.map(data => data[aes[0]]);
-      const scale = new LinearScale(xValues).getScale();
+      const yValues: Numeric[] = data.map(data => data[aes[0]]);
+      const scale = new LinearScale(yValues).getScale();
 
       return scale;
     }
