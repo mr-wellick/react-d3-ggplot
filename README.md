@@ -1,5 +1,7 @@
+![NPM](https://img.shields.io/npm/l/react-d3-ggplot.svg?color=%230f82bc&style=popout-square)
+![npm](https://img.shields.io/npm/v/react-d3-ggplot.svg?style=popout-square)
 ![Travis (.org)](https://api.travis-ci.org/Ll2NZ/react-d3-ggplot.svg?branch=master)
-[![codecov](https://codecov.io/gh/Ll2NZ/react-d3-ggplot/branch/master/graph/badge.svg)](https://codecov.io/gh/Ll2NZ/react-d3-ggplot)
+![Codecov](https://img.shields.io/codecov/c/github/ll2nz/react-d3-ggplot.svg?style=popout-square)
 
 # react-d3-ggplot
 
