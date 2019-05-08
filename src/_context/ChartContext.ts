@@ -1,12 +1,12 @@
 import { createContext } from "react";
 
-export interface IAppContext {
-  data: { [key: string]: string | number | Date }[];
+export interface IContext {
+  data: any[];
   aes: [string, string];
   dimensions: { width: number; height: number; padding: number };
 }
 
-const ChartContext = createContext<IAppContext>({
+const ChartContext = createContext<IContext>({
   data: [],
   aes: ["", ""],
   dimensions: { width: window.innerWidth, height: window.innerHeight, padding: 50 }
