@@ -1,2 +1,2 @@
 export { default as ChartContext } from "./ChartContext";
-export { IAppContext } from "./ChartContext";
+export { IContext } from "./ChartContext";

@@ -1,42 +1,39 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
-import { useRef } from "react";
-import { ChartContext } from "../_context/";
-import { IContext } from "../_context/";
+import { ChartContext, IContext } from "../_context/";
 import { useScale } from "../_hooks/";
 import { select } from "d3-selection";
-import { axisBottom } from "d3-axis";
+import { axisLeft } from "d3-axis";
 import { format } from "d3-format";
 
 interface IProps {
   label: string;
 }
 
-// componet using application context
-function XAxis(props: IProps) {
+function YAxis(props: IProps) {
   // here we use any so we can it in when select(). if we don't, we can only use a STRING to select node.
   // And we don't want that since we'll be accidentally toucing other <g> elements
   const ref: any = useRef(null);
   const context = useContext<IContext>(ChartContext);
-  const scale = useScale(context, "XAxis");
+  const scale = useScale(context, "YAxis");
 
   useEffect(() => {
-    const { dimensions, aes, data } = context;
-    const axisLocation = `translate(0, ${dimensions.height - dimensions.padding})`;
+    const { data, aes, dimensions } = context;
+    const axisLocation = `translate(${dimensions.padding}, 0)`;
 
-    // select node returned by component and appends x-axis
-    const node = select<SVGGElement, number | Date | string>(ref.current).attr(
+    // select node returned by component and appends y-axis
+    const node = select<SVGGElement, string | number | object>(ref.current).attr(
       "transform",
       axisLocation
     );
 
     if (scale !== undefined) {
-      node.call(axisBottom(scale));
+      node.call(axisLeft(scale));
     }
 
-    // format x-labels
-    if (typeof data[0][aes[0]] === "number" && props.label !== undefined) {
+    // format y-labels
+    if (typeof data[1][aes[1]] === "number" && props.label !== undefined) {
       node.selectAll<SVGTextElement, number>("text").html(datum => format(props.label)(datum));
     }
   });
@@ -44,4 +41,4 @@ function XAxis(props: IProps) {
   return <g ref={ref} />;
 }
 
-export default XAxis;
+export default YAxis;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { XAxis } from "../src/XAxis";
+import { YAxis } from "../src/YAxis";
 import { GEOMS } from "../src/GEOMS";
 import mpg from "./Data/mpg.json";
 //import { nest } from "d3-collection";
@@ -26,9 +27,14 @@ function App() {
   });
 
   return (
-    <GEOMS {...state}>
-      <XAxis />
-    </GEOMS>
+    <>
+      <GEOMS {...state}>
+        {/*
+         */}
+        <YAxis />
+        <XAxis />
+      </GEOMS>
+    </>
   );
 }
 

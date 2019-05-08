@@ -1,65 +1,42 @@
-import { ScaleFinder } from "../utilities/";
-import { IAppContext } from "../_context/";
+import { LinearScale } from "../utilities/";
+import { IContext } from "../_context/";
+import { Numeric } from "d3-array";
 
-function findScale(context: IAppContext, componentName: string) {
-  let keyToUse: string;
+function XorYScale(context: IContext, componentName: string) {
+  const { data, aes } = context;
 
   if (componentName === "XAxis" || componentName === "XGrid") {
-    keyToUse = context.aes[0];
+    if (typeof data[0][aes[0]] === "number") {
+      const xValues: Numeric[] = data.map(data => data[aes[0]]);
+      const scale = new LinearScale(xValues).getScale();
+
+      return scale;
+    }
   } else if (componentName === "YAxis" || componentName === "YGrid") {
-    keyToUse = context.aes[1];
-  } else {
-    throw new Error(
-      `Expected one of the following component names: XAxis, YAxis, XGrid, or YGrid. Instead, received the following: ${componentName}.`
-    );
+    if (typeof data[1][aes[1]] === "number") {
+      const xValues: Numeric[] = data.map(data => data[aes[0]]);
+      const scale = new LinearScale(xValues).getScale();
+
+      return scale;
+    }
   }
-
-  const values: any = context.data.map(item => item[keyToUse]);
-  const scale = new ScaleFinder(values);
-
-  return scale;
 }
 
-function useScale(context: IAppContext, componentName: string) {
-  const scale = findScale(context, componentName);
-
-  // find appropiate scale type
-  let scaleType;
-
-  if (typeof scale.data[0] === "number") {
-    scaleType = scale.getLinearScale();
-
-    if (scaleType) {
-      scaleType = scaleType.nice();
-    }
-  }
-
-  if (typeof scale.data[0] === "object") {
-    scaleType = scale.getTimeScale();
-
-    if (scaleType) {
-      scaleType = scaleType.nice();
-    }
-  }
-
-  if (typeof scale.data[0] === "string") {
-    scaleType = scale.getOrdinalScale(0.5);
-  }
-
-  // we need to visually spread our points
-  const { width, height, padding } = context.dimensions;
+function useScale(context: IContext, componentName: string) {
+  const { dimensions } = context;
+  const scale = XorYScale(context, componentName);
 
   if (componentName === "XAxis" || componentName === "XGrid") {
-    if (scaleType) {
-      scaleType.range([padding, width - padding]);
+    if (scale !== undefined) {
+      scale.range([dimensions.padding, dimensions.width - dimensions.padding]);
     }
   } else if (componentName === "YAxis" || componentName === "YGrid") {
-    if (scaleType) {
-      scaleType.range([height - padding, padding]);
+    if (scale !== undefined) {
+      scale.range([dimensions.height - dimensions.padding, dimensions.padding]);
     }
   }
 
-  return scaleType;
+  return scale;
 }
 
 export default useScale;
