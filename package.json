@@ -4,8 +4,8 @@
     "prod": "rimraf build && babel src --out-dir build --ignore __development__/ --ignore src/utilities/__tests__",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "format:check": "prettier --list-different \"src/**/*.{js,jsx}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,tsx}\"",
+    "format:check": "prettier --list-different \"src/**/*.{js,ts,tsx}\"",
     "lint": "tslint --project ."
   },
   "license": "GPL-3.0",
