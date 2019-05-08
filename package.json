@@ -6,7 +6,8 @@
     "test:watch": "jest --watch",
     "format": "prettier --write \"src/**/*.{js,ts,tsx}\"",
     "format:check": "prettier --list-different \"src/**/*.{js,ts,tsx}\"",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "validate": "concurrently \"yarn run format:check\" \"yarn run lint\" \"yarn run test\""
   },
   "license": "GPL-3.0",
   "name": "react-d3-ggplot",
@@ -30,6 +31,7 @@
     "@types/react": "^16.8.14",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
+    "concurrently": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.7.1",
     "prettier": "^1.17.0",

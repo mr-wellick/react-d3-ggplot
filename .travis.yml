@@ -9,3 +9,5 @@ branches:
     - master
 notifications:
   email: false
+script:
+  - yarn run validate 
