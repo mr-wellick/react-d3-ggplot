@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "yarn run webpack-dev-server --env.mode development --open --hot",
-    "prod": "rimraf build && babel src --out-dir build --ignore src/__development__ --ignore src/utilities/__tests__",
+    "prod": "rimraf build && babel src --out-dir build --ignore __development__/ --ignore src/utilities/__tests__",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
