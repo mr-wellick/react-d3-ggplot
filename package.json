@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "yarn run webpack-dev-server --env.mode development --open --hot",
-    "prod": "rimraf build && babel src --out-dir build --ignore src/__development__ --ignore src/utilities/__tests__",
+    "prod": "rimraf build && babel src --out-dir build --ignore __development__/ --ignore src/utilities/__tests__",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -24,7 +24,9 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/d3": "^5.7.2",
+    "@types/jest": "^24.0.12",
     "@types/react": "^16.8.14",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
@@ -33,6 +35,7 @@
     "prettier": "^1.17.0",
     "react-testing-library": "^6.1.2",
     "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^5.3.3",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",

@@ -15,8 +15,8 @@ interface IProps {
 
 // componet using application context
 function XAxis(props: IProps) {
-  // here we use any so we can it in when select(). if we don't, we can only use a STRING to select node.
-  // And we don't want that since we'll be accidentally toucing other <g> elements
+  // here we use any so we can use ref in select(). if we don't, we can only use a STRING to select a node.
+  // And we don't want that since we'll be accidentally touching other <g> elements
   const ref: any = useRef(null);
   const context = useContext<IContext>(ChartContext);
   const scale = useScale(context, "XAxis");

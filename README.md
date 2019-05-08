@@ -42,8 +42,8 @@ const someOtherData = [
   { experience: 7, pay: 3000, hrs: 100, date: new Date("01-07-2018") } // valid JavaScript date objects, as in this example.
 ];
 
-// if you want to use categories, just use strings or covernt your values to strings
-const someOtherData = [
+// if you want to use categories, just use strings or convert your values to strings
+const moreData = [
   { role: "executive", pay: 1000, hrs: String(65), date: new Date("01-01-2010") },
   { role: "developer", pay: 3000, hrs: String(100), date: new Date("01-07-2018") }
 ];
