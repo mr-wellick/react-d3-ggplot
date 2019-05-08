@@ -1,4 +1,5 @@
 ![Travis (.org)](https://api.travis-ci.org/Ll2NZ/react-d3-ggplot.svg?branch=master)
+[![codecov](https://codecov.io/gh/Ll2NZ/react-d3-ggplot/branch/master/graph/badge.svg)](https://codecov.io/gh/Ll2NZ/react-d3-ggplot)
 
 # react-d3-ggplot
 
