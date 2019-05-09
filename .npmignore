@@ -16,3 +16,5 @@ yarn.lock
 .gitmessage.txt
 .prettierrc
 .travis.yml
+__development__
+CODE_OF_CONDUCT.md
