@@ -3,7 +3,9 @@ import { useContext } from "react";
 import { ChartContext } from "../_context/";
 import { IContext } from "../_context/";
 
-interface IProps {}
+interface IProps {
+  color?: string;
+}
 
 function Background(props: IProps) {
   const { dimensions } = useContext(ChartContext);

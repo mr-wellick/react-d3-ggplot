@@ -5,8 +5,8 @@ import { IContext } from "../_context";
 import { Background } from "../Background/";
 import { XAxis } from "../XAxis/";
 import { YAxis } from "../YAxis/";
-//import { XGrid } from "../XGrid/";
-//import { YGrid } from "../YGrid/";
+// import { XGrid } from "../XGrid/";
+// import { YGrid } from "../YGrid/";
 
 interface IProps extends IContext {
   children: ReactChild;
@@ -19,9 +19,9 @@ function GGPLOT(props: IProps) {
         <Background />
         <XAxis />
         <YAxis />
-        {/**
-        <XGrid />
-        <YGrid />
+        {/*
+          <XGrid />
+          <YGrid />
          */}
         {props.children}
       </svg>

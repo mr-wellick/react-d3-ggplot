@@ -7,7 +7,9 @@ import { ChartContext } from "../_context/";
 import { select } from "d3-selection";
 import { axisLeft } from "d3-axis";
 
-interface IProps {}
+interface IProps {
+  color?: string;
+}
 
 function YGrid(props: IProps) {
   const node: any = useRef(null);

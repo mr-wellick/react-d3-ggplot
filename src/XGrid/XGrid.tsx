@@ -7,7 +7,9 @@ import { ChartContext } from "../_context/";
 import { select } from "d3-selection";
 import { axisBottom } from "d3-axis";
 
-interface IProps {}
+interface IProps {
+  color?: string;
+}
 
 function XGrid(props: IProps) {
   const ref: any = useRef(null);
