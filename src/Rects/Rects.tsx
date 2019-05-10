@@ -1,39 +1,36 @@
 import React from "react";
 import { useContext } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
-import { select } from "d3-selection";
 import { useScale } from "../_hooks/";
 import { ChartContext } from "../_context/";
 
-function Rects(props) {
-  const node = useRef(null);
+interface IProps {
+  fill?: string;
+}
+
+function Rects(props: IProps) {
   const context = useContext(ChartContext);
-  const xScale = useScale(context, "XAxis");
-  const yScale = useScale(context, "YAxis");
+  const xScale: any = useScale(context, "XAxis");
+  const yScale: any = useScale(context, "YAxis");
 
-  useEffect(() => {
-    // clear graph for next set of data points if we have data
-    if (node.current.children.length > 0)
-      select(this.node)
-        .selectAll("rect")
-        .remove();
+  // will change once we start testing
+  if (!xScale || !yScale) {
+    return <h1>whoops</h1>;
+  }
 
-    // append new visualization
-    select(node.current)
-      .selectAll("rect")
-      .data(context.data)
-      .enter()
-      .append("rect")
-      .attr("width", xScale.bandwidth())
-      .attr("height", d => yScale.range()[0] - yScale(d[context.aes[1]]))
-      .attr("x", d => xScale(d[context.aes[0]]))
-      .attr("y", d => yScale(d[context.aes[1]]))
-      .attr("fill", "black")
-      .attr("opacity", "0.6");
-  });
-
-  return <g ref={node} />;
+  return (
+    <g>
+      {context.data.map((datum, index) => (
+        <rect
+          key={index}
+          width={xScale.bandwidth()} // this works for ordinal scales but we need to account for time and number scales as well
+          height={yScale.range()[0] - yScale(datum[context.aes[1]])}
+          x={xScale(datum[context.aes[0]])}
+          y={yScale(datum[context.aes[1]])}
+          fill={!props.fill ? "cyan" : props.fill}
+        />
+      ))}
+    </g>
+  );
 }
 
 export default Rects;

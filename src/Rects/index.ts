@@ -1,1 +1,1 @@
-export { default as Rects } from "./Rects.js";
+export { default as Rects } from "./Rects";
