@@ -8,17 +8,17 @@ import { YAxis } from "../src/YAxis";
 import { Points } from "../src/Points";
 import { Rects } from "../src/Rects";
 import { Line } from "../src/Line";
-import mpg from "./Data/mpg.json";
-//import { nest } from "d3-collection";
+// import mpg from "./Data/mpg.json";
+// import { nest } from "d3-collection";
 
-//function formatData() {
-//  const subset = nest()
-//    .key(d => d["year"])
-//    .entries(mpg);
-//  const rawData = subset.map(item => item["values"]);
+// function formatData() {
+//   const subset = nest()
+//     .key(d => d["year"])
+//     .entries(mpg);
+//   const rawData = subset.map(item => item["values"]);
 //
-//  return rawData;
-//}
+//   return rawData;
+// }
 
 function App() {
   const [state, setState] = useState({
@@ -36,7 +36,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         // format date to JS date objects
-        const formattedData = data.map(item => ({
+        const formattedData = data.map((item: { [key: string]: any }) => ({
           ...item,
           date: new Date(item.date)
         }));
