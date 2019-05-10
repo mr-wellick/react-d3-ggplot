@@ -18,7 +18,7 @@ function XAxis(props: IProps) {
   // And we don't want that since we'll be accidentally touching other <g> elements
   const ref: any = useRef(null);
   const context = useContext(ChartContext);
-  const scale = useScale(context, "XAxis");
+  const scale: any = useScale(context, "XAxis");
 
   useEffect(() => {
     const { dimensions, aes, data } = context;
