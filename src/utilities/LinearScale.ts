@@ -10,11 +10,11 @@ class LinearScale {
   }
 
   private getInterval() {
-    const MAX = max(this.data);
     const MIN = min(this.data);
+    const MAX = max(this.data);
 
-    if (MAX !== undefined && MIN !== undefined) {
-      const interval = [MAX, MIN];
+    if (MIN !== undefined && MAX !== undefined) {
+      const interval = [MIN, MAX];
       return interval;
     }
 
