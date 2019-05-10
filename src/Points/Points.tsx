@@ -4,7 +4,6 @@ import { ChartContext } from "../_context/";
 import { useScale } from "../_hooks/";
 
 interface IProps {
-  color?: string;
   r?: number;
   fill?: string;
 }
