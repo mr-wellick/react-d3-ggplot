@@ -8,7 +8,7 @@ import { axisLeft } from "d3-axis";
 import { format } from "d3-format";
 
 interface IProps {
-  label: string;
+  label?: any;
 }
 
 function YAxis(props: IProps) {
