@@ -3,7 +3,7 @@ import path from "path";
 import webpack from "webpack";
 import merge from "webpack-merge";
 import template from "html-webpack-plugin";
-import development from "./build-utils/webpack.development"; // Development, production, and presets
+import development from "./build-utils/webpack.development";
 
 interface IModes {
   mode: string;
@@ -29,6 +29,6 @@ export default (paramsPassedByWebpack: IModes) => {
         new webpack.ProgressPlugin()
       ]
     },
-    development()
+    development
   );
 };

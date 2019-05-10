@@ -1,4 +1,4 @@
-export default () => ({
+export default {
   devServer: {
     historyApiFallback: true,
     stats: "errors-only",
@@ -22,4 +22,4 @@ export default () => ({
       }
     ]
   }
-});
+};
