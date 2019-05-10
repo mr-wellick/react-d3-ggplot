@@ -1,6 +1,9 @@
-import uniq from "lodash.uniq";
+import { uniq } from "lodash";
 
-const colors = [
+type Colors = { [key: string]: string }[];
+type Data = { [key: string]: string }[];
+
+const colors: Colors = [
   { fill: "rgb(250, 86, 209)" },
   { fill: "rgb(155, 127, 255)" },
   { fill: "rgb(0, 173, 232)" },
@@ -11,20 +14,22 @@ const colors = [
 ];
 
 class ColorCode {
-  constructor(data, variableName) {
+  private colors: Colors;
+
+  constructor(private data: Data, private variableName: string) {
     this.data = data;
     this.variableName = variableName;
     this.colors = colors;
   }
 
-  getUniqueCategories() {
+  private getUniqueCategories() {
     const categoriesToSubsetBy = this.data.map(item => item[this.variableName]);
     const uniqueCategories = uniq(categoriesToSubsetBy);
 
     return uniqueCategories;
   }
 
-  getColorCombo() {
+  public getColorCombo() {
     const uniqueCategories = this.getUniqueCategories();
     const colorCombos = uniqueCategories.map((item, index) => ({
       category: item,
