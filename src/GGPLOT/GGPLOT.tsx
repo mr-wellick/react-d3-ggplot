@@ -1,5 +1,4 @@
 import React, { ReactChild } from "react";
-import PropTypes from "prop-types";
 import { ChartContext } from "../_context/";
 import { IContext } from "../_context";
 import { Background } from "../Background/";
@@ -28,10 +27,5 @@ function GGPLOT(props: IProps) {
     </ChartContext.Provider>
   );
 }
-
-GGPLOT.propTypes = {
-  dimensions: PropTypes.object,
-  children: PropTypes.any
-};
 
 export default GGPLOT;
