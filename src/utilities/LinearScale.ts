@@ -21,7 +21,7 @@ class LinearScale {
     return undefined;
   }
 
-  public getScale() {
+  public getScale(): ScaleLinear<number, number> | undefined {
     const interval = this.getInterval();
     let scale: ScaleLinear<number, number>;
 

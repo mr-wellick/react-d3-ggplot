@@ -6,7 +6,7 @@ class TimeScale {
     this.data = data;
   }
 
-  private getInterval() {
+  private getInterval(): Date[] | undefined {
     const MAX = max(this.data);
     const MIN = min(this.data);
 

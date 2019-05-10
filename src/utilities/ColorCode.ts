@@ -1,14 +1,10 @@
 import { uniq } from "lodash";
 
-interface IColors {
-  [key: string]: string;
+interface IShape {
+  [key: string]: any;
 }
 
-interface IData {
-  [key: string]: string;
-}
-
-const colors: IColors[] = [
+const colors: IShape[] = [
   { fill: "rgb(250, 86, 209)" },
   { fill: "rgb(155, 127, 255)" },
   { fill: "rgb(0, 173, 232)" },
@@ -19,22 +15,22 @@ const colors: IColors[] = [
 ];
 
 class ColorCode {
-  private colors: IColors[];
+  private colors: IShape[];
 
-  constructor(private data: IData[], private variableName: string) {
+  constructor(private data: IShape[], private variableName: string) {
     this.data = data;
     this.variableName = variableName;
     this.colors = colors;
   }
 
-  private getUniqueCategories() {
+  private getUniqueCategories(): string[] {
     const categoriesToSubsetBy = this.data.map(item => item[this.variableName]);
     const uniqueCategories = uniq(categoriesToSubsetBy);
 
     return uniqueCategories;
   }
 
-  public getColorCombo() {
+  public getColorCombo(): IShape[] {
     const uniqueCategories = this.getUniqueCategories();
     const colorCombos = uniqueCategories.map((item: string, index: number) => ({
       category: item,
