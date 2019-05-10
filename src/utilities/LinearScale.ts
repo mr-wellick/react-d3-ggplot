@@ -9,7 +9,7 @@ class LinearScale {
     this.data = data;
   }
 
-  private getInterval() {
+  private getInterval(): Numeric[] | undefined {
     const MIN = min(this.data);
     const MAX = max(this.data);
 
