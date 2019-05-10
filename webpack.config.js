@@ -12,7 +12,7 @@ module.exports = ({ mode } = { mode: "production" }) => {
   return merge(
     {
       mode,
-      entry: path.join(__dirname, "./__development__/index.js"),
+      entry: path.join(__dirname, "./__development__/index.tsx"),
       output: {
         path: path.join(__dirname, "build"),
         filename: "index.js"
