@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { GEOMS } from "../src/GEOMS";
+import { Background } from "../src/Background";
 import { XAxis } from "../src/XAxis";
 import { YAxis } from "../src/YAxis";
-import { Background } from "../src/Background";
+import { Points } from "../src/Points";
 import mpg from "./Data/mpg.json";
 //import { nest } from "d3-collection";
 
@@ -35,6 +36,7 @@ function App() {
         <Background />
         <YAxis />
         <XAxis />
+        <Points />
       </GEOMS>
     </>
   );
