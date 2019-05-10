@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { GEOMS } from "../src/GEOMS";
 import { XAxis } from "../src/XAxis";
 import { YAxis } from "../src/YAxis";
-import { GEOMS } from "../src/GEOMS";
+import { Background } from "../src/Background";
 import mpg from "./Data/mpg.json";
 //import { nest } from "d3-collection";
 
@@ -31,6 +32,7 @@ function App() {
       <GEOMS {...state}>
         {/*
          */}
+        <Background />
         <YAxis />
         <XAxis />
       </GEOMS>
