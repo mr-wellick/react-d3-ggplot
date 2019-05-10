@@ -1,9 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { ReactChild } from "react";
 import { Fragment } from "react";
 import { GGPLOT } from "../GGPLOT/";
+import { IContext } from "../_context";
 
-function FACETS(props) {
+interface IProps extends IContext {
+  children: ReactChild;
+}
+
+function FACETS(props: IProps) {
   return (
     <Fragment>
       {props.data.map((dataset, index) => (
@@ -18,10 +22,5 @@ function FACETS(props) {
     </Fragment>
   );
 }
-
-FACETS.propTypes = {
-  data: PropTypes.array,
-  children: PropTypes.any
-};
 
 export default FACETS;
