@@ -14,7 +14,9 @@ function Points(props: IProps) {
   const yScale: any = useScale(context, "YAxis");
 
   // will remove later when testing componet
-  if (!xScale || !yScale) return <h1>whoops</h1>;
+  if (!xScale || !yScale) {
+    return <h1>whoops</h1>;
+  }
 
   return (
     <g>
