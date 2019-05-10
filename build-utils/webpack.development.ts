@@ -1,4 +1,4 @@
-module.exports = () => ({
+export default () => ({
   devServer: {
     historyApiFallback: true,
     stats: "errors-only",

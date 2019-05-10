@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "yarn run webpack-dev-server --env.mode development --open --hot",
+    "dev": "yarn run webpack-dev-server --config-register @babel/register --env.mode development --open --hot",
     "prod": "rimraf build && babel src --out-dir build --ignore __development__/ --ignore src/utilities/__tests__",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
@@ -28,11 +28,15 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@babel/register": "^7.4.4",
     "@types/d3": "^5.7.2",
+    "@types/html-webpack-plugin": "^3.2.0",
     "@types/jest": "^24.0.12",
     "@types/lodash": "^4.14.126",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
+    "@types/webpack": "^4.4.31",
+    "@types/webpack-merge": "^4.1.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
     "codecov": "^3.3.0",
