@@ -1,4 +1,4 @@
-import React, { ReactChildren, ReactComponentElement, ReactChild } from "react";
+import React, { ReactChild } from "react";
 import { ChartContext, IContext } from "../_context/";
 
 interface IProps extends IContext {
