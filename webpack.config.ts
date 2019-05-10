@@ -5,12 +5,12 @@ import merge from "webpack-merge";
 import template from "html-webpack-plugin";
 import development from "./build-utils/webpack.development"; // Development, production, and presets
 
-interface Modes {
+interface IModes {
   mode: string;
 }
 
 // webpack config
-export default (paramsPassedByWebpack: Modes) => {
+export default (paramsPassedByWebpack: IModes) => {
   const { mode } = paramsPassedByWebpack;
 
   return merge(
