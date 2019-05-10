@@ -21,7 +21,8 @@ const validState: IContext = {
 
 test("<GEOMS /> throws an error when an invalid state object is passed in", () => {
   const node = () => {
-    render(<GEOMS {...notValidState} />); // ts-lint complains here. however we need to test the invalid state shape
+    // @ts-ignore
+    render(<GEOMS {...notValidState} />); // deliberately passed in an incorrect state shape
   };
 
   expect(node).toThrow();
@@ -39,8 +40,8 @@ test("<GEOMS/> uses ChartContext.Provider internally", () => {
   const { getByText } = render(
     <GEOMS {...validState}>
       <div>
-        this node is used as a place holder so we don't fail. The components passed to GEOMS use the
-        context value provided by GEOMS.
+        this node is used as a place holder so we don't fail. The components passed in here will use
+        the context value provided by GEOMS.
       </div>
     </GEOMS>
   );
