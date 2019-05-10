@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export interface IContext {
   data: any[];
-  aes: [string, string];
+  aes: string[];
   dimensions: { width: number; height: number; padding: number };
 }
 
