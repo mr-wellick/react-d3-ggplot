@@ -16,6 +16,7 @@
   "version": "0.0.0-development",
   "description": "React and D3 visualization components",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "author": "Pablo Lorenzo",
   "repository": {
     "type": "git",
