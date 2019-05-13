@@ -13,8 +13,8 @@ interface IProps {
 
 function Line(props: IProps) {
   const context = useContext(ChartContext);
-  const xScale: any = useScale(context, "XAxis");
-  const yScale: any = useScale(context, "YAxis");
+  const xScale: any = useScale("XAxis");
+  const yScale: any = useScale("YAxis");
 
   const lineToAppend = line()
     .x((d: any) => xScale(d[context.aes[0]]))

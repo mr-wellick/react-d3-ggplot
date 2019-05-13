@@ -9,8 +9,8 @@ interface IProps {
 
 function Rects(props: IProps) {
   const context = useContext(ChartContext);
-  const xScale: any = useScale(context, "XAxis");
-  const yScale: any = useScale(context, "YAxis");
+  const xScale: any = useScale("XAxis");
+  const yScale: any = useScale("YAxis");
 
   // will change once we start testing
   if (!xScale || !yScale) {

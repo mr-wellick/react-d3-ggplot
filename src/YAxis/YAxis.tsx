@@ -16,7 +16,7 @@ function YAxis(props: IProps) {
   // And we don't want that since we'll be accidentally touching other <g> elements
   const ref: any = useRef(null);
   const context = useContext(ChartContext);
-  const scale: any = useScale(context, "YAxis");
+  const scale: any = useScale("YAxis");
 
   useEffect(() => {
     const { data, aes, dimensions } = context;

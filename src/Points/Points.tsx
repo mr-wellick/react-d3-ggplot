@@ -10,8 +10,8 @@ interface IProps {
 
 function Points(props: IProps) {
   const context = useContext(ChartContext);
-  const xScale: any = useScale(context, "XAxis");
-  const yScale: any = useScale(context, "YAxis");
+  const xScale: any = useScale("XAxis");
+  const yScale: any = useScale("YAxis");
 
   // will remove later when testing componet
   if (!xScale || !yScale) {

@@ -14,7 +14,7 @@ interface IProps {
 function YGrid(props: IProps) {
   const node: any = useRef(null);
   const context = useContext(ChartContext);
-  const scale: any = useScale(context, YGrid.name);
+  const scale: any = useScale("YGrid");
 
   return <g ref={node} />;
 }

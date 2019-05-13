@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ChartContext } from "../_context/";
 import { LinearScale } from "../utilities/";
 import { TimeScale } from "../utilities/";
 import { OrdinalScale } from "../utilities/";
@@ -47,9 +49,10 @@ function XorYScale(context: IContext, componentName: string) {
   }
 }
 
-function useScale(context: IContext, componentName: string) {
-  const { dimensions } = context;
+function useScale(componentName: string) {
+  const context = useContext(ChartContext);
   const scale = XorYScale(context, componentName);
+  const { dimensions } = context;
 
   if (componentName === "XAxis" || componentName === "XGrid") {
     if (scale !== undefined) {

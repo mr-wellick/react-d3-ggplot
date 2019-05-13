@@ -14,7 +14,7 @@ interface IProps {
 function XGrid(props: IProps) {
   const ref: any = useRef(null);
   const context = useContext(ChartContext);
-  const scale: any = useScale(context, XGrid.name);
+  const scale: any = useScale("XGrid");
 
   return <g ref={ref} />;
 }
