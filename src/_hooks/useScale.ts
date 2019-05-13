@@ -9,8 +9,8 @@ import { Numeric } from "d3-array";
 // D3 is strict with its typing info. Thus, we are creating a new variable for each case:
 // Numeric[], Date[], String[]. Will change this later once I figure out how to abstract these details.
 // Once we rewirte the logic below, this will make our codebase more maintaible and scalable
-function XorYScale(context: IContext, componentName: string) {
-  const { data, aes } = context;
+function XorYScale(componentName: string) {
+  const { data, aes } = useContext(ChartContext);
 
   if (componentName === "XAxis" || componentName === "XGrid") {
     if (typeof data[0][aes[0]] === "number") {
@@ -50,9 +50,8 @@ function XorYScale(context: IContext, componentName: string) {
 }
 
 function useScale(componentName: string) {
-  const context = useContext(ChartContext);
-  const scale = XorYScale(context, componentName);
-  const { dimensions } = context;
+  const { dimensions } = useContext(ChartContext);
+  const scale = XorYScale(componentName);
 
   if (componentName === "XAxis" || componentName === "XGrid") {
     if (scale !== undefined) {
