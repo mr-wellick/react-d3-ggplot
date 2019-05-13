@@ -28,7 +28,7 @@ test("<GEOMS /> throws an error when an invalid state object is passed in", () =
   expect(node).toThrow();
 });
 
-test("<GEOMS/> throws an error when no props.children are passed in", () => {
+test("<GEOMS /> throws an error when no props.children are passed in", () => {
   const node = () => {
     render(<GEOMS {...validState} />);
   };
@@ -36,13 +36,23 @@ test("<GEOMS/> throws an error when no props.children are passed in", () => {
   expect(node).toThrow();
 });
 
-test("<GEOMS/> uses ChartContext.Provider internally", () => {
-  const { getByText } = render(
+test("<GEOMS /> should wrap its child or children component(s) in an <svg />", () => {
+  // passing in one child should not fail
+  const firstNode = render(
     <GEOMS {...validState}>
       <div>
         this node is used as a place holder so we don't fail. The components passed in here will use
         the context value provided by GEOMS.
       </div>
+    </GEOMS>
+  );
+
+  // passing in children should not fail
+  const secondNode = render(
+    <GEOMS {...validState}>
+      <div>I am a test child</div>
+      <div>I am a test child</div>
+      <div>I am a test child</div>
     </GEOMS>
   );
 });
