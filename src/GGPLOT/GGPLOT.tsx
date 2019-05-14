@@ -8,7 +8,7 @@ import { YAxis } from "../YAxis/";
 // import { YGrid } from "../YGrid/";
 
 interface IProps extends IContext {
-  children: ReactChild;
+  children?: ReactChild;
 }
 
 function GGPLOT(props: IProps) {

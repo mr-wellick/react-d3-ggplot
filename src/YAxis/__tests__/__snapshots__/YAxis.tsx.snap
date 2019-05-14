@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render an <svg> with only an YAxis 1`] = `
+<svg
+  height="300"
+  width="500"
+>
+  <g
+    fill="none"
+    font-family="sans-serif"
+    font-size="10"
+    text-anchor="end"
+    transform="translate(50, 0)"
+  >
+    <path
+      class="domain"
+      d="M-6,250.5H0.5V50.5H-6"
+      stroke="currentColor"
+    />
+    <g
+      class="tick"
+      opacity="1"
+      transform="translate(0,190)"
+    >
+      <line
+        stroke="currentColor"
+        x2="-6"
+      />
+      <text
+        dy="0.32em"
+        fill="currentColor"
+        x="-9"
+      >
+        0
+      </text>
+    </g>
+    <g
+      class="tick"
+      opacity="1"
+      transform="translate(0,110)"
+    >
+      <line
+        stroke="currentColor"
+        x2="-6"
+      />
+      <text
+        dy="0.32em"
+        fill="currentColor"
+        x="-9"
+      >
+        10
+      </text>
+    </g>
+  </g>
+</svg>
+`;
