@@ -5,7 +5,7 @@ coverage
 demos
 .babelrc
 jest.config.json
-webpack.config.js
+webpack.config.ts
 yarn-error.log
 .babelrc
 .env

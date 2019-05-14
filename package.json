@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "yarn run webpack-dev-server --config-register @babel/register --env.mode development --open --hot",
-    "prod": "rimraf build && babel src --out-dir build --ignore __development__/ --ignore src/utilities/__tests__",
+    "prod": "rimraf build && yarn run babel --presets @babel/preset-typescript --extensions \".ts,.tsx\" src/ --out-dir build --ignore src/**/**/__tests__",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:coverage": "cat ./coverage/lcov.info | codecov",
