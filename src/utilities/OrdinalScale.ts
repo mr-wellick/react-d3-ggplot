@@ -6,18 +6,6 @@ class OrdinalScale {
     this.data = data;
   }
 
-  private getInterval(): string[] | undefined {
-    const MAX = max(this.data);
-    const MIN = min(this.data);
-
-    if (MIN === undefined || MAX === undefined) {
-      return undefined;
-    } else {
-      const interval = [MIN, MAX];
-      return interval;
-    }
-  }
-
   public getScale(binWidth: number): ScaleBand<string> {
     const scale = scaleBand().domain(this.data);
     scale.padding(binWidth);
