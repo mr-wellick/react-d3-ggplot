@@ -12,13 +12,37 @@ interface IProps extends IContext {
 }
 
 function GGPLOT(props: IProps) {
+  if (!props.data || !props.aes || !props.dimensions) {
+    throw new Error("GGPLOT must be supplied with the following props: data, aes, and dimensions");
+  }
+
+  if (props.children) {
+    const componentName = React.Children.map(props.children, child => {
+      // @ts-ignore
+      if (child.type.displayName) {
+        // @ts-ignore
+        return child.type.displayName; // this property exists. don't know why ts is complaining
+      }
+    });
+
+    if (componentName.length === 0) {
+      throw new Error(
+        "GGPLOT does not accept raw HTML element(s). Pass is ONE of the following components: Line, Points, or Rects."
+      );
+    } else if (componentName.length === 2) {
+      throw new Error(
+        "GGPLOT only accepts ONE of the following VALID components: Line, Points, or Rects."
+      );
+    }
+  }
+
   return (
     <ChartContext.Provider value={props}>
       <svg width={props.dimensions.width} height={props.dimensions.height}>
-        <Background />
         <XAxis />
         <YAxis />
         {/*
+          <Background />
           <XGrid />
           <YGrid />
          */}
