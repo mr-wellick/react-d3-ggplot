@@ -9,11 +9,11 @@
     "format:check": "prettier --list-different \"src/**/*.{js,ts,tsx}\"",
     "lint": "tslint --project .",
     "validate": "concurrently \"yarn run format:check\" \"yarn run lint\" \"yarn run test\"",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": ""
   },
   "license": "GPL-3.0",
   "name": "react-d3-ggplot",
-  "version": "0.0.0-development",
+  "version": "1.1.0",
   "description": "React and D3 visualization components",
   "main": "build/index.js",
   "types": "build/index.d.ts",
