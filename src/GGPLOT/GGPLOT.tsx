@@ -29,7 +29,19 @@ function GGPLOT(props: IProps) {
       throw new Error(
         "GGPLOT does not accept raw HTML element(s). Pass is ONE of the following components: Line, Points, or Rects."
       );
-    } else if (componentName.length === 2) {
+    } else if (componentName.length >= 2) {
+      throw new Error(
+        "GGPLOT only accepts ONE of the following VALID components: Line, Points, or Rects."
+      );
+    }
+
+    // will change this
+    if (
+      componentName.length === 1 &&
+      (componentName[0] === "Line" || componentName[0] === "Rects" || componentName[0] === "Points")
+    ) {
+      // here we do nothing
+    } else {
       throw new Error(
         "GGPLOT only accepts ONE of the following VALID components: Line, Points, or Rects."
       );
