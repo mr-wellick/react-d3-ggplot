@@ -22,4 +22,7 @@ test("<Background/> renders rect element", () => {
       <Background />
     </GEOMS>
   );
+
+  // If we change the code, the HTML structure should not change!
+  expect(container.firstChild).toMatchSnapshot();
 });
