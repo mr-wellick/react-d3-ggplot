@@ -11,6 +11,8 @@ interface IProps {
   color?: string;
 }
 
+Line.displayName = "Line";
+
 function Line(props: IProps) {
   const context = useContext(ChartContext);
   const xScale: any = useScale("XAxis");

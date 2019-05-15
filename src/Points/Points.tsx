@@ -8,6 +8,8 @@ interface IProps {
   fill?: string;
 }
 
+Points.displayName = "Points";
+
 function Points(props: IProps) {
   const context = useContext(ChartContext);
   const xScale: any = useScale("XAxis");

@@ -7,6 +7,8 @@ interface IProps {
   fill?: string;
 }
 
+Rects.displayName = "Rects";
+
 function Rects(props: IProps) {
   const context = useContext(ChartContext);
   const xScale: any = useScale("XAxis");
