@@ -8,7 +8,6 @@ import { curveCatmullRom } from "d3-shape";
 interface IProps {
   fill?: string;
   width?: string;
-  color?: string;
 }
 
 Line.displayName = "Line";
@@ -27,7 +26,7 @@ function Line(props: IProps) {
     <g>
       <path
         fill="none"
-        stroke={!props.color ? "crimson" : props.color}
+        stroke={!props.fill ? "crimson" : props.fill}
         strokeWidth={!props.width ? "1" : props.width}
         d={!lineToAppend ? undefined : lineToAppend}
       />
