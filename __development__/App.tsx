@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { GEOMS } from "../src/GEOMS";
+import { GGPLOT } from "../src/GGPLOT";
 import { Background } from "../src/Background";
 import { XAxis } from "../src/XAxis";
 import { YAxis } from "../src/YAxis";
@@ -51,14 +52,9 @@ function App() {
 
   return (
     <>
-      <GEOMS {...state}>
-        {/*
-         */}
-        <Background />
-        <YAxis />
-        <XAxis />
+      <GGPLOT {...state}>
         <Line />
-      </GEOMS>
+      </GGPLOT>
     </>
   );
 }
