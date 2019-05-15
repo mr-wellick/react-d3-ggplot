@@ -36,7 +36,8 @@ test("<GEOMS /> throws an error when no props.children are passed in", () => {
   expect(node).toThrow();
 });
 
-test("<GEOMS /> should wrap its child or children component(s) in an <svg />", () => {
+test(`<GEOMS /> should wrap its child or children component(s) in an <svg />
+  with a width and height as specified in our validState object`, () => {
   // passing in one child should not fail
   const firstNode = render(
     <GEOMS {...validState}>
@@ -47,6 +48,9 @@ test("<GEOMS /> should wrap its child or children component(s) in an <svg />", (
     </GEOMS>
   );
 
+  // If we change the code, the HTML structure should not change!
+  expect(firstNode.container.firstChild).toMatchSnapshot();
+
   // passing in children should not fail
   const secondNode = render(
     <GEOMS {...validState}>
@@ -55,4 +59,7 @@ test("<GEOMS /> should wrap its child or children component(s) in an <svg />", (
       <div>I am a test child</div>
     </GEOMS>
   );
+
+  // If we change the code, the HTML structure should not change!
+  expect(secondNode.container.firstChild).toMatchSnapshot();
 });

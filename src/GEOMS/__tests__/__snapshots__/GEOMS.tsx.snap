@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GEOMS /> should wrap its child or children component(s) in an <svg />
+  with a width and height as specified in our validState object 1`] = `
+<svg
+  height="300"
+  width="500"
+>
+  <div>
+    this node is used as a place holder so we don't fail. The components passed in here will use the context value provided by GEOMS.
+  </div>
+</svg>
+`;
+
+exports[`<GEOMS /> should wrap its child or children component(s) in an <svg />
+  with a width and height as specified in our validState object 2`] = `
+<svg
+  height="300"
+  width="500"
+>
+  <div>
+    I am a test child
+  </div>
+  <div>
+    I am a test child
+  </div>
+  <div>
+    I am a test child
+  </div>
+</svg>
+`;
