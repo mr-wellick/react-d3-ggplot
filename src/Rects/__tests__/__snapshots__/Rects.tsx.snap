@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Rects/> renders a <g> and <rect> 1`] = `
+<svg
+  height="300"
+  width="500"
+>
+  <g>
+    <rect
+      fill="cyan"
+      height="0"
+      width="80"
+      x="130"
+      y="250"
+    />
+    <rect
+      fill="cyan"
+      height="200"
+      width="80"
+      x="290"
+      y="50"
+    />
+  </g>
+</svg>
+`;
