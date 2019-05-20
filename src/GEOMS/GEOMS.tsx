@@ -1,5 +1,6 @@
 import React, { ReactChild } from "react";
 import { ChartContext, IContext } from "../_context/";
+import includes from "lodash.includes";
 
 interface IProps extends IContext {
   children?: ReactChild[] | ReactChild;
@@ -7,11 +8,25 @@ interface IProps extends IContext {
 
 function GEOMS(props: IProps) {
   if (!props.data || !props.aes || !props.dimensions) {
-    throw new Error(`GEOMS must have the following properties: data, aes, and dimension`);
+    throw new Error(`GEOMS must have the following properties: data, aes, and dimensions.`);
   }
 
   if (!props.children) {
-    throw new Error("GEOMS expects at least one child components such as: <Rects/> or <Points/>");
+    throw new Error("GEOMS expects at least one child component such as: <Rects/> or <Points/>");
+  } else {
+    const childrenNames = React.Children.map(props.children, child => {
+      // @ts-ignore
+      if (child.type.displayName) {
+        // @ts-ignore
+        return child.type.displayName;
+      } else {
+        return "invalid";
+      }
+    });
+
+    if (includes(childrenNames, "invalid")) {
+      throw new Error("GEOMS only accepts components from react-d3-ggplot");
+    }
   }
 
   return (

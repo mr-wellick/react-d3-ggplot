@@ -12,7 +12,7 @@ const validState = {
   dimensions: { width: 500, height: 300, padding: 50 }
 };
 
-test("<Points/> renders a <g> and <point>", () => {
+test("Points renders a <g> element wrapping N <point> elements", () => {
   // We don't care about testing <GEOMS/> here.
   const { container } = render(
     <GEOMS {...validState}>

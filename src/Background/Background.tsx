@@ -7,6 +7,8 @@ interface IProps {
   fill?: string;
 }
 
+Background.displayName = "Background";
+
 function Background(props: IProps) {
   const { dimensions } = useContext(ChartContext);
 

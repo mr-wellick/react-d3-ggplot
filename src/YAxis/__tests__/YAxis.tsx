@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { GEOMS } from "../../GEOMS/";
 import YAxis from "../YAxis";
 import { render, cleanup } from "react-testing-library";
@@ -12,10 +12,7 @@ const validState = {
   dimensions: { width: 500, height: 300, padding: 50 }
 };
 
-test("Should render an <svg> with only an YAxis", () => {
-  // we don't care about testing <GEOMS/> here. We have already tested it seperately. Go check GEOMS.
-  // we only care about <YAxis/> which should give a <g> element containing a <path>, <line>, and <text>
-  // all which collectively make up a y-axis
+test("Should render an <svg> element with only a YAxis", () => {
   const { container } = render(
     <GEOMS {...validState}>
       <YAxis />

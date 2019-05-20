@@ -6,6 +6,7 @@ import { XAxis } from "../XAxis/";
 import { YAxis } from "../YAxis/";
 // import { XGrid } from "../XGrid/";
 // import { YGrid } from "../YGrid/";
+import includes from "lodash.includes";
 
 interface IProps extends IContext {
   children?: ReactChild;
@@ -17,34 +18,18 @@ function GGPLOT(props: IProps) {
   }
 
   if (props.children) {
-    const componentName = React.Children.map(props.children, child => {
+    const componentNames = React.Children.map(props.children, child => {
       // @ts-ignore
       if (child.type.displayName) {
         // @ts-ignore
         return child.type.displayName; // this property exists. don't know why ts is complaining
+      } else {
+        return "invalid";
       }
     });
 
-    if (componentName.length === 0) {
-      throw new Error(
-        "GGPLOT does not accept raw HTML element(s). Pass is ONE of the following components: Line, Points, or Rects."
-      );
-    } else if (componentName.length >= 2) {
-      throw new Error(
-        "GGPLOT only accepts ONE of the following VALID components: Line, Points, or Rects."
-      );
-    }
-
-    // will change this
-    if (
-      componentName.length === 1 &&
-      (componentName[0] === "Line" || componentName[0] === "Rects" || componentName[0] === "Points")
-    ) {
-      // here we do nothing
-    } else {
-      throw new Error(
-        "GGPLOT only accepts ONE of the following VALID components: Line, Points, or Rects."
-      );
+    if (includes(componentNames, "invalid")) {
+      throw new Error("GGPLOT only accepts components from react-d3-ggplot");
     }
   }
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Line/> should render a <g> and <path> 1`] = `
+exports[`Line should render a <g> element wrapping a <path> element 1`] = `
 <svg
   height="300"
   width="500"

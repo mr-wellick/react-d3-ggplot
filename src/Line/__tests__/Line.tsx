@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Line from "../Line";
 import { GEOMS } from "../../GEOMS/";
 import { render, cleanup } from "react-testing-library";
@@ -11,8 +11,7 @@ const validState = {
   dimensions: { width: 500, height: 300, padding: 50 }
 };
 
-test("<Line/> should render a <g> and <path>", () => {
-  // we don't care about testing <GEOMS/>.
+test("Line should render a <g> element wrapping a <path> element", () => {
   const { container } = render(
     <GEOMS {...validState}>
       <Line />

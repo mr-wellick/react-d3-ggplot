@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Rects/> renders a <g> and <rect> 1`] = `
+exports[`Rects renders a <g> element wrapping N <rect> elements 1`] = `
 <svg
   height="300"
   width="500"

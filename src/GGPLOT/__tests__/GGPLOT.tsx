@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import GGPLOT from "../GGPLOT";
 import { Line } from "../../Line/";
 import { Points } from "../../Points/";
@@ -20,32 +20,30 @@ const invalidState = {
   dimensions: { width: 300, height: 500, padding: 10 }
 };
 
-test("Passing an invalid state being should fail", () => {
+test("Passing an invalid state shape should fail", () => {
   // @ts-ignore
   const node = () => render(<GGPLOT {...invalidState} />);
 
   expect(node).toThrow();
 });
 
-test("Passing no child into <GGPLOT/> should work just fine and render only the XAxis and YAxis", () => {
+test("Passing no child into GGPLOT should work just fine and render only the XAxis and YAxis", () => {
   const { container } = render(<GGPLOT {...validState} />);
 
+  // the underlying SVG markup generated above should not change when we change our code base logic!
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test("<GGPLOT/> can only accept <Line/>, <Points/>, and <Rects/> for now", () => {
+test("GGPLOT can only accept one of the following: Line, Points, and Rects", () => {
   const firstNode = () =>
     render(
       <GGPLOT {...validState}>
-        <div />
+        <div>Invalid child</div>
       </GGPLOT>
     );
-
   expect(firstNode).toThrow();
-});
 
-test("<GGPLOT/> only accept ONE valid component: <Line/>, <Points/>, <Rects/>", () => {
-  const firstNode = () =>
+  const secondNode = () =>
     render(
       // @ts-ignore
       <GGPLOT {...validState}>
@@ -54,33 +52,23 @@ test("<GGPLOT/> only accept ONE valid component: <Line/>, <Points/>, <Rects/>", 
         <div />
       </GGPLOT>
     );
-
-  expect(firstNode).toThrow();
+  expect(secondNode).toThrow();
 });
 
-test("<GGPLOT/> does not accept multiple valid components: <Line/>, <Points/>, and <Rects/>", () => {
-  const node = () =>
-    render(
-      // @ts-ignore
-      <GGPLOT {...validState}>
-        <Line />
-        <Line />
-      </GGPLOT>
-    );
-
-  expect(node).toThrow();
-});
-
-test("Passing a valid component to <GGPLOT/> ", () => {
+test("GGPLOT accepting ONE valid component", () => {
   const firstNode = render(
     <GGPLOT {...validState}>
       <Line />
     </GGPLOT>
   );
+  // the underlying SVG markup generated above should not change when we change our code base logic!
+  expect(firstNode.container.firstChild).toMatchSnapshot();
 
   const secondNode = render(
     <GGPLOT {...validState}>
       <Points />
     </GGPLOT>
   );
+  // the underlying SVG markup generated above should not change when we change our code base logic!
+  expect(secondNode.container.firstChild).toMatchSnapshot();
 });

@@ -11,6 +11,8 @@ interface IProps {
   label?: any;
 }
 
+YAxis.displayName = "YAxis";
+
 function YAxis(props: IProps) {
   // here we use any so we can use ref in select(). if we don't, we can only use a STRING to select a node.
   // And we don't want that since we'll be accidentally touching other <g> elements

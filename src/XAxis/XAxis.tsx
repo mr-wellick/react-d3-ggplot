@@ -12,6 +12,8 @@ interface IProps {
   label?: any;
 }
 
+XAxis.displayName = "XAxis";
+
 // componet using application context
 function XAxis(props: IProps) {
   // here we use any so we can use ref in select(). if we don't, we can only use a STRING to select a node.

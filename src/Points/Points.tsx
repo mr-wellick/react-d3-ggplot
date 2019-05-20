@@ -23,7 +23,7 @@ function Points(props: IProps) {
   return (
     <g>
       {/*
-        For the key, we're not supposed to used index because we can't take 
+        For the key, we're not supposed to used index because we can't take
         advantage of react's optimization capabilities when it comes to re-rendering.
         Will use key until we can sort this detail out.
       */}

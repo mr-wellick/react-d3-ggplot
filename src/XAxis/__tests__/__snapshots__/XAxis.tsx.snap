@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render an <svg> with only an XAxis 1`] = `
+exports[`Should render an <svg> element with only an XAxis 1`] = `
 <svg
   height="300"
   width="500"
