@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { ChartContext } from "../_context/";
-import { useScale } from "../_hooks/";
+import { useXScale } from "../_hooks/";
 import { select } from "d3-selection";
 import { axisBottom } from "d3-axis";
 import { format } from "d3-format";
@@ -20,7 +20,7 @@ function XAxis(props: IProps) {
   // And we don't want that since we'll be accidentally touching other <g> elements
   const ref: any = useRef(null);
   const context = useContext(ChartContext);
-  const scale: any = useScale("XAxis");
+  const scale: any = useXScale();
 
   useEffect(() => {
     const { dimensions, aes, data } = context;

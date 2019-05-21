@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { ChartContext } from "../_context/";
-import { useScale } from "../_hooks/";
+import { useYScale } from "../_hooks/";
 import { select } from "d3-selection";
 import { axisLeft } from "d3-axis";
 import { format } from "d3-format";
@@ -18,7 +18,7 @@ function YAxis(props: IProps) {
   // And we don't want that since we'll be accidentally touching other <g> elements
   const ref: any = useRef(null);
   const context = useContext(ChartContext);
-  const scale: any = useScale("YAxis");
+  const scale: any = useYScale();
 
   useEffect(() => {
     const { data, aes, dimensions } = context;

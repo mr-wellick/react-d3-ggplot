@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
-import { useScale } from "../_hooks/";
+import { useXScale } from "../_hooks/";
+import { useYScale } from "../_hooks/";
 import { ChartContext } from "../_context/";
 
 interface IProps {
@@ -11,8 +12,8 @@ Rects.displayName = "Rects";
 
 function Rects(props: IProps) {
   const context = useContext(ChartContext);
-  const xScale: any = useScale("XAxis");
-  const yScale: any = useScale("YAxis");
+  const xScale: any = useXScale();
+  const yScale: any = useYScale();
 
   // will change once we start testing
   if (!xScale || !yScale) {

@@ -1,7 +1,8 @@
 import React from "react";
 import { useContext } from "react";
 import { ChartContext } from "../_context/";
-import { useScale } from "../_hooks/";
+import { useXScale } from "../_hooks/";
+import { useYScale } from "../_hooks/";
 
 interface IProps {
   r?: number;
@@ -12,8 +13,8 @@ Points.displayName = "Points";
 
 function Points(props: IProps) {
   const context = useContext(ChartContext);
-  const xScale: any = useScale("XAxis");
-  const yScale: any = useScale("YAxis");
+  const xScale: any = useXScale();
+  const yScale: any = useYScale();
 
   // will remove later when testing componet
   if (!xScale || !yScale) {
