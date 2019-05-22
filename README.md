@@ -46,10 +46,10 @@ const LineChart = () => {
 
 # Documentation
 
-- Official Documentation
-- Contributing as an experienced developer
-- Contributing as a beginner
-- Goal of the project
+- Official Documentation [in progress]
+- Contributing as an experienced developer [in progress]
+- Contributing as a beginner [in progress]
+- Goal of the project [in progress]
 
 # Live Example
 
