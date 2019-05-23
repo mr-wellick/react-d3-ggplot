@@ -10,6 +10,8 @@
 
 # Getting Started
 
+## Install
+
 ```zsh
 # yarn
 yarn add react-d3-ggplot
@@ -17,6 +19,8 @@ yarn add react-d3-ggplot
 # npm
 npm install react-d3-ggplot
 ```
+
+## Example
 
 | Props            | Description                       |
 | ---------------- | --------------------------------- |
