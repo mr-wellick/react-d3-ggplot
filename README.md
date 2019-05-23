@@ -1,11 +1,14 @@
-![NPM](https://img.shields.io/npm/l/react-d3-ggplot.svg?color=%230f82bc&style=popout-square)
-![Travis (.org)](https://img.shields.io/travis/ll2nz/react-d3-ggplot.svg?style=popout-square)
-![npm](https://img.shields.io/npm/v/react-d3-ggplot.svg?style=popout-square)
-![Codecov](https://img.shields.io/codecov/c/github/ll2nz/react-d3-ggplot.svg?style=popout-square)
+<h1 align="center">react d3 ggplot</h1>
+<p align="center">Using React.js, TypeScript, and D3.js to build simple and reusable components for data visualizations on the web.</p>
 
-# react-d3-ggplot
+<p align="center">
+  <img src="https://img.shields.io/npm/l/react-d3-ggplot.svg?color=%230f82bc&style=popout-square">
+  <img src="https://img.shields.io/travis/ll2nz/react-d3-ggplot.svg?style=popout-square">
+  <img src="https://img.shields.io/npm/v/react-d3-ggplot.svg?style=popout-square">
+  <img src="https://img.shields.io/codecov/c/github/ll2nz/react-d3-ggplot.svg?style=popout-square">
+</p>
 
-- Using React.js, TypeScript, and D3.js to build simple and reusable components for data visualizations on the web.
+# Getting Started
 
 ```zsh
 # yarn
@@ -14,8 +17,6 @@ yarn add react-d3-ggplot
 # npm
 npm install react-d3-ggplot
 ```
-
-# Quick Start
 
 | Props            | Description                       |
 | ---------------- | --------------------------------- |
