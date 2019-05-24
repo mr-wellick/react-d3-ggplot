@@ -12,9 +12,10 @@ function FACETS(props: IProps) {
     <Fragment>
       {props.data.map((dataset, index) => (
         <GGPLOT
-          {...props}
-          key={index}
           data={dataset} // override old data with only one dataset
+          aes={props.aes}
+          dimensions={props.dimensions}
+          key={index}
         >
           {props.children}
         </GGPLOT>
