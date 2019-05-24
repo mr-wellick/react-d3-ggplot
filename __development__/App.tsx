@@ -6,6 +6,7 @@ import { useState } from "react";
 // import { Background } from "../src/Background";
 // import { XAxis } from "../src/XAxis";
 // import { YAxis } from "../src/YAxis";
+// import { FACETS } from "../src/FACETS";
 import { GGPLOT } from "../src/GGPLOT";
 import { Points } from "../src/Points";
 // import { Rects } from "../src/Rects";
