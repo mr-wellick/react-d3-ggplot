@@ -27,7 +27,7 @@ test("Passing an invalid state shape should fail", () => {
   expect(node).toThrow();
 });
 
-test("Passing no child into GGPLOT should work just fine and render only the XAxis and YAxis", () => {
+test("Passing no child into GGPLOT should work just fine and render only the XAxis, YAxis, XGrid, YGrid, and Background", () => {
   const { container } = render(<GGPLOT {...validState} />);
 
   // the underlying SVG markup generated above should not change when we change our code base logic!

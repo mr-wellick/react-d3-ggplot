@@ -12,11 +12,6 @@ exports[`Should render an <svg> element with only an XAxis 1`] = `
     text-anchor="middle"
     transform="translate(0, 250)"
   >
-    <path
-      class="domain"
-      d="M50.5,6V0.5H450.5V6"
-      stroke="currentColor"
-    />
     <g
       class="tick"
       opacity="1"

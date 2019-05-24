@@ -12,11 +12,6 @@ exports[`GEOMS accepting valid components 1`] = `
     text-anchor="middle"
     transform="translate(0, 250)"
   >
-    <path
-      class="domain"
-      d="M50.5,6V0.5H450.5V6"
-      stroke="currentColor"
-    />
     <g
       class="tick"
       opacity="1"
@@ -212,11 +207,6 @@ exports[`GEOMS accepting valid components 1`] = `
     text-anchor="end"
     transform="translate(50, 0)"
   >
-    <path
-      class="domain"
-      d="M-6,250.5H0.5V50.5H-6"
-      stroke="currentColor"
-    />
     <g
       class="tick"
       opacity="1"

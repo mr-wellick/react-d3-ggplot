@@ -12,11 +12,6 @@ exports[`Should render an <svg> element with only a YAxis 1`] = `
     text-anchor="end"
     transform="translate(50, 0)"
   >
-    <path
-      class="domain"
-      d="M-6,250.5H0.5V50.5H-6"
-      stroke="currentColor"
-    />
     <g
       class="tick"
       opacity="1"
