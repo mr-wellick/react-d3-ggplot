@@ -51,7 +51,7 @@ const LineChart = () => {
 
 # Documentation
 
-- [Current Documentation](https://www.npmjs.com/package/react-d3-ggplot#introduction)
+- [Current Documentation](https://www.npmjs.com/package/react-d3-ggplot/v/1.0.32#introduction)
 
 - Official Documentation `[in progress]`
 - Contributing as an experienced developer `[in progress]`
