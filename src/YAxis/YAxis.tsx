@@ -38,6 +38,10 @@ function YAxis(props: IProps) {
     if (typeof data[1][aes[1]] === "number" && props.label !== undefined) {
       node.selectAll<SVGTextElement, number>("text").html(datum => format(props.label)(datum));
     }
+
+    select(ref.current)
+      .select("path")
+      .remove();
   });
 
   return <g ref={ref} />;

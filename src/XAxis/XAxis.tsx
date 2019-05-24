@@ -40,6 +40,10 @@ function XAxis(props: IProps) {
     if (typeof data[0][aes[0]] === "number" && props.label !== undefined) {
       node.selectAll<SVGTextElement, number>("text").html(datum => format(props.label)(datum));
     }
+
+    select(ref.current)
+      .select("path")
+      .remove();
   });
 
   return <g ref={ref} />;
