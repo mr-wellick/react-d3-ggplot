@@ -1,6 +1,7 @@
 // base plots
 export { GGPLOT } from "./GGPLOT/";
 export { GEOMS } from "./GEOMS/";
+export { FACETS } from "./FACETS";
 
 // geoms
 export { Points } from "./Points/";
