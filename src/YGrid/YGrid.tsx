@@ -6,17 +6,45 @@ import { useYScale } from "../_hooks/";
 import { ChartContext } from "../_context/";
 import { select } from "d3-selection";
 import { axisLeft } from "d3-axis";
+import { axisRight } from "d3-axis";
 
 interface IProps {
   color?: string;
 }
 
-function YGrid(props: IProps) {
-  const node: any = useRef(null);
-  const context = useContext(ChartContext);
-  const scale: any = useYScale();
+YGrid.displayName = "YGrid";
 
-  return <g ref={node} />;
+function YGrid(props: IProps) {
+  const ref: any = useRef(null);
+  const { dimensions } = useContext(ChartContext);
+  const yScale: any = useYScale();
+  const tickPosition = `translate(${dimensions.padding}, 0)`;
+
+  useEffect(() => {
+    select(ref.current)
+      .attr("transform", tickPosition)
+      .call(
+        axisRight(yScale)
+          .ticks(4)
+          .tickSize(dimensions.width - dimensions.padding * 2)
+          .tickSizeOuter(0)
+      );
+
+    select(ref.current)
+      .select("path")
+      .remove();
+
+    select(ref.current)
+      .selectAll("text")
+      .remove();
+
+    select(ref.current)
+      .selectAll("line")
+      .attr("stroke", "white")
+      .attr("opacity", 0.7);
+  });
+
+  return <g ref={ref} />;
 }
 
 export default YGrid;
