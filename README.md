@@ -8,6 +8,14 @@
   <img src="https://img.shields.io/codecov/c/github/ll2nz/react-d3-ggplot.svg?style=popout-square">
 </p>
 
+# Demos
+
+<p align="center">
+  <img src="./demos/barplot.png">
+  <img src="./demos/linechart.png">
+  <img src="./demos/scatterplot.png">
+</p>
+
 # Getting Started
 
 ## Install
