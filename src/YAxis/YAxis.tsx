@@ -8,7 +8,7 @@ import { axisLeft } from "d3-axis";
 import { format } from "d3-format";
 
 interface IProps {
-  label?: any;
+  y_format?: any;
 }
 
 YAxis.displayName = "YAxis";
@@ -17,11 +17,14 @@ function YAxis(props: IProps) {
   // here we use any so we can use ref in select(). if we don't, we can only use a STRING to select a node.
   // And we don't want that since we'll be accidentally touching other <g> elements
   const ref: any = useRef(null);
-  const context = useContext(ChartContext);
+  const { data, aes, dimensions } = useContext(ChartContext);
   const scale: any = useYScale();
 
+  if (!dimensions) {
+    throw new Error("Dimensions not specified");
+  }
+
   useEffect(() => {
-    const { data, aes, dimensions } = context;
     const axisLocation = `translate(${dimensions.padding}, 0)`;
 
     // select node returned by component and appends y-axis
@@ -35,8 +38,8 @@ function YAxis(props: IProps) {
     }
 
     // format y-labels
-    if (typeof data[1][aes[1]] === "number" && props.label !== undefined) {
-      node.selectAll<SVGTextElement, number>("text").html(datum => format(props.label)(datum));
+    if (typeof data[1][aes[1]] === "number" && props.y_format !== undefined) {
+      node.selectAll<SVGTextElement, number>("text").html(datum => format(props.y_format)(datum));
     }
 
     select(ref.current)

@@ -9,7 +9,7 @@ import { axisBottom } from "d3-axis";
 import { format } from "d3-format";
 
 interface IProps {
-  label?: any;
+  x_format?: any;
 }
 
 XAxis.displayName = "XAxis";
@@ -19,11 +19,14 @@ function XAxis(props: IProps) {
   // here we use any so we can use ref in select(). if we don't, we can only use a STRING to select a node.
   // And we don't want that since we'll be accidentally touching other <g> elements
   const ref: any = useRef(null);
-  const context = useContext(ChartContext);
+  const { dimensions, aes, data } = useContext(ChartContext);
   const scale: any = useXScale();
 
+  if (!dimensions) {
+    throw new Error("Dimensions not specified");
+  }
+
   useEffect(() => {
-    const { dimensions, aes, data } = context;
     const axisLocation = `translate(0, ${dimensions.height - dimensions.padding})`;
 
     // select node returned by component and appends x-axis
@@ -37,8 +40,8 @@ function XAxis(props: IProps) {
     }
 
     // format x-labels
-    if (typeof data[0][aes[0]] === "number" && props.label !== undefined) {
-      node.selectAll<SVGTextElement, number>("text").html(datum => format(props.label)(datum));
+    if (typeof data[0][aes[0]] === "number" && props.x_format !== undefined) {
+      node.selectAll<SVGTextElement, number>("text").html(datum => format(props.x_format)(datum));
     }
 
     select(ref.current)
