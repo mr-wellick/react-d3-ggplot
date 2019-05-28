@@ -16,6 +16,10 @@ function Rects(props: IProps) {
   const yScale: any = useYScale();
   let width: any;
 
+  if (!dimensions) {
+    throw new Error("Dimensions not specified");
+  }
+
   if (typeof data[0][aes[0]] === "string") {
     width = xScale.bandwidth();
   }

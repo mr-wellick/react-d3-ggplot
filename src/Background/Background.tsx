@@ -12,6 +12,10 @@ Background.displayName = "Background";
 function Background(props: IProps) {
   const { dimensions } = useContext(ChartContext);
 
+  if (!dimensions) {
+    throw new Error("Dimensions object not specified");
+  }
+
   return (
     <rect
       width={dimensions.width - dimensions.padding * 2}

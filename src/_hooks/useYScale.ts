@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { ChartContext } from "../_context/";
 import { Numeric } from "d3-array";
-import { LinearScale } from "../utilities/";
-import { TimeScale } from "../utilities/";
-import { OrdinalScale } from "../utilities/";
+import { LinearScale } from "../_utilities/";
+import { TimeScale } from "../_utilities/";
+import { OrdinalScale } from "../_utilities/";
 
 function setYScaleRange(scale: any) {
   const { dimensions } = useContext(ChartContext);
+
+  if (!dimensions) {
+    throw new Error("Dimensions not specified");
+  }
 
   if (scale !== undefined) {
     scale.range([dimensions.height - dimensions.padding, dimensions.padding]);

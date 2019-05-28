@@ -17,9 +17,14 @@ function XGrid(props: IProps) {
   const ref: any = useRef(null);
   const { dimensions } = useContext(ChartContext);
   const xScale: any = useXScale();
-  const tickPosition = `translate(0, ${dimensions.padding})`;
+
+  if (!dimensions) {
+    throw new Error("Dimensions not specified");
+  }
 
   useEffect(() => {
+    const tickPosition = `translate(0, ${dimensions.padding})`;
+
     select(ref.current)
       .attr("transform", tickPosition)
       .call(

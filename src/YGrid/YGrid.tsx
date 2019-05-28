@@ -18,9 +18,14 @@ function YGrid(props: IProps) {
   const ref: any = useRef(null);
   const { dimensions } = useContext(ChartContext);
   const yScale: any = useYScale();
-  const tickPosition = `translate(${dimensions.padding}, 0)`;
+
+  if (!dimensions) {
+    throw new Error("Dimensions not specified");
+  }
 
   useEffect(() => {
+    const tickPosition = `translate(${dimensions.padding}, 0)`;
+
     select(ref.current)
       .attr("transform", tickPosition)
       .call(
