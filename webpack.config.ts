@@ -16,7 +16,7 @@ export default (paramsPassedByWebpack: IModes) => {
   return merge(
     {
       mode: mode === "development" ? "development" : "production",
-      entry: path.join(__dirname, "./__development__/index.tsx"),
+      entry: path.join(__dirname, "./development/index.tsx"),
       output: {
         path: path.join(__dirname, "build"),
         filename: "index.js"
@@ -25,7 +25,7 @@ export default (paramsPassedByWebpack: IModes) => {
         extensions: [".ts", ".tsx", ".js"]
       },
       plugins: [
-        new template({ template: "./__development__/index.html" }),
+        new template({ template: "./development/index.html" }),
         new webpack.ProgressPlugin()
       ]
     },
