@@ -14,6 +14,7 @@
   <img src="./demos/barplot.png">
   <img src="./demos/linechart.png">
   <img src="./demos/scatterplot.png">
+  <img src="./demos/with-negative-values.png">
 </p>
 
 # Getting Started
