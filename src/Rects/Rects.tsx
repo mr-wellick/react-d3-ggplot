@@ -37,20 +37,47 @@ function Rects(props: IProps) {
     width = dimensions.width / xScale.ticks().length - dimensions.padding;
   }
 
-  return (
-    <g>
-      {data.map((datum, index) => (
-        <rect
-          key={index}
-          width={width}
-          height={yScale.range()[0] - yScale(datum[aes[1]])}
-          x={xScale(datum[aes[0]])}
-          y={yScale(datum[aes[1]])}
-          fill={!props.fill ? "cyan" : props.fill}
+  // If we have negative values adjust, Rects accordingly
+  if (yScale.domain()[0] < 0 || yScale.domain()[1] < 0) {
+    return (
+      <g>
+        <line
+          x1={0 + dimensions.padding}
+          y1={yScale(0)}
+          x2={dimensions.width - dimensions.padding}
+          y2={yScale(0)}
+          stroke="black"
         />
-      ))}
-    </g>
-  );
+        {data.map((datum, index) => (
+          <rect
+            key={index}
+            width={width}
+            height={Math.abs(yScale(datum[aes[1]]) - yScale(0))}
+            x={xScale(datum[aes[0]])}
+            y={yScale(Math.max(0, datum[aes[1]]))}
+            fill={!props.fill ? "cyan" : props.fill}
+          />
+        ))}
+      </g>
+    );
+  }
+  // if we have only positive values, we don't do anything special
+  else {
+    return (
+      <g>
+        {data.map((datum, index) => (
+          <rect
+            key={index}
+            width={width}
+            height={yScale.range()[0] - yScale(datum[aes[1]])}
+            x={xScale(datum[aes[0]])}
+            y={yScale(datum[aes[1]])}
+            fill={!props.fill ? "cyan" : props.fill}
+          />
+        ))}
+      </g>
+    );
+  }
 }
 
 export default Rects;
