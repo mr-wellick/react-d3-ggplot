@@ -42,7 +42,7 @@ test("GEOMS only accepts valid react-d3-ggplot components", () => {
   const firstNode = () => {
     render(
       <GEOMS {...validState}>
-        <XAxis />
+        <XAxis x_path={true} />
         <div>This is an invalid child.</div>
       </GEOMS>
     );
@@ -65,8 +65,8 @@ test("GEOMS only accepts valid react-d3-ggplot components", () => {
 test("GEOMS accepting valid components", () => {
   const { container } = render(
     <GEOMS {...validState}>
-      <XAxis />
-      <YAxis />
+      <XAxis x_path={true} />
+      <YAxis y_path={true} />
       <Points />
     </GEOMS>
   );

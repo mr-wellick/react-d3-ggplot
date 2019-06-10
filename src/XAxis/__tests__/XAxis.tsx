@@ -15,7 +15,7 @@ const validState = {
 test("Should render an <svg> element with only an XAxis", () => {
   const { container } = render(
     <GEOMS {...validState}>
-      <XAxis />
+      <XAxis x_path={true} />
     </GEOMS>
   );
 
