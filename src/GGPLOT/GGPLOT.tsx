@@ -39,8 +39,8 @@ function GGPLOT(props: IProps) {
         <Background />
         <XGrid />
         <YGrid />
-        <XAxis />
-        <YAxis />
+        <XAxis x_path={true} />
+        <YAxis y_path={true} />
         {props.children}
       </svg>
     </ChartContext.Provider>

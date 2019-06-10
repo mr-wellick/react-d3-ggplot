@@ -10,6 +10,7 @@ import { format } from "d3-format";
 
 interface IProps {
   x_format?: any;
+  x_path?: boolean;
 }
 
 XAxis.displayName = "XAxis";
@@ -44,9 +45,11 @@ function XAxis(props: IProps) {
       node.selectAll<SVGTextElement, number>("text").html(datum => format(props.x_format)(datum));
     }
 
-    select(ref.current)
-      .select("path")
-      .remove();
+    if (props.x_path) {
+      select(ref.current)
+        .select("path")
+        .remove();
+    }
   });
 
   return <g ref={ref} />;

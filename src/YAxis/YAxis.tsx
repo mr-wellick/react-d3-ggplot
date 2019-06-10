@@ -9,6 +9,7 @@ import { format } from "d3-format";
 
 interface IProps {
   y_format?: any;
+  y_path?: boolean;
 }
 
 YAxis.displayName = "YAxis";
@@ -42,9 +43,11 @@ function YAxis(props: IProps) {
       node.selectAll<SVGTextElement, number>("text").html(datum => format(props.y_format)(datum));
     }
 
-    select(ref.current)
-      .select("path")
-      .remove();
+    if (props.y_path) {
+      select(ref.current)
+        .select("path")
+        .remove();
+    }
   });
 
   return <g ref={ref} />;
