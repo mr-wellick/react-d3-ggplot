@@ -37,17 +37,12 @@ function Rects(props: IProps) {
     width = dimensions.width / xScale.ticks().length - dimensions.padding;
   }
 
-  // If we have negative values adjust, Rects accordingly
-  if (yScale.domain()[0] < 0 || yScale.domain()[1] < 0) {
+  // If we have negative values, adjust Rects accordingly
+  const [yMin, yMax] = yScale.domain();
+
+  if ((yMin < 0 || yMax < 0) && !(yMin < 0 && yMax < 0)) {
     return (
       <g>
-        <line
-          x1={0 + dimensions.padding}
-          y1={yScale(0)}
-          x2={dimensions.width - dimensions.padding}
-          y2={yScale(0)}
-          stroke="black"
-        />
         {data.map((datum, index) => (
           <rect
             key={index}
