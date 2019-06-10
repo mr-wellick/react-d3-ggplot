@@ -8,7 +8,7 @@ import { select } from "d3-selection";
 import { axisBottom } from "d3-axis";
 
 interface IProps {
-  fill?: string;
+  stroke?: string;
 }
 
 XGrid.displayName = "XGrid";
@@ -44,7 +44,7 @@ function XGrid(props: IProps) {
 
     select(ref.current)
       .selectAll("line")
-      .attr("stroke", "white")
+      .attr("stroke", !props.stroke ? "white" : props.stroke)
       .attr("opacity", 0.7);
   });
 
