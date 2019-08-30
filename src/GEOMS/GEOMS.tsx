@@ -1,6 +1,5 @@
 import React, { ReactChild } from "react";
 import { ChartContext, IContext } from "../_context/";
-import includes from "lodash.includes";
 
 interface IProps extends IContext {
   children?: ReactChild[] | ReactChild;
@@ -24,7 +23,7 @@ function GEOMS(props: IProps) {
       }
     });
 
-    if (includes(childrenNames, "invalid")) {
+    if (childrenNames.filter(childrenName => childrenName === "invalid").length >= 1) {
       throw new Error("GEOMS only accepts components from react-d3-ggplot");
     }
   }

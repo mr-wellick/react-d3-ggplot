@@ -6,7 +6,7 @@ import { XAxis } from "../XAxis/";
 import { YAxis } from "../YAxis/";
 import { XGrid } from "../XGrid/";
 import { YGrid } from "../YGrid/";
-import includes from "lodash.includes";
+// import includes from "lodash.includes";
 
 interface IProps extends IContext {
   children?: ReactChild;
@@ -28,7 +28,7 @@ function GGPLOT(props: IProps) {
       }
     });
 
-    if (includes(componentNames, "invalid")) {
+    if (componentNames.filter(componentName => componentName === "invalid").length >= 1) {
       throw new Error("GGPLOT only accepts components from react-d3-ggplot");
     }
   }
