@@ -1,15 +1,12 @@
-import { min, max, Numeric } from "d3-array";
-import { scaleLinear, ScaleLinear } from "d3-scale";
+import { min, max } from "d3-array";
+import { scaleLinear } from "d3-scale";
 
-// class to create a linear scale
 class LinearScale {
-  private data: Numeric[];
-
-  constructor(data: Numeric[]) {
+  constructor(data) {
     this.data = data;
   }
 
-  private getInterval(): Numeric[] | undefined {
+  getInterval() {
     const MIN = min(this.data);
     const MAX = max(this.data);
 
@@ -21,9 +18,9 @@ class LinearScale {
     return undefined;
   }
 
-  public getScale(): ScaleLinear<number, number> | undefined {
+  getScale() {
     const interval = this.getInterval();
-    let scale: ScaleLinear<number, number>;
+    let scale;
 
     if (interval !== undefined) {
       scale = scaleLinear()
