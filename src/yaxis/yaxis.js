@@ -1,24 +1,24 @@
 import React from 'react';
+import { useRef } from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import { useRef } from 'react';
-import { select } from 'd3-selection';
-import { axisBottom } from 'd3-axis';
 import { ChartContext } from '../context/';
-import { useXScale } from '../scale-hooks/';
+import { useYScale } from '../scale-hooks/';
+import { select } from 'd3-selection';
+import { axisLeft } from 'd3-axis';
 
-const XAxis = () => {
+const YAxis = () => {
   const ref = useRef(null);
   const { dimensions } = useContext(ChartContext);
-  const scale = useXScale();
+  const scale = useYScale();
 
   useEffect(() => {
-    const axisLocation = `translate(0, ${dimensions.height - dimensions.padding})`;
+    const axisLocation = `translate(${dimensions.padding}, 0)`;
     const node = select(ref.current).attr('transform', axisLocation);
-    node.call(axisBottom(scale));
+    node.call(axisLeft(scale));
   }, []);
 
   return <g ref={ref} />;
 };
 
-export default XAxis;
+export default YAxis;
