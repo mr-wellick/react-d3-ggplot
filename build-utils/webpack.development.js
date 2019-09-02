@@ -10,10 +10,6 @@ export default {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        use: ["ts-loader"]
-      },
-      {
         test: /\.js$/,
         loader: "babel-loader",
         query: {
