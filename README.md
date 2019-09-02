@@ -29,7 +29,7 @@ yarn add react-d3-ggplot
 npm install react-d3-ggplot
 ```
 
-## Example
+## Quick Start
 
 | Props            | Description                       |
 | ---------------- | --------------------------------- |
@@ -38,15 +38,15 @@ npm install react-d3-ggplot
 | dimensions       | An object: width, height, padding |
 
 ```js
-import React from "react";
-import { useState } from "react";
-import { GGPLOT } from "react-d3-ggplot";
-import { Line } from "react-d3-ggplot";
+import React from 'react';
+import { useState } from 'react';
+import { GGPLOT } from 'react-d3-ggplot';
+import { Line } from 'react-d3-ggplot';
 
 const LineChart = () => {
   const [state, setState] = useState({
     data: [{ x: 0, y: 0 }, { x: 10, y: 10 }],
-    aes: ["x", "y"],
+    aes: ['x', 'y'],
     dimensions: { width: 500, height: 300, padding: 50 }
   });
 
@@ -57,15 +57,6 @@ const LineChart = () => {
   );
 };
 ```
-
-# Documentation
-
-- [Current Documentation](https://www.npmjs.com/package/react-d3-ggplot/v/1.1.1#introduction)
-
-- Official Documentation `[in progress]`
-- Contributing `[in progress]`
-- First time contributors `[in progress]`
-- Goal of the project `[in progress]`
 
 # Live Example
 
