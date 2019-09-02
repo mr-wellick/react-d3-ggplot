@@ -5,9 +5,9 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:coverage": "cat ./coverage/lcov.info | codecov",
-    "format": "prettier --write \"src/**/*.{js,ts,tsx}\"",
-    "format:check": "prettier --list-different \"src/**/*.{js,ts,tsx}\"",
-    "lint": "",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "format:check": "prettier --list-different \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet --fix",
     "validate": ""
   },
   "license": "GPL-3.0",
