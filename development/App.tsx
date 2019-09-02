@@ -1,17 +1,6 @@
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
-import { GGPLOT } from "../src/GGPLOT";
 import { GEOMS } from "../src/GEOMS";
-import { Background } from "../src/Background";
-import { XGrid } from "../src/XGrid/";
-import { YGrid } from "../src/YGrid/";
-import { XAxis } from "../src/XAxis";
-import { YAxis } from "../src/YAxis";
-import { Points } from "../src/Points";
-import { Rects } from "../src/Rects";
-// import { FACETS } from "../src/FACETS";
-// import { Line } from "../src/Line";
-// import { nest } from "d3-collection";
 // import { mpg } from "./Data/";
 
 const data = [
@@ -34,18 +23,7 @@ function App() {
     }
   });
 
-  return (
-    <>
-      <GGPLOT {...state}>
-        <Rects />
-      </GGPLOT>
-      <GEOMS {...state}>
-        <XAxis />
-        <YAxis />
-        <Points />
-      </GEOMS>
-    </>
-  );
+  return <GEOMS {...state} />;
 }
 
 export default App;
