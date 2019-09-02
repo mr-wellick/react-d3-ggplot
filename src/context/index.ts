@@ -1,2 +1,2 @@
-export { default as ChartContext } from "./ChartContext";
-export { IContext } from "./ChartContext";
+export { default as ChartContext } from "./chart-context";
+export { IContext } from "./chart-context";
