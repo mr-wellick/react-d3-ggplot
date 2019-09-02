@@ -1,1 +1,1 @@
-export { default as LinearScale } from "./linear-scale";
+export { default as LinearScale } from './linear-scale';
