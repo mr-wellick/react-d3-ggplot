@@ -20,10 +20,9 @@ class LinearScale {
 
   getScale() {
     const interval = this.getInterval();
-    let scale;
 
     if (interval !== undefined) {
-      scale = scaleLinear()
+      let scale = scaleLinear()
         .domain(interval)
         .nice();
 
