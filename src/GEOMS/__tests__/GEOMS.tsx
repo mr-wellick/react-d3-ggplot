@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import GEOMS from "../GEOMS";
 import { IContext } from "../../_context/";
-import { render } from "react-testing-library";
-import { cleanup } from "react-testing-library";
+import { render } from "@testing-library/react";
+import { cleanup } from "@testing-library/react";
 import { XAxis } from "../../XAxis/";
 import { YAxis } from "../../YAxis/";
 import { Points } from "../../Points/";

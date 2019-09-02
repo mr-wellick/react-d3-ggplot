@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import Line from "../Line";
 import { GEOMS } from "../../GEOMS/";
-import { render, cleanup } from "react-testing-library";
+import { render, cleanup } from "@testing-library/react";
 
 afterEach(cleanup);
 

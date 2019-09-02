@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { GEOMS } from "../../GEOMS/";
 import YAxis from "../YAxis";
-import { render, cleanup } from "react-testing-library";
+import { render, cleanup } from "@testing-library/react";
 
 afterEach(cleanup);
 

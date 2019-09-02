@@ -1,10 +1,10 @@
-import * as React from "react";
+import React from "react";
 import GGPLOT from "../GGPLOT";
 import { Line } from "../../Line/";
 import { Points } from "../../Points/";
 // need to test rects first before we can us it!
 // import { Rects } from "../../Rects/";
-import { render, cleanup } from "react-testing-library";
+import { render, cleanup } from "@testing-library/react";
 
 afterEach(cleanup);
 

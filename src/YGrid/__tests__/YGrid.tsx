@@ -1,5 +1,5 @@
-import * as React from "react";
-import { render, cleanup } from "react-testing-library";
+import React from "react";
+import { render, cleanup } from "@testing-library/react";
 import { GEOMS } from "../../GEOMS/";
 import YGrid from "../YGrid";
 

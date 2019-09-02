@@ -1,8 +1,8 @@
 import React from "react";
 import Background from "../Background";
 import { GEOMS } from "../../GEOMS";
-import { render } from "react-testing-library";
-import { cleanup } from "react-testing-library";
+import { render } from "@testing-library/react";
+import { cleanup } from "@testing-library/react";
 
 afterEach(cleanup);
 

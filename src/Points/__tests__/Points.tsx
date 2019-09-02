@@ -1,8 +1,8 @@
 // ALE complains when we just use import React from "react";
-import * as React from "react";
+import React from "react";
 import Points from "../Points";
 import { GEOMS } from "../../GEOMS/";
-import { render, cleanup } from "react-testing-library";
+import { render, cleanup } from "@testing-library/react";
 
 afterEach(cleanup);
 
