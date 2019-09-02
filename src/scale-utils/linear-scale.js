@@ -1,4 +1,5 @@
-import { min, max } from 'd3-array';
+import { min } from 'd3-array';
+import { max } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 
 class LinearScale {
@@ -9,27 +10,18 @@ class LinearScale {
   getInterval() {
     const MIN = min(this.data);
     const MAX = max(this.data);
+    const interval = [MIN, MAX];
 
-    if (MIN !== undefined && MAX !== undefined) {
-      const interval = [MIN, MAX];
-      return interval;
-    }
-
-    return undefined;
+    return interval;
   }
 
   getScale() {
     const interval = this.getInterval();
+    const scale = scaleLinear()
+      .domain(interval)
+      .nice();
 
-    if (interval !== undefined) {
-      let scale = scaleLinear()
-        .domain(interval)
-        .nice();
-
-      return scale;
-    }
-
-    return undefined;
+    return scale;
   }
 }
 
