@@ -5,7 +5,7 @@ import { useXScale } from '../scale-hooks/';
 import { useYScale } from '../scale-hooks/';
 
 const Points = () => {
-  const context = useContext(ChartContext);
+  const { data, aes } = useContext(ChartContext);
   const xScale = useXScale();
   const yScale = useYScale();
 
@@ -13,11 +13,11 @@ const Points = () => {
   // react's optimizing capabilities.
   return (
     <g>
-      {context.data.map((datum, index) => (
+      {data.map((datum, index) => (
         <circle
           key={index}
-          cx={xScale(datum[context.aes[0]])}
-          cy={yScale(datum[context.aes[1]])}
+          cx={xScale(datum[aes[0]])}
+          cy={yScale(datum[aes[1]])}
           r={2}
           fill={'orange'}
         />
