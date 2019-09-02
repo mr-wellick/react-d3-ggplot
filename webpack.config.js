@@ -1,28 +1,17 @@
-// Base webpack config
 import path from "path";
 import webpack from "webpack";
 import merge from "webpack-merge";
 import template from "html-webpack-plugin";
 import development from "./build-utils/webpack.development";
 
-interface IModes {
-  mode: string;
-}
-
-// webpack config
-export default (paramsPassedByWebpack: IModes) => {
-  const { mode } = paramsPassedByWebpack;
-
+export default ({ mode }) => {
   return merge(
     {
       mode: mode === "development" ? "development" : "production",
-      entry: path.join(__dirname, "./development/index.tsx"),
+      entry: path.join(__dirname, "./development/index.js"),
       output: {
         path: path.join(__dirname, "build"),
         filename: "index.js"
-      },
-      resolve: {
-        extensions: [".ts", ".tsx", ".js"]
       },
       plugins: [
         new template({ template: "./development/index.html" }),
