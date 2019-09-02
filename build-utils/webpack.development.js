@@ -1,7 +1,7 @@
 export default {
   devServer: {
     historyApiFallback: true,
-    stats: "errors-only",
+    stats: 'errors-only',
     overlay: {
       errors: true,
       warnings: true
@@ -11,9 +11,9 @@ export default {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         query: {
-          presets: ["@babel/preset-react", "@babel/preset-env"]
+          presets: ['@babel/preset-react', '@babel/preset-env']
         }
       }
     ]
