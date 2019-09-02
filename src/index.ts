@@ -1,5 +1,5 @@
 // base plots
-export { GEOMS } from "./GEOMS/";
+export { GEOMS } from "./geoms/";
 // export { GGPLOT } from "./GGPLOT/";
 // export { FACETS } from "./FACETS";
 
