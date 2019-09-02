@@ -1,10 +1,16 @@
 import React from 'react';
-// import { useState } from 'react';
-// import { GEOMS } from "../src/GEOMS";
-// import { mpg } from "./Data/";
+import { GEOMS } from '../src/';
+import { XAxis } from '../src/';
+import { mpg } from './Data/';
 
 const App = () => {
-  return <h1>test</h1>;
+  const dimensions = { width: 500, height: 300, padding: 50 };
+
+  return (
+    <GEOMS data={mpg} aes={['displ', 'hwy']} dimensions={dimensions}>
+      <XAxis />
+    </GEOMS>
+  );
 };
 
 export default App;
