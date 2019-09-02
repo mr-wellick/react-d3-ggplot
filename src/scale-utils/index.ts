@@ -1,3 +1,3 @@
-export { default as LinearScale } from "./LinearScale";
-export { default as TimeScale } from "./TimeScale";
-export { default as OrdinalScale } from "./OrdinalScale";
+export { default as LinearScale } from "./linear-scale";
+export { default as TimeScale } from "./time-scale";
+export { default as OrdinalScale } from "./ordinal-scale";
