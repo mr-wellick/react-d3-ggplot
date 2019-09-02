@@ -1,2 +1,2 @@
 // base plots
-export { GEOMS } from "./geoms/";
+// export { GEOMS } from "./geoms/";
