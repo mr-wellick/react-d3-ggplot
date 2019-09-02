@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ChartContext } from "../_context/";
+import { ChartContext } from "../context/";
 import { Numeric } from "d3-array";
-import { LinearScale } from "../_utilities/";
-import { TimeScale } from "../_utilities/";
-import { OrdinalScale } from "../_utilities/";
+import { LinearScale } from "../scale-utils/";
+import { TimeScale } from "../scale-utils/";
+import { OrdinalScale } from "../scale-utils/";
 
 function setXScaleRange(scale: any) {
   const { dimensions } = useContext(ChartContext);

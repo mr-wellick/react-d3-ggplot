@@ -1,2 +1,2 @@
-export { default as useXScale } from "./useXScale";
-export { default as useYScale } from "./useYScale";
+export { default as useXScale } from "./use-x-scale";
+export { default as useYScale } from "./use-y-scale";
