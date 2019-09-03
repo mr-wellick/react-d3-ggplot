@@ -7,7 +7,7 @@ import development from './build-utils/webpack.development';
 export default ({ mode }) => {
   return merge(
     {
-      mode: mode === 'development' ? 'development' : 'production',
+      mode: mode,
       entry: path.join(__dirname, './development/index.js'),
       output: {
         path: path.join(__dirname, 'build'),
