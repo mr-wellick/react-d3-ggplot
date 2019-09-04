@@ -1,5 +1,5 @@
 <h1 align="center">react d3 ggplot</h1>
-<p align="center">Using React.js, TypeScript, and D3.js to build simple and reusable components for data visualizations on the web.</p>
+<p align="center">Using React.js and D3.js to build simple and reusable components for data visualizations on the web.</p>
 
 <p align="center">
   <img src="https://img.shields.io/npm/l/react-d3-ggplot.svg?color=%230f82bc&style=popout-square">
