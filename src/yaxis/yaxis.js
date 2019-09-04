@@ -16,7 +16,7 @@ const YAxis = () => {
     const axisLocation = `translate(${dimensions.padding}, 0)`;
     const node = select(ref.current).attr('transform', axisLocation);
     node.call(axisLeft(scale));
-  }, []);
+  }, [dimensions.padding, scale]);
 
   return <g ref={ref} />;
 };

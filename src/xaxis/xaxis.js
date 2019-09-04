@@ -16,7 +16,7 @@ const XAxis = () => {
     const axisLocation = `translate(0, ${dimensions.height - dimensions.padding})`;
     const node = select(ref.current).attr('transform', axisLocation);
     node.call(axisBottom(scale));
-  }, []);
+  }, [dimensions.height, dimensions.padding, scale]);
 
   return <g ref={ref} />;
 };
