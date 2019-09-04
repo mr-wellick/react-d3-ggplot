@@ -8,7 +8,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "format:check": "prettier --list-different \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --fix",
-    "validate": ""
+    "validate": "concurrently \"yarn run format:check\" \"yarn run lint\" \"yarn run test\""
   },
   "license": "GPL-3.0",
   "name": "react-d3-ggplot",
