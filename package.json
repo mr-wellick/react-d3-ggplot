@@ -7,7 +7,7 @@
     "test:coverage": "cat ./coverage/lcov.info | codecov",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "format:check": "prettier --list-different \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet --fix",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --fix",
     "validate": ""
   },
   "license": "GPL-3.0",
