@@ -6,19 +6,19 @@ import { OrdinalScale } from '../scale-utils/';
 
 function useScaleType() {
   const { data, aes } = useContext(ChartContext);
+  // data is an array of ojects. aes contains two strings, which specify the values
+  // that we want to pull out of data. aes[0] represents the x-values
+  const xValues = data.map(data => data[aes[0]]);
 
-  if (typeof data[0][aes[0]] === 'number') {
-    const xValues = data.map(data => data[aes[0]]);
+  if (typeof xValues[0] === 'number') {
     const scale = new LinearScale(xValues).getScale();
 
     return scale;
-  } else if (typeof data[0][aes[0]] === 'object') {
-    const xValues = data.map(data => data[aes[0]]);
+  } else if (typeof xValues[0] === 'object') {
     const scale = new TimeScale(xValues).getScale();
 
     return scale;
-  } else if (typeof data[0][aes[0]] === 'string') {
-    const xValues = data.map(data => data[aes[0]]);
+  } else if (typeof xValues[0] === 'string') {
     const scale = new OrdinalScale(xValues).getScale(0.5); // will make argument modular later
 
     return scale;
