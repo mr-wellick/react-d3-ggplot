@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Underlying SVG markup should not change when we change our component logic 1`] = `
+<svg
+  height="300"
+  width="500"
+>
+  <g>
+    <circle
+      cx="50"
+      cy="250"
+      fill="orange"
+      r="2"
+    />
+    <circle
+      cx="450"
+      cy="50"
+      fill="orange"
+      r="2"
+    />
+  </g>
+</svg>
+`;
