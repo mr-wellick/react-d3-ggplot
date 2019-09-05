@@ -1,29 +1,46 @@
 import React from 'react';
 import { GEOMS } from '../src/';
 import { XAxis } from '../src/';
-import { YAxis } from '../src/';
-import { Line } from '../src/';
-//import { Rects } from '../src/';
-//import { Points } from '../src/';
+import { Stacks } from '../src/';
+import { YStack } from '../src/stacks/';
+
+const data = [
+  {
+    category: 'automotive sales',
+    quarter: 'Q1.2018',
+    revenue: 2561881000,
+    costOfRevenue: 2091397000
+  },
+  {
+    category: 'automotive leasing',
+    quarter: 'Q1.2018',
+    revenue: 173436000,
+    costOfRevenue: 104496000
+  },
+  {
+    category: 'energy gen & storage',
+    quarter: 'Q1.2018',
+    revenue: 410022000,
+    costOfRevenue: 375363000
+  },
+  {
+    category: 'services & others',
+    quarter: 'Q1.2018',
+    revenue: 263412000,
+    costOfRevenue: 380969000
+  }
+];
 
 const App = () => {
-  //const data = [{ x: 0, y: 0 }, { x: 10, y: 10 }];
-  const data = [
-    { x: 'a', y: 7 },
-    { x: 'b', y: 2 },
-    { x: 'c', y: -5 },
-    { x: 'd', y: 10 },
-    { x: 'e', y: 3 },
-    { x: 'f', y: -10 }
-  ];
-  const aes = ['x', 'y'];
-  const dimensions = { width: 500, height: 300, padding: 50 };
+  const aes = ['category'];
+  const categories = ['revenue', 'costOfRevenue'];
+  const dimensions = { width: 800, height: 300, padding: 50 };
 
   return (
-    <GEOMS data={data} aes={aes} dimensions={dimensions}>
+    <GEOMS data={data} aes={aes} dimensions={dimensions} categories={categories}>
       <XAxis />
-      <YAxis />
-      <Line />
+      <YStack />
+      <Stacks />
     </GEOMS>
   );
 };
