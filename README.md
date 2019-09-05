@@ -40,7 +40,9 @@ npm install react-d3-ggplot
 ```js
 import React from 'react';
 import { useState } from 'react';
-import { GGPLOT } from 'react-d3-ggplot';
+import { GEOMS } from 'react-d3-ggplot';
+import { XAxis } from 'react-d3-ggplot';
+import { YAxis } from 'react-d3-ggplot';
 import { Line } from 'react-d3-ggplot';
 
 const LineChart = () => {
@@ -51,9 +53,11 @@ const LineChart = () => {
   });
 
   return (
-    <GGPLOT {...state}>
+    <GEOMS {...state}>
+      <XAxis />
+      <YAxis />
       <Line />
-    </GGPLOT>
+    </GEOMS>
   );
 };
 ```
