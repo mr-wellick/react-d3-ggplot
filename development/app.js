@@ -2,7 +2,7 @@ import React from 'react';
 import { GEOMS } from '../src/';
 import { XAxis } from '../src/';
 import { Stacks } from '../src/';
-import { YStack } from '../src/stacks/';
+import { YAxisStack } from '../src/';
 
 const data = [
   {
@@ -39,7 +39,7 @@ const App = () => {
   return (
     <GEOMS data={data} aes={aes} dimensions={dimensions} categories={categories}>
       <XAxis />
-      <YStack />
+      <YAxisStack />
       <Stacks />
     </GEOMS>
   );
