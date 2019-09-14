@@ -1,13 +1,16 @@
 import React from 'react';
 import { useContext } from 'react';
 import { ChartContext } from '../context/';
-import { useXScale } from '../scale-hooks/';
-import { useYScale } from '../scale-hooks/';
+import { useScale } from '../scale-hooks/';
 
 const Rects = () => {
-  const { data, aes } = useContext(ChartContext);
-  const xScale = useXScale();
-  const yScale = useYScale();
+  const { data, aes, dimensions } = useContext(ChartContext);
+  const xScale = useScale(aes[0]);
+  const yScale = useScale(aes[1]);
+
+  // need to set the range to properly display our graph visually
+  xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
+  yScale.range([dimensions.height - dimensions.padding, dimensions.padding]);
 
   // If we have negative values, adjust Rects accordingly
   const [yMin, yMax] = yScale.domain();

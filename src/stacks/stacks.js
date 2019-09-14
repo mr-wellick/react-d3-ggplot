@@ -7,14 +7,16 @@ import { ChartContext } from '../context/';
 import { useSeries } from '../scale-hooks/';
 import { useColors } from '../scale-hooks/';
 import { useYScaleStack } from '../scale-hooks/';
-import { useXScale } from '../scale-hooks/';
+import { useScale } from '../scale-hooks/';
 
 const Stacks = () => {
   const node = useRef();
-  const { aes } = useContext(ChartContext);
+  const { aes, dimensions } = useContext(ChartContext);
   const series = useSeries();
   const colors = useColors();
-  const xScale = useXScale();
+  const xScale = useScale(aes[0]);
+  // need to set the range to properly display our graph visually
+  xScale.range([dimensions.padding, dimensions.width - dimensions.padding]);
   const yScale = useYScaleStack();
 
   useEffect(() => {
